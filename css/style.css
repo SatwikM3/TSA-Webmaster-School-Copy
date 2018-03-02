@@ -171,10 +171,11 @@ p.lead {
 
 .section-title2 {
     text-align: center;
-    margin-bottom: 0rem;
-    margin-top: 3rem;
+    padding-bottom: 2rem;
+    padding-top: 5rem;
     text-decoration: underline;
-    text-decoration-color: #9477b4
+    text-decoration-color: #9477b4;
+    background: #FFF;
 }
 
 .section-title small {
@@ -718,7 +719,7 @@ Primary style
     /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
     width: 100%;
     padding: 20 ;
-    background-color: #faf6fb;
+    background-color: #FFF;
 
   }
   .cd-container::after {
@@ -894,7 +895,7 @@ Primary style
   .cd-timeline-content {
     position: relative;
     margin-left: 60px;
-    background: #ffffff;
+    background: #faf6fb;
     border-radius: 0.25em;
     padding: 1em;
     box-shadow: 0 3px 0 #d7e4ed;
