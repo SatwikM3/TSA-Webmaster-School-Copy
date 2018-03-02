@@ -85,7 +85,7 @@ $(function() {
             items: 1,
             nav: true,
             dots: false,
-            navText: ['<span class="ti-arrow-left"></span>', '<span class="ti-arrow-right"></span>']
+            navText: ["&#8592;","&#8594;"]
         });
     }
 
@@ -97,7 +97,7 @@ $(function() {
             loop: true,
             autoplay: true,
             dots: true,
-            navText: ['<span class="ti-arrow-left"></span>', '<span class="ti-arrow-right"></span>'],
+            navText: ["&#8592;","&#8594;"],
             responsive: {
                 0: {
                     items: 1
