@@ -32,16 +32,37 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <script type="text/javascript">!function(t,e){"use strict";var r=function(t){try{var r=e.head||e.getElementsByTagName("head")[0],a=e.createElement("script");a.setAttribute("type","text/javascript"),a.setAttribute("src",t),r.appendChild(a)}catch(t){}};t.CollectId = "5a7fbad4c26593ba62ada675",r("https://s3.amazonaws.com/collectchat/launcher.js")}(window,document);</script>
 
+    <script>
+            window.onload = function() {
+            document.getElementById("firstCard").focus();
+            this.open_programming();
+            document.getElementById("button").style.background='none';
+            document.getElementById("button").style.border='none';
+            document.getElementById("button").style.outline='none';
+            document.getElementById("button2").style.outline='none';
+            document.getElementById("button3").style.outline='none';
+            document.getElementById("button4").style.outline='none';
+            document.getElementById("button5").style.outline='none';
+            document.getElementById("button6").style.outline='none';
+
+            document.getElementById("button2").style.background='none';
+            document.getElementById("button2").style.border='none';
+            document.getElementById("button3").style.background='none';
+            document.getElementById("button3").style.border='none';
+            document.getElementById("button4").style.background='none';
+            document.getElementById("button4").style.border='none';
+            document.getElementById("button5").style.background='none';
+            document.getElementById("button5").style.border='none';
+            document.getElementById("button6").style.background='none';
+            document.getElementById("button6").style.border='none';
+
+};
+        </script>
   
         
     </head>
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
-        <script>
-            window.onload = function() {
-            document.getElementById("firstCard").focus();
-            this.open_programming();
-};
-        </script>
+       
 
             <div class="nav-menu fixed-top">
                     <div class="container">
@@ -93,22 +114,27 @@
         
                     <div class="row">
                         <div class="col-12 col-lg-4">
-                            <a class='nav-link' href="javascript:open_programming()">
+                               <button id="button" onclick="javascript:open_programming()">
                             <div id ="firstCard" class="card features" tabindex="1">
+                                
                                 <div class="card-body">
+
                                     <div class="media" >
                                         <span class="ti-face-smile gradient-fill ti-3x mr-3"></span>
+
                                         <div class="media-body" >
                                             <h4 class="card-title" >Programming Sequence</h4>
                                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque </p>
                                         </div>
+                                       
                                     </div>
                                 </div>
                             </div>
-                            </a>
+                        </button>
                         </div>
+                    
                         <div class="col-12 col-lg-4">
-                                <a class='nav-link' href="javascript:open_engineering()">
+                                <button id="button2" onclick="javascript:open_engineering()">
 
                             <div class="card features" tabindex="2">
                                 <div class="card-body">
@@ -122,10 +148,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        </div>
+                        </button>
+                    </div>
                         <div class="col-12 col-lg-4">
-                                <a class='nav-link' href="javascript:open_management()">
+                                <button id="button3" onclick="javascript:open_management()">
 
                             <div class="card features" tabindex="3">
                                 <div class="card-body">
@@ -138,11 +164,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </button>
 
                         </div>
-                        <div class="col-6 col-lg-4">
-                                <a class='nav-link' href="javascript:open_digitalMedia()">
+                        <div class="col-12 col-lg-4">
+                                <button id="button4" onclick="javascript:open_digitalMedia()">
 
                             <div class="card features" tabindex="4">
                                 <div class="card-body">
@@ -155,12 +181,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </button>
 
                         </div>
-                        <div class="col-6 col-lg-4">
-                                <a class='nav-link' href="javascript:open_design()">
-                            <div class="card features" tabindex="5">
+                        <div class="col-12 col-lg-4">
+                                <button id="button5" onclick="javascript:open_design()">
+                                        <div class="card features" tabindex="5">
                                 <div class="card-body">
                                     <div class="media">
                                         <span class="ti-lock gradient-fill ti-3x mr-3"></span>
@@ -171,10 +197,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        </div>
-                        <div class="col-6 col-lg-4">
-                                <a class='nav-link' href="javascript:open_economics()">
+                        </button>
+                    </div>
+                        <div class="col-12 col-lg-4">
+                                <button id="button6" onclick="javascript:open_economics()">
 
                             <div class="card features" tabindex="6">
                                 <div class="card-body">
@@ -187,13 +213,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </button>
 
                         </div>
                         
                     </div>
+                    <div id="cd-timeline-title" style="height: 50px;" ></div>
 
-                    <div class="section-title2">
+                    <div  class="section-title2">
                             <h3 id="timeline-section-title">Programming Sequence</h3>
                     </div>
                 
@@ -691,6 +718,30 @@
         </script>
 
 <script type="text/javascript">
+
+function scrollToElement(element) {    
+    var startingY = window.pageYOffset  
+  var diff = elementY - startingY  
+  var start
+
+  // Bootstrap our animation - it will get called right before next frame shall be rendered.
+  window.requestAnimationFrame(function step(timestamp) {
+    if (!start) start = timestamp
+    // Elapsed miliseconds since start of scrolling.
+    var time = timestamp - start
+    // Get percent of completion in range [0, 1].
+    var percent = Math.min(time / duration, 1)
+
+    window.scrollTo(0, startingY + diff * percent)
+
+    // Proceed with animation as long as we wanted it to.
+    if (time < duration) {
+      window.requestAnimationFrame(step)
+    }
+  })
+}
+
+
     function open_programming() {
 
     
@@ -714,6 +765,7 @@
       document.getElementById('timeline-card-p4').innerHTML = "Strengthens base of object-oriented programming. Incorporates topics such as recursion, algorithm efficiency, data structures, sorting and searching, networking, graphical user interfaces, security, robotics, artificial intelligence, and parallel programming.";
       document.getElementById('timeline-card-grade4').innerHTML = "Grade (11th-12th)";
 
+      document.getElementById('cd-timeline-title').scrollIntoView({block: 'start', behavior:'smooth'});
 
     }
     function open_engineering() {
