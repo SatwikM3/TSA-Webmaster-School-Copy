@@ -1153,7 +1153,7 @@ Primary style
   }
   div.card {
     background: #FFF;
-/*    display: inline-block;*/
+    display: inline-block;
     margin: 8px;
     max-width: 300px;
     -webkit-perspective: 1000;
