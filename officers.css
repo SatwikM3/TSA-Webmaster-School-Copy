@@ -24,6 +24,7 @@ body {
 }
 .card {
   background: #FFFFFF;
+  display: block !important;
   max-width: 1000px !important;
   margin: 100px auto !important;
   text-align: center !important;
