@@ -56,8 +56,17 @@
             document.getElementById("button6").style.background='none';
             document.getElementById("button6").style.border='none';
 
+            if (/Android|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                document.getElementById("container").setAttribute("id", "containerMobile");
+            }  else {
+                document.getElementById("container").id = "containermobile";
+
+            }
+
 };
         </script>
+
+
   
         
     </head>
@@ -88,11 +97,11 @@
             
 
         <header class="bg-gradient2"id="home">
-        <div id="container">     
+        <div id = "container">     
         <header class="info">
             <hgroup class="about">
                     <div class="typewriter">
-                            <h1>Career &amp; Technical OH</h1>
+                            <h1>Career &amp; Technical Education</h1>
                     </div>
             </hgroup>
             <!-- <nav class="more">
@@ -103,6 +112,8 @@
     </div>
 
         </header>
+
+      
 
 
         <div class="section light-bg" id="features">
