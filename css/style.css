@@ -142,6 +142,11 @@ p.lead {
     background-color: #faf6fb;
 }
 
+.light2-bg {
+  background-color: #faf6fb;
+  margin-top: 150px;
+}
+
 .white-bg {
     background-color: #FFF;
 }
@@ -1476,4 +1481,77 @@ Primary style
       height: 100vh;
     }
   }
+
+  .botui-container,
+.botui-messages-container {
+	background: transparent;
+}
+
+.human.botui-message-content.text {
+	background: white;
+	color: rgb(48, 41, 58);
+}
+
+.botui-message-content {
+	font-size: 18px;
+	font-size: 1rem;
+	font-family: 'Montserrat';
+	background: rgb(48, 41, 58);
+	color: white;
+}
+
+.botui-messages-container {
+	max-height: 55vh;
+	overflow-y: auto;
+}
+
+.botui-actions-buttons-button {
+	background-color: rgb(95, 175, 226);
+	font-size: 21.599px;
+	font-size: 1.2rem ;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	-webkit-transition: 300ms ease-in-out;
+	transition: 300ms ease-in-out
+}
+
+.botui-actions-buttons-button:focus {
+  color: rgb(95, 175, 226);
+  background-color: white;
+}
+
+.botui-actions-buttons-button:not(:focus) {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.botui-actions-text-input {
+	color: #CDACE0;
+	font-size: 21.599px;
+	font-size: 1.2rem ;
+	border-bottom: solid 2px currentColor;
+	font-family: 'Montserrat';
+	font-weight: bold;
+	-webkit-transition: 300ms ease-in-out;
+	transition: 300ms ease-in-out
+}
+
+.botui-actions-text-input:not(:focus) {
+  font-style: italic;
+}
+
+.botui-action-text-icon {
+	color: currentColor;
+}
+
+
+
+header {
+	text-align: center;
+}
+
+
+.bot-wrapper {
+	margin: 0 25%;
+}
   
