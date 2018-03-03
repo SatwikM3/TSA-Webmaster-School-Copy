@@ -1,4 +1,3 @@
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -182,15 +181,15 @@ $(document).ready(function () {
 
   setTimeout(function () {
     messenger.recieve('Hello there!');
-  }, 1500);
+  }, 500);
 
   setTimeout(function () {
     messenger.recieve('Do you have AIDS?');
-  }, 5000);
+  }, 2000);
 
   setTimeout(function () {
     messenger.recieve('Because I am AIDA!');
-  }, 7500);
+  }, 3500);
 
   $input.focus();
 
