@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
     <head>
-
-        
         <title>TSA</title>
         <link rel="stylesheet" href="css/example.css">
         <link rel="stylesheet" href="css/carousel.css">
@@ -30,6 +28,7 @@
 
   
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel = "stylesheet" type = "text/css" href = "officers.css">
     </head>
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
         <script>
@@ -37,7 +36,7 @@
             document.getElementById("firstCard").focus();
 };
         </script>
-        
+        <script src="jquery-3.3.1.min.js"></script>
             <div class="nav-menu fixed-top">
                     <div class="container">
                         <div class="row">
@@ -85,7 +84,7 @@
         <!-- Custom JS -->
         <script src="./js/script.js"></script>
         <script src="./js/cards.js"></script>
-
+        
     
         <script>
         // ----------------------------------------
@@ -367,6 +366,128 @@
 
                 </div>
                 </div>
+<div class="card">
+  <div class="products">
+    <div class="product active" product-id="1">
+      <div class="thumbnail"><img src="sahit.png"/></div>
+      <h1 class="title">Sahit Penmatcha</h1>
+      <p class="description">Sahit is the founder and president of TSA. He is passionate about computer science and would like to share his love for computers with others through TSA.</p>
+    </div>
+    <div class="product" product-id="2">
+      <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Bear.svg"/></div>
+      <h1 class="title">The Courageous Bear</h1>
+      <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div>
+    <div class="product" product-id="3">
+      <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Mouse.svg"/></div>
+      <h1 class="title">The Sneaky Mouse</h1>
+      <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div>
+    <div class="product" product-id="4">
+      <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Fox.svg"/></div>
+      <h1 class="title">The Cunning Fox</h1>
+      <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div>
+    <div class="product" product-id="5">
+      <div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/Rabbit.svg"/></div>
+      <h1 class="title">The Jumpy Rabbit</h1>
+      <p class="description">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    </div>
+  </div>
+  <div class="footer"><a class="btn" id="prev" href="#" ripple="" ripple-color="#666666">Prev</a><a class="btn" id="next" href="#" ripple="" ripple-color="#666666">Next</a></div>
+</div>
+<script>
+        // officers
+            $(document).ready(function() {
+  var getProductHeight = $('.product.active').height();
+
+  $('.products').css({
+    height: getProductHeight
+  });
+
+  function calcProductHeight() {
+    getProductHeight = $('.product.active').height();
+
+    $('.products').css({
+      height: getProductHeight
+    });
+  }
+
+  function animateContentColor() {
+    var getProductColor = $('.product.active').attr('product-color');
+
+    $('body').css({
+      background: getProductColor
+    });
+
+    $('.title').css({
+      color: getProductColor
+    });
+
+    $('.btn').css({
+      color: getProductColor
+    });
+  }
+
+  var productItem = $('.product'),
+    productCurrentItem = productItem.filter('.active');
+
+  $('#next').on('click', function(e) {
+    e.preventDefault();
+
+    var nextItem = productCurrentItem.next();
+
+    productCurrentItem.removeClass('active');
+
+    if (nextItem.length) {
+
+      productCurrentItem = nextItem.addClass('active');
+    } else {
+      productCurrentItem = productItem.first().addClass('active');
+    }
+
+    calcProductHeight();
+    animateContentColor();
+  });
+
+  $('#prev').on('click', function(e) {
+    e.preventDefault();
+
+    var prevItem = productCurrentItem.prev();
+
+    productCurrentItem.removeClass('active');
+
+    if (prevItem.length) {
+      productCurrentItem = prevItem.addClass('active');
+    } else {
+      productCurrentItem = productItem.last().addClass('active');
+    }
+
+    calcProductHeight();
+    animateContentColor();
+  });
+
+  // Ripple
+  $('[ripple]').on('click', function(e) {
+    var rippleDiv = $('<div class="ripple" />'),
+      rippleSize = 60,
+      rippleOffset = $(this).offset(),
+      rippleY = e.pageY - rippleOffset.top,
+      rippleX = e.pageX - rippleOffset.left,
+      ripple = $('.ripple');
+
+    rippleDiv.css({
+      top: rippleY - (rippleSize / 2),
+      left: rippleX - (rippleSize / 2),
+      background: $(this).attr("ripple-color")
+    }).appendTo($(this));
+
+    window.setTimeout(function() {
+      rippleDiv.remove();
+    }, 1900);
+  });
+});
+        </script>
 <footer class="my-5 text-center">
         <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED. SAHIT PENMATCHA</small></p>
 
