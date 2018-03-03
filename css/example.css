@@ -21,6 +21,20 @@ html, body {
       typing 3.5s steps(30, end),
       blink-caret .5s step-end infinite;
   }
+
+  .typewriter h3 {
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    font-size: 30;
+    animation: 
+      typing 3.5s steps(30, end),
+      blink-caret .5s step-end infinite;
+  }
   
   /* The typing effect */
   @keyframes typing {
@@ -92,9 +106,46 @@ html, body {
     left: 10%;
 }
 
+.info2 {
+
+    -webkit-transition: all 180ms ease-out;
+    -moz-transition: all 180ms ease-out;
+    -ms-transition: all 180ms ease-out;
+    -o-transition: all 180ms ease-out;
+    transition: all 180ms ease-out;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    -webkit-transform: perspective(800);
+    -moz-transform: perspective(800);
+    -ms-transform: perspective(800);
+    -o-transform: perspective(800);
+    transform: perspective(800);
+
+
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.8;
+    color: #fff;
+    width: 50%;
+    top: 200px;
+    padding: 10px;
+    left: 25%;
+}
+
 .info:hover {
 
     box-shadow: 0 0 0 4px rgba(255,255,255,0.05);
+    opacity: 1.0;
+}
+
+.info2:hover {
+
+    box-shadow: 0 0 0 0px rgba(255,255,255,0.05);
     opacity: 1.0;
 }
 
