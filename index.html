@@ -573,9 +573,7 @@
         // ----------------------------------------
         // Particle
         // ----------------------------------------
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-    // Take the user to a different screen here.
-} else {
+        
         
 
 
@@ -654,6 +652,7 @@
                 y = ( demo.height * 0.5 ) + random( -100, 100 );
                 demo.spawn( x, y);               
             }
+
         };
 
         demo.spawn = function( x, y ) {
@@ -704,6 +703,9 @@
         };
 
         demo.mousemove = function() {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    // Take the user to a different screen here.
+} else {
 
             var particle, theta, force, touch, max, i, j, n;
 
@@ -715,8 +717,11 @@
                 }
 
             }
-        };
-    }
+        }
+    };
+
+   
+    
         
         </script>
 
