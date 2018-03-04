@@ -1,0 +1,107 @@
+.competitions {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.competitions body {
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+  max-width: 1400px;
+  padding: 15px;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.competitions h5 {
+  margin-bottom: 0;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.competitions h5 a {
+  font-family: "azo-sans-web", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  color: #435560;
+  margin: 0;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+.competitions h5 a:hover {
+  color: #435560;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.competitions p {
+  font-family: "azo-sans-web", sans-serif;
+  font-weight: 200;
+  line-height: 26px;
+  color: #414042;
+  margin: 0;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+.competitions #accordion .card {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 1px solid #d1d3d4;
+background-color: transparent !important;
+    color: #fff !important;
+}
+.competitions #accordion .card .card-header {
+  background: none;
+  border: none;
+  padding: 25px 0;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+.competitions #accordion .card .card-header.top-headline {
+  padding: 0 0 25px;
+    background-color: transparent !important;
+    color: #fff !important;
+}
+.competitions #accordion .card .card-body {
+    color: #fff !important;
+  padding: 0 0 25px;
+    background-color: transparent !important;
+}
+
+.competitions .vertical-tabs .nav-link {
+  text-transform: uppercase;
+  color: #dddddd;
+  font-family: "azo-sans-web", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 0;
+  padding: 30px;
+    background-color: transparent !important;
+}
+@media (min-width: 768px) {
+  .competitions .vertical-tabs .nav-link {
+    border-bottom: 1px solid #d1d3d4;
+      background-color: transparent !important;
+  }
+}
+.competitions .vertical-tabs .nav-link.active {
+  border-bottom: none;
+    background-color: transparent !important;
+}
+.competitions .vertical-tabs .tab-content {
+  margin-top: 30px;
+    background-color: transparent !important;
+}
+@media (min-width: 768px) {
+  .competitions .vertical-tabs .tab-content {
+    margin-top: 22px;
+    background-color: transparent !important;
+  }
+}
