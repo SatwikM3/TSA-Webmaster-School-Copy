@@ -56,8 +56,17 @@
             document.getElementById("button6").style.background='none';
             document.getElementById("button6").style.border='none';
 
+            if (/Android|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                document.getElementById("container").setAttribute("id", "containerMobile");
+            }  else {
+                document.getElementById("container").id = "containermobile";
+
+            }
+
 };
         </script>
+
+
   
         
     </head>
@@ -88,7 +97,7 @@
             
 
         <header class="bg-gradient2"id="home">
-        <div id="container">     </div>
+        <div id = "container">     
         <header class="info">
             <hgroup class="about">
                     <div class="typewriter">
@@ -100,8 +109,11 @@
                 <a href="https://github.com/soulwire/sketch.js" target="_blank">View on Github</a>
             </nav> -->
         </header>
+    </div>
 
         </header>
+
+      
 
 
         <div class="section light-bg" id="features">
@@ -573,7 +585,7 @@
         // ----------------------------------------
         // Particle
         // ----------------------------------------
-
+        
         
 
 
@@ -639,20 +651,27 @@
             container: document.getElementById( 'container' ),
             retina: 'auto'
         });
+    
+      
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+
+        } else {
+
+            demo.setup = function() {
+
+// Set off some initial particles.
+var i, x, y;
+
+for ( i = 0; i < 50; i++ ) {
+    x = ( demo.width * 0.5 ) + random( -100, 100 );
+    y = ( demo.height * 0.5 ) + random( -100, 100 );
+    demo.spawn( x, y);               
+}
+
+};
 
 
-
-        demo.setup = function() {
-
-            // Set off some initial particles.
-            var i, x, y;
-
-            for ( i = 0; i < 50; i++ ) {
-                x = ( demo.width * 0.5 ) + random( -100, 100 );
-                y = ( demo.height * 0.5 ) + random( -100, 100 );
-                demo.spawn( x, y);               
-            }
-        };
 
         demo.spawn = function( x, y ) {
             
@@ -678,30 +697,31 @@
         };
 
 
+            demo.update = function() {
 
-        demo.update = function() {
+var i, particle;
 
-            var i, particle;
+for ( i = particles.length - 1; i >= 0; i-- ) {
 
-            for ( i = particles.length - 1; i >= 0; i-- ) {
+    particle = particles[i];
 
-                particle = particles[i];
+    if ( particle.alive ) particle.move();
+    else pool.push( particles.splice( i, 1 )[0] );
+}
+};
 
-                if ( particle.alive ) particle.move();
-                else pool.push( particles.splice( i, 1 )[0] );
-            }
-        };
 
-        demo.draw = function() {
+            demo.draw = function() {
 
-            demo.globalCompositeOperation  = 'lighter';
+demo.globalCompositeOperation  = 'lighter';
 
-            for ( var i = particles.length - 1; i >= 0; i-- ) {
-                particles[i].draw( demo );
-            }
-        };
+for ( var i = particles.length - 1; i >= 0; i-- ) {
+    particles[i].draw( demo );
+}
+};
 
         demo.mousemove = function() {
+         
 
             var particle, theta, force, touch, max, i, j, n;
 
@@ -713,7 +733,13 @@
                 }
 
             }
-        };
+        
+    }
+};
+
+
+   
+    
         
         </script>
 
