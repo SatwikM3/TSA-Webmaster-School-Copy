@@ -107,6 +107,9 @@ html, body {
     margin : auto;
     height : 1.8%;
 }
+.infoheightchange {
+    top: 35vh !important;
+}
 
 .info2 {
 
@@ -140,16 +143,14 @@ html, body {
 }
 
 .info:hover {
-
-    box-shadow: 0 0 0 4px rgba(255,255,255,0.05);
     opacity: 1.0;
 }
 
 .info2:hover {
 
-    box-shadow: 0 0 0 0px rgba(255,255,255,0.05);
     opacity: 1.0;
 }
+
 
 .info h1,
 .info h2,
