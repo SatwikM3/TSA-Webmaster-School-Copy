@@ -69,15 +69,15 @@
                             <div class="collapse navbar-collapse" id="navbar">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#what_is_aida">GENERAL</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#demo">DEMO</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#uses">USES</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#costs">COSTS</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#technologies">TECHNOLOGIES</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#safety">SAFETY</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="#what_is_tsa">GENERAL</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="#what_is_tsa">DEMO</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="#who_we_are">USES</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="#activities">COSTS</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="#student_projects">TECHNOLOGIES</a> </li>
+                                    <li class="nav-item"> <a class="nav-link" href="#student_projects">SAFETY</a> </li>
                                     <li class="nav-item"><a href="./index.html#home" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
                                     <li class="nav-item"><a href="./tsa-chapter.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">TSA Chapter</a></li>
-                                    <li class="nav-item"><a href="./about.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
+                                    <li class="nav-item"><a href="./tsa-chapter.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -265,7 +265,7 @@
 
         </script>
 
-        <div class="section bg-white" id="what_is_aida">
+        <div class="section bg-white" id="what_is_tsa">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 mx-auto">
@@ -325,38 +325,18 @@
 
         </div>
 
-    </div>
-    </div>
-
-
-    <header id="demo">
-        <h1>Demo the protoype.</h1>
-    </header>
-    <main class="bot-wrapper centered">
-        <div id="bot">
-            <bot-ui></bot-ui>
-        </div>
-    </main>
-    <div class="section" id="gallery">
-            <div class="container">
-                <div class="section3-title">
-                    <h3>App Screenshots</h3>
-                </div>
-    
-                <div class="img-gallery owl-carousel owl-theme">
-                    <img src="img/screen1.jpg" alt="image">
-                    <img src="img//screen2.jpg" alt="image">
-                    <img src="img/screen3.jpg" alt="image">
-                    <img src="img/screen1.jpg" alt="image">
-                </div>
-    
+        <header id="demo">
+            <h1>Demo the protoype.</h1>
+        </header>
+        <main class="bot-wrapper centered">
+            <div id="bot">
+                <bot-ui></bot-ui>
             </div>
-    
-        </div>
-    <br>
-    <br>
-    <br>
-    <br>
+        </main>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <script src='https://cdn.jsdelivr.net/vue/latest/vue.min.js'></script>
         <script src='js/botui.min.js'></script>
@@ -366,20 +346,21 @@
         <script  src="./js/bot.js"></script>
 
 
-    <!-- competitions open  -->
-    <div class = "section2 light-bg">
-        <div class="section-title" id = "uses">
-            <h3 >General Uses of AI</h3>
-        </div>
-        <div class="app" id="app">
-            <div class="accordions">
-                <section class="accordions__accordion">
-                    <div class="accordions__header">
-                        <div class="accordions__container container">
-                            <h3 class="accordions__title">Personal</h3>
-                            <button class="accordions__button" v-on:click="toggleAccordion('Experience')" v-bind:class="{ 'accordions__button--active': isOpen('Experience') }">
-                                <div class="accordions__icon">+</div>
-                            </button>
+        <!-- competitions open  -->
+        <div class = "section2 light-bg">
+            <div class="section-title" id = "competitions">
+                <h3 >General Uses of AI</h3>
+            </div>
+            <div class="app" id="app">
+                <div class="accordions">
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Personal</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Experience')" v-bind:class="{ 'accordions__button--active': isOpen('Experience') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
                         </div>
                         <div class="container .nobg">
                             <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Experience') }"><p class = "text" >The NJ state conference is being held on April 14, 2018. It is held every spring at The College Of New Jersey. This year, students from New Jersey will compete in over 30 different events and the winners will proceed to the national TSA conference in Atlanta, Georgia. Despite being WWP High School North’s first year at competition, we plan to have each one of the events have a representative from our school that will try their best to win the competition. Even if a group’s project doesn't win the State competition, they will still be able to showcase their work in local competitions and fair such as the Innovation fair.</p></div>
@@ -488,20 +469,14 @@
 
         </div>
 
-
-   
-       
-
-    
-     <div class="section light2-bg" id="costs">
+        <div class="section light2-bg" id="pricing">
             <div class="container">
                 <div class="section-title">
                     <small>PRICING</small>
                     <h3>Upgrade to Pro</h3>
                 </div>
 
-                
-                <div class="card-deck"><
+                <div class="card-deck">
                     <div class="card pricing">
                         <div class="card-head">
                             <small class="text-primary">PERSONAL</small>
@@ -534,13 +509,44 @@
                             <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
                         </div>
                     </div>
-
-         </div>           
+                    <div class="card pricing popular">
+                        <div class="card-head">
+                            <small class="text-primary">FOR TEAMS</small>
+                            <span class="price">$29<sub>/m</sub></span>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <div class="list-group-item">Unlimited Projects</div>
+                            <div class="list-group-item">100 GB Storage</div>
+                            <div class="list-group-item">Priority Support</div>
+                            <div class="list-group-item">Collaboration</div>
+                            <div class="list-group-item">Reports and analytics</div>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+                        </div>
+                    </div>
+                    <div class="card pricing">
+                        <div class="card-head">
+                            <small class="text-primary">ENTERPRISE</small>
+                            <span class="price">$249<sub>/m</sub></span>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <div class="list-group-item">Unlimited Projects</div>
+                            <div class="list-group-item">Unlimited Storage</div>
+                            <div class="list-group-item">Collaboration</div>
+                            <div class="list-group-item">Reports and analytics</div>
+                            <div class="list-group-item">Web hooks</div>
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                
-     </div>
-     <div class="main-wrapper" id="technologies">
+
+        </div>
+        <div class="main-wrapper">
             <!-- Start Feature Area -->
 
             <section class="featured-area">
@@ -675,7 +681,7 @@
         </div>
 
 
-     <div class="section" id ="safety">
+        <div class="section">
 
             <div class="container">
                 <div class="section3-title">

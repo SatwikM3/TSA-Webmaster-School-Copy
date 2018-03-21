@@ -1641,13 +1641,13 @@ header {
     background: linear-gradient(to right, #1488CC , #2B32B2);
     border: 5px solid red;
 }
-<<<<<<< HEAD
-=======
 .backgrounddiv3 {
     width : 100%;
     height : 500px;
     background: linear-gradient(to right, #1e3c72 , #2a5298);
 }
 
->>>>>>> 041d427c2f2e24b79fd846c3b90e94bdf483c317
+#container {
+    
+}
 
