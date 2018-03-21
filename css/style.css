@@ -1638,6 +1638,8 @@ header {
 }
 .backgrounddiv2 {
     width : 100%;
+    height : 100%;
+    border : 1px solid black;
     background: linear-gradient(to right, #1488CC , #2B32B2);
 }
 .backgrounddiv3 {
