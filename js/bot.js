@@ -7,8 +7,6 @@ botui.message.bot({ // show first message
   content: 'Hi, I\'m AIDA, your virtual tutor',
   loading: false // fake typing
 
-}).then(function (res) {
-  window.scrollTo(0, 0);
 }).then(function () {
   return botui.message.bot({ // second one
     delay: 0,
