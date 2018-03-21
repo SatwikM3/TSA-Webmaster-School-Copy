@@ -8,7 +8,9 @@ new Vue({
     accordions: {
       'Experience': { isOpen: false },
       'Insights': { isOpen: false },
-      'Credentials': { isOpen: false }
+      'Credentials': { isOpen: false },
+      'Recreational': { isOpen: false }
+
     }
   },
   computed: {

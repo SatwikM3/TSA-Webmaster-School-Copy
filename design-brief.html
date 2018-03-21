@@ -77,7 +77,7 @@
                                     <li class="nav-item"> <a class="nav-link" href="#safety">SAFETY</a> </li>
                                     <li class="nav-item"><a href="./index.html#home" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
                                     <li class="nav-item"><a href="./tsa-chapter.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">TSA Chapter</a></li>
-                                    <li class="nav-item"><a href="./tsa-chapter.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
+                                    <li class="nav-item"><a href="./about.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -409,19 +409,19 @@
                         </div>
                     </section>
                     <section class="accordions__accordion">
-                        <div class="accordions__header">
-                            <div class="accordions__container container">
-                                <h3 class="accordions__title">Recreational</h3>
-                                <button class="accordions__button" v-on:click="toggleAccordion('Residential')" v-bind:class="{ 'accordions__button--active': isOpen('Residential') }">
-                                    <div class="accordions__icon">+</div>
-                                </button>
+                            <div class="accordions__header">
+                                <div class="accordions__container container">
+                                    <h3 class="accordions__title">Recreational</h3>
+                                    <button class="accordions__button" v-on:click="toggleAccordion('Recreational')" v-bind:class="{ 'accordions__button--active': isOpen('Recreational') }">
+                                        <div class="accordions__icon">+</div>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="container">
-                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Residential') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
-                                </p></div>
-                        </div>
-                    </section>
+                            <div class="container">
+                                <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Recreational') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
+                                    </p></div>
+                            </div>
+                        </section>
 
                 </div>
 
@@ -483,27 +483,12 @@
         <div class="section light2-bg" id="costs">
             <div class="container">
                 <div class="section-title">
-                    <small>PRICING</small>
+                    <small>COSTS</small>
                     <h3>Upgrade to Pro</h3>
                 </div>
 
                 <div class="card-deck">
-                    <div class="card pricing">
-                        <div class="card-head">
-                            <small class="text-primary">PERSONAL</small>
-                            <span class="price">$14<sub>/m</sub></span>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <div class="list-group-item">10 Projects</div>
-                            <div class="list-group-item">5 GB Storage</div>
-                            <div class="list-group-item">Basic Support</div>
-                            <div class="list-group-item"><del>Collaboration</del></div>
-                            <div class="list-group-item"><del>Reports and analytics</del></div>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
-                        </div>
-                    </div>
+                <div style="width:100%">
                     <div class="card pricing popular">
                         <div class="card-head">
                             <small class="text-primary">FOR TEAMS</small>
@@ -520,22 +505,7 @@
                             <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
                         </div>
                     </div>
-                    <div class="card pricing popular">
-                        <div class="card-head">
-                            <small class="text-primary">FOR TEAMS</small>
-                            <span class="price">$29<sub>/m</sub></span>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <div class="list-group-item">Unlimited Projects</div>
-                            <div class="list-group-item">100 GB Storage</div>
-                            <div class="list-group-item">Priority Support</div>
-                            <div class="list-group-item">Collaboration</div>
-                            <div class="list-group-item">Reports and analytics</div>
-                        </ul>
-                        <div class="card-body">
-                            <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
-                        </div>
-                    </div>
+          
                     <div class="card pricing">
                         <div class="card-head">
                             <small class="text-primary">ENTERPRISE</small>
@@ -552,6 +522,7 @@
                             <a href="#" class="btn btn-primary btn-lg btn-block">Choose this Plan</a>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -587,13 +558,20 @@
                                                 <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                           <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel"> <b>IBM Watson</b></h5>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                 X
                                                             </button>
                                                           </div>
                                                           <div class="modal-body">
-                                                            ...
+                                                                <h5>Creation</h5>
+                                                                <p>This triggers a popover on click.</p>
+                                                                <hr>
+                                                                <h5>Purpose</h5>
+                                                                <p> have tooltips on hover.</p>
+                                                                <hr>
+                                                                <h5>Limitations</h5>
+                                                                <p> have tooltips on hover.</p>
                                                           </div>
                                                           <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary">OK</button>
@@ -608,7 +586,7 @@
                         <div class="col-md-4">
                             <div class="single-feature text-center">
                                 <span class="lnr lnr-code"></span>
-                                <h3>Siri</h3>
+                                <h3>Mobile AI</h3>
                                 <p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
                                 <!-- Begin Modal -->
                                 <script>
@@ -627,13 +605,20 @@
                                                 <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                           <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel"><b>Siri/Google Assistant/Cortana</b></h5>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                 X
                                                             </button>
                                                           </div>
                                                           <div class="modal-body">
-                                                            ...
+                                                                <h5>Creation</h5>
+                                                                <p>This triggers a popover on click.</p>
+                                                                <hr>
+                                                                <h5>Purpose</h5>
+                                                                <p> have tooltips on hover.</p>
+                                                                <hr>
+                                                                <h5>Limitations</h5>
+                                                                <p> have tooltips on hover.</p>
                                                           </div>
                                                           <div class="modal-footer">
                                                             <button type="button" class="btn btn-primary">OK</button>
@@ -672,7 +657,14 @@
                                                     </button>
                                                   </div>
                                                   <div class="modal-body">
-                                                    ...
+                                                        <h5>Creation</h5>
+                                                        <p>This triggers a popover on click.</p>
+                                                        <hr>
+                                                        <h5>Purpose</h5>
+                                                        <p> have tooltips on hover.</p>
+                                                        <hr>
+                                                        <h5>Limitations</h5>
+                                                        <p> have tooltips on hover.</p>
                                                   </div>
                                                   <div class="modal-footer">
                                                     <button type="button" class="btn btn-primary">OK</button>
@@ -728,13 +720,11 @@
 
 
         <footer class="my-5 text-center">
-            <p class="mb-2"><small>COPYRIGHT © 2018. ALL RIGHTS RESERVED. HSN TSA</small></p>
-
-            <small>
-                <a href="#" class="m-2">PRESS</a>
-                <a href="#" class="m-2">TERMS</a>
-                <a href="#" class="m-2">PRIVACY</a>
-            </small>
+                <small>
+                        <a href="" style="text-decoration:none" class="m-2">Webmaster Team 2201-1</a>
+                        <br>
+                        <a href="" style="text-decoration:none" class="m-2">COPYRIGHT © 2018. West Windsor Plainsboro High School North TSA</a>
+                    </small>
         </footer>
 
         <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
