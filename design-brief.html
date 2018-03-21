@@ -5,6 +5,10 @@
         <title>TSA</title>
         <link rel="stylesheet" href="css/example.css">
         <link rel="stylesheet" href="css/carousel.css">
+        <link rel="stylesheet" href="css/competitions.css">
+
+        
+
 
         <style type="text/css">
             html, body {
@@ -353,6 +357,125 @@
       
      <script  src="./js/bot.js"></script>
 
+     
+      <!-- competitions open  -->
+      <div class = "section light-bg">
+            <div class="section-title" id = "competitions">
+                <h3 >General Uses of AI</h3>
+            </div>
+            <div class="app" id="app">
+                <div class="accordions">
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Personal</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Experience')" v-bind:class="{ 'accordions__button--active': isOpen('Experience') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="container .nobg">
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Experience') }"><p class = "text" >The NJ state conference is being held on April 14, 2018. It is held every spring at The College Of New Jersey. This year, students from New Jersey will compete in over 30 different events and the winners will proceed to the national TSA conference in Atlanta, Georgia. Despite being WWP High School North’s first year at competition, we plan to have each one of the events have a representative from our school that will try their best to win the competition. Even if a group’s project doesn't win the State competition, they will still be able to showcase their work in local competitions and fair such as the Innovation fair.</p></div>
+                        </div>
+                    </section>
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Commercial</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Insights')" v-bind:class="{ 'accordions__button--active': isOpen('Insights') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Insights') }"><p class = "text" >The national TSA conference is from June 22nd to June 26th. This year, it is being in Atlanta, Georgia. Students from all over the country who have won at their state competitions will be competing in this 4 day long conference, participiating in events ranging from a keynote speech by Todd Thibodeaux to their own competitive events.</p></div>
+                        </div>
+                    </section>
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Educational</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Credentials')" v-bind:class="{ 'accordions__button--active': isOpen('Credentials') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Credentials') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
+</p></div>
+                        </div>
+                        <section class="accordions__accordion">
+                                <div class="accordions__header">
+                                    <div class="accordions__container container">
+                                        <h3 class="accordions__title">Recreational</h3>
+                                        <button class="accordions__button" v-on:click="toggleAccordion('Credentials')" v-bind:class="{ 'accordions__button--active': isOpen('Credentials') }">
+                                            <div class="accordions__icon">+</div>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="container">
+                                    <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Credentials') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
+        </p></div>
+                                </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- competitions close  -->
+
+   
+     <div class="section white-bg">
+        <div class="container">
+            <div class="section-title">
+                <small>Specific to A.I.D.A</small>
+                <h3>Uses of A.I.D.A</h3>
+            </div>
+
+            <div class="row pt-4">
+                <div class="col-md-4">
+                        <div>
+                                <p style="float: left;"><img src="https://image.freepik.com/free-icon/nut-icon_318-84971.jpg" height="20px" width="20px"  border="1px"></p>
+                                <h4 class="mb-3"> &nbsp Is AIDA safe?</h4>
+                            </div>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                    <div>
+                            <p style="float: left;"><img src="https://image.freepik.com/free-icon/nut-icon_318-84971.jpg" height="20px" width="20px"  border="1px"></p>
+                            <h4 class="mb-3"> &nbsp Is AIDA safe?</h4>
+                        </div>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+
+                </div>
+                <div class="col-md-4">
+                        <div>
+                                <p style="float: left;"><img src="https://image.freepik.com/free-icon/nut-icon_318-84971.jpg" height="20px" width="20px"  border="1px"></p>
+                                <h4 class="mb-3"> &nbsp Is AIDA safe?</h4>
+                            </div>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                    <div>
+                            <p style="float: left;"><img src="https://image.freepik.com/free-icon/nut-icon_318-84971.jpg" height="20px" width="20px"  border="1px"></p>
+                            <h4 class="mb-3"> &nbsp Is AIDA safe?</h4>
+                        </div>
+                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+
+                </div>
+                <div class="col-md-4">
+                        <div>
+                                <p style="float: left;"><img src="https://image.freepik.com/free-icon/nut-icon_318-84971.jpg" height="20px" width="20px"  border="1px"></p>
+                                <h4 class="mb-3"> &nbsp Is AIDA safe?</h4>
+                            </div>                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                            <div>
+                                    <p style="float: left;"><img src="https://image.freepik.com/free-icon/nut-icon_318-84971.jpg" height="20px" width="20px"  border="1px"></p>
+                                    <h4 class="mb-3"> &nbsp Is AIDA safe?</h4>
+                                </div>                    <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    
      <div class="section light2-bg" id="pricing">
             <div class="container">
                     <div class="section-title">
@@ -431,6 +554,7 @@
                 
      </div>
 
+
      <div class="section white-bg">
             <div class="container">
                 <div class="section-title">
@@ -472,6 +596,9 @@
             <a href="#" class="m-2">PRIVACY</a>
         </small>
     </footer>
-        
+       
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
+
+    <script type ="text/javascript" src="js/competitions.js"> </script>
     </body>
 </html>

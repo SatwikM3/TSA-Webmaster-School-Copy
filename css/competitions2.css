@@ -1,13 +1,14 @@
 .app {
   font-family: 'Avenir Next', sans-serif;
-  color: #031d3d;
+  color: #fff;
   padding-bottom: 152px;
 }
 
 .container {
-  width: 100%;
-  max-width: 960px;
+  width: 80%;
+  max-width: 660px;
   margin: 0 auto;
+  margin-right: 30px;
   padding: 0 38px;
   box-sizing: border-box;
 }
@@ -41,9 +42,9 @@ button {
 .accordions__header {
   font-size: 32px;
   font-weight: 600;
-  background-color: #f0f0f0;
+  background-color: #234485;
   position: relative;
-  border-bottom: solid 1px #d3d3d3;
+  border-bottom: solid 1px 234485;
 }
 .accordions__container {
   display: flex;
@@ -54,7 +55,8 @@ button {
   padding-right: 38px;
   flex: 1;
   z-index: 2;
-  background-color: #f0f0f0;
+  background-color: #234485;
+  color: #fff;
 }
 /*
 .accordions__title::after {
@@ -73,12 +75,12 @@ button {
   padding-right : 38px;
   line-height: 1;
 /*  transition: padding .3s ease-in-out;*/
-  background-color: #08ced2;
+  background-color: #FA3284;
 }
 .accordions__button::before {
 
-/*
-  content: '';
+
+  /* content: '';
   background-color: #08ced2;
   position: absolute;
   top: 0;
@@ -89,8 +91,8 @@ button {
   z-index: 1;
   border-bottom: solid 1px #09a5a8;
   cursor: pointer;
-  transition: background-color .3s ease-in-out, border-color .3s ease-in-out;
-*/
+  transition: background-color .3s ease-in-out, border-color .3s ease-in-out; */
+
 
 }
 .accordions__button:hover {
