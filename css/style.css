@@ -520,7 +520,6 @@ header {
 .blockquote {
     color: #7a767a;
     font-weight: 300;
-    vertical-align: middle;
 }
 
 .owl-next.disabled,
@@ -1658,4 +1657,18 @@ header {
 }
 .logopadding {
     margin-bottom: 7vh;
+}
+
+.table {
+    display : table;
+}
+.tablecell {
+     display: table-cell; 
+    vertical-align: middle;
+}
+.bqcontainer {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
 }
