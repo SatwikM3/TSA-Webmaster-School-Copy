@@ -167,6 +167,17 @@ p.lead {
     margin-bottom: 3rem;
 }
 
+.section4-title {
+text-align: left}
+
+.section4-title h4{
+color: #E74D8E
+}
+
+.section4-title p{
+  color: #fff
+  }
+
 .section3-title {
   text-align: center;
   margin-bottom: 3rem;
@@ -513,6 +524,7 @@ header {
 .blockquote {
     color: #7a767a;
     font-weight: 300;
+    vertical-align: middle;
 }
 
 .owl-next.disabled,
@@ -1636,3 +1648,4 @@ header {
     height : 560px;
     background: linear-gradient(to right, #1488CC , #2B32B2);
 }
+
