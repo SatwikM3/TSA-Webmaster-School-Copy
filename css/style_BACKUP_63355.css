@@ -1626,8 +1626,11 @@ header {
     height : 560px;
     background: linear-gradient(to right, #1488CC , #2B32B2);
 }
+<<<<<<< HEAD
 .backgrounddiv3 {
     width : 100%;
     height : 850px;
     background: linear-gradient(to right, #1e3c72 , #2a5298);
 }
+=======
+>>>>>>> b0ab812ab78b0a74022329e703c0df21f833687b

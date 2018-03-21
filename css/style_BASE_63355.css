@@ -155,22 +155,20 @@ p.lead {
     padding: 80px 0;
 }
 
+.section2 {
+  padding-top: 50px
+}
+
+.section3 {
+}
+
 .section-title {
     text-align: center;
     margin-bottom: 3rem;
 }
 
-.section3-title {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.section3-title h3 {
+.section-title white {
     color: #FFF;
-}
-
-.section3-title small {
-  color: #eee;
 }
 
 .section-title2 {
@@ -1306,8 +1304,11 @@ Primary style
     width: 320px;
     overflow: hidden;
     background-color: white;
-    -webkit-transform: translateX(50%);
-            transform: translateX(50%);
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     -webkit-box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.5);
             box-shadow: 0px 3px 3px 0px rgba(50, 50, 50, 0.5);
     -webkit-transition: 0.3s ease;
@@ -1549,6 +1550,9 @@ Primary style
 .botui-action-text-icon {
 	color: currentColor;
 }
+
+
+
 header {
 	text-align: center;
 }
@@ -1559,7 +1563,6 @@ header {
 }
 
 <<<<<<< HEAD
-=======
 
 .featured-area {
   background: #fff;
@@ -1615,7 +1618,7 @@ header {
 .featured-area .single-feature:hover span {
   color: #8dda06;
 }
->>>>>>> b0ab812ab78b0a74022329e703c0df21f833687b
+=======
 .backgrounddiv {
     width : 100%;
     height : 560px;
@@ -1626,8 +1629,4 @@ header {
     height : 560px;
     background: linear-gradient(to right, #1488CC , #2B32B2);
 }
-.backgrounddiv3 {
-    width : 100%;
-    height : 850px;
-    background: linear-gradient(to right, #1e3c72 , #2a5298);
-}
+>>>>>>> c6c7e34d971c2a1d0ef81ad32d4a4988fbb23131
