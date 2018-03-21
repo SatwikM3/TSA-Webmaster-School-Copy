@@ -121,146 +121,146 @@
 
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
             } else {
-            // ----------------------------------------
-            // Particle
-            // ----------------------------------------
-            function Particle( x, y, radius ) {
-                this.init( x, y, radius );
-            }
-
-            Particle.prototype = {
-
-                init: function( x, y, radius ) {
-
-                    this.alive = true;
-
-                    this.radius = radius || 10;
-                    this.wander = 0.15;
-                    this.theta = random( TWO_PI );
-                    this.drag = 0.92;
-                    this.color = '#fff';
-
-                    this.x = x || 0.0;
-                    this.y = y || 0.0;
-
-                    this.vx = 0.0;
-                    this.vy = 0.0;
-                },
-
-                move: function() {
-
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    this.vx *= this.drag;
-                    this.vy *= this.drag;
-
-                    this.theta += random( -0.5, 0.5 ) * this.wander;
-                    this.vx += sin( this.theta ) * 0.1;
-                    this.vy += cos( this.theta ) * 0.1;
-
-                    this.radius *= 0.96;
-                    this.alive = this.radius > 0.5;
-                },
-
-                draw: function( ctx ) {
-
-                    ctx.beginPath();
-                    ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
-                    ctx.fillStyle = this.color;
-                    ctx.fill();
+                // ----------------------------------------
+                // Particle
+                // ----------------------------------------
+                function Particle( x, y, radius ) {
+                    this.init( x, y, radius );
                 }
-            };
 
-            // ----------------------------------------
-            // Example
-            // ----------------------------------------
+                Particle.prototype = {
 
-            var MAX_PARTICLES = 280;
-            var COLOURS = [ '#ecf0f1', '#2980b9', '#273c75', ];
+                    init: function( x, y, radius ) {
 
-            var particles = [];
-            var pool = [];
+                        this.alive = true;
 
-            var demo = Sketch.create({
-                container: document.getElementById( 'container' ),
-                retina: 'auto'
-            });
+                        this.radius = radius || 10;
+                        this.wander = 0.15;
+                        this.theta = random( TWO_PI );
+                        this.drag = 0.92;
+                        this.color = '#fff';
 
+                        this.x = x || 0.0;
+                        this.y = y || 0.0;
 
+                        this.vx = 0.0;
+                        this.vy = 0.0;
+                    },
 
-            demo.setup = function() {
+                    move: function() {
 
-                // Set off some initial particles.
-                var i, x, y;
+                        this.x += this.vx;
+                        this.y += this.vy;
 
-                for ( i = 0; i < 50; i++ ) {
-                    x = ( demo.width * 0.5 ) + random( -100, 100 );
-                    y = ( demo.height * 0.5 ) + random( -100, 100 );
-                    demo.spawn( x, y);               
-                }
-            };
+                        this.vx *= this.drag;
+                        this.vy *= this.drag;
 
-            demo.spawn = function( x, y ) {
+                        this.theta += random( -0.5, 0.5 ) * this.wander;
+                        this.vx += sin( this.theta ) * 0.1;
+                        this.vy += cos( this.theta ) * 0.1;
 
-                var particle, theta, force;
+                        this.radius *= 0.96;
+                        this.alive = this.radius > 0.5;
+                    },
 
-                if ( particles.length >= MAX_PARTICLES )
-                    pool.push( particles.shift() );
+                    draw: function( ctx ) {
 
-                particle = pool.length ? pool.pop() : new Particle();
-                particle.init( x, y, random( 5, 40 ) );
-
-                particle.wander = random( 0.5, 2.0 );
-                particle.color = random( COLOURS );
-                particle.drag = random( 0.9, 0.99 );
-
-                theta = random( TWO_PI );
-                force = random( 2, 8 );
-
-                particle.vx = sin( theta ) * force;
-                particle.vy = cos( theta ) * force;
-
-                particles.push( particle );
-            };
-
-
-
-            demo.update = function() {
-
-                var i, particle;
-
-                for ( i = particles.length - 1; i >= 0; i-- ) {
-
-                    particle = particles[i];
-
-                    if ( particle.alive ) particle.move();
-                    else pool.push( particles.splice( i, 1 )[0] );
-                }
-            };
-
-            demo.draw = function() {
-
-                demo.globalCompositeOperation  = 'lighter';
-
-                for ( var i = particles.length - 1; i >= 0; i-- ) {
-                    particles[i].draw( demo );
-                }
-            };
-
-            demo.mousemove = function() {
-
-                var particle, theta, force, touch, max, i, j, n;
-
-                for ( i = 0, n = demo.touches.length; i < n; i++ ) {
-
-                    touch = demo.touches[i], max = random( 1, 4 );
-                    for ( j = 0; j < max; j++ ) {
-                        demo.spawn( touch.x, touch.y );
+                        ctx.beginPath();
+                        ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
+                        ctx.fillStyle = this.color;
+                        ctx.fill();
                     }
+                };
 
-                }
-            };
+                // ----------------------------------------
+                // Example
+                // ----------------------------------------
+
+                var MAX_PARTICLES = 280;
+                var COLOURS = [ '#ecf0f1', '#2980b9', '#273c75', ];
+
+                var particles = [];
+                var pool = [];
+
+                var demo = Sketch.create({
+                    container: document.getElementById( 'container' ),
+                    retina: 'auto'
+                });
+
+
+
+                demo.setup = function() {
+
+                    // Set off some initial particles.
+                    var i, x, y;
+
+                    for ( i = 0; i < 50; i++ ) {
+                        x = ( demo.width * 0.5 ) + random( -100, 100 );
+                        y = ( demo.height * 0.5 ) + random( -100, 100 );
+                        demo.spawn( x, y);               
+                    }
+                };
+
+                demo.spawn = function( x, y ) {
+
+                    var particle, theta, force;
+
+                    if ( particles.length >= MAX_PARTICLES )
+                        pool.push( particles.shift() );
+
+                    particle = pool.length ? pool.pop() : new Particle();
+                    particle.init( x, y, random( 5, 40 ) );
+
+                    particle.wander = random( 0.5, 2.0 );
+                    particle.color = random( COLOURS );
+                    particle.drag = random( 0.9, 0.99 );
+
+                    theta = random( TWO_PI );
+                    force = random( 2, 8 );
+
+                    particle.vx = sin( theta ) * force;
+                    particle.vy = cos( theta ) * force;
+
+                    particles.push( particle );
+                };
+
+
+
+                demo.update = function() {
+
+                    var i, particle;
+
+                    for ( i = particles.length - 1; i >= 0; i-- ) {
+
+                        particle = particles[i];
+
+                        if ( particle.alive ) particle.move();
+                        else pool.push( particles.splice( i, 1 )[0] );
+                    }
+                };
+
+                demo.draw = function() {
+
+                    demo.globalCompositeOperation  = 'lighter';
+
+                    for ( var i = particles.length - 1; i >= 0; i-- ) {
+                        particles[i].draw( demo );
+                    }
+                };
+
+                demo.mousemove = function() {
+
+                    var particle, theta, force, touch, max, i, j, n;
+
+                    for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+
+                        touch = demo.touches[i], max = random( 1, 4 );
+                        for ( j = 0; j < max; j++ ) {
+                            demo.spawn( touch.x, touch.y );
+                        }
+
+                    }
+                };
             }
 
         </script>
@@ -278,144 +278,142 @@
                 </div>
             </div>
         </div>
-    <!-- // end .section -->
+        <!-- // end .section -->
 
 
-    <div class="section light-bg">
+        <div class="section light-bg">
 
-        <div class="container">
-            <h3 class="section-heading">
-                How it Works.
-            </h3>
-            <div class="row">
+            <div class="container">
+                <h3 class="section-heading">
+                    How it Works.
+                </h3>
+                <div class="row">
 
-                <div class="col-md-8 d-flex align-items-center">
+                    <div class="col-md-8 d-flex align-items-center">
 
-                    <ul class="list-unstyled ui-steps">
-                        <li class="media">
-                            <div class="circle-icon mr-4">1</div>
-                            <div class="media-body">
-                                <h5>Create an Account</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
-                            </div>
-                        </li>
-                        <li class="media my-4">
-                            <div class="circle-icon mr-4">2</div>
-                            <div class="media-body">
-                                <h5>Share with friends</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
-                            </div>
-                        </li>
-                        <li class="media">
-                            <div class="circle-icon mr-4">3</div>
-                            <div class="media-body">
-                                <h5>Enjoy your life</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <img src="./img/aiga-logo-full.png" style="margin-bottom:40px;margin-left:15px" alt="iphone" class="img-fluid">
+                        <ul class="list-unstyled ui-steps">
+                            <li class="media">
+                                <div class="circle-icon mr-4">1</div>
+                                <div class="media-body">
+                                    <h5>Create an Account</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                </div>
+                            </li>
+                            <li class="media my-4">
+                                <div class="circle-icon mr-4">2</div>
+                                <div class="media-body">
+                                    <h5>Share with friends</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem eveniet</p>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="circle-icon mr-4">3</div>
+                                <div class="media-body">
+                                    <h5>Enjoy your life</h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium obcaecati vel exercitationem </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="./img/aiga-logo-full.png" style="margin-bottom:40px;margin-left:15px" alt="iphone" class="img-fluid">
+                    </div>
+
                 </div>
 
             </div>
 
         </div>
 
-    </div>
-    </div>
+        <header id="demo">
+            <h1>Demo the protoype.</h1>
+        </header>
+        <main class="bot-wrapper centered">
+            <div id="bot">
+                <bot-ui></bot-ui>
+            </div>
+        </main>
+        <br>
+        <br>
+        <br>
+        <br>
 
-
-    <header id="demo">
-        <h1>Demo the protoype.</h1>
-    </header>
-    <main class="bot-wrapper centered">
-        <div id="bot">
-            <bot-ui></bot-ui>
-        </div>
-    </main>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <script src='https://cdn.jsdelivr.net/vue/latest/vue.min.js'></script>
-    <script src='https://unpkg.com/botui/build/botui.min.js'></script>
+        <script src='https://cdn.jsdelivr.net/vue/latest/vue.min.js'></script>
+        <script src='https://unpkg.com/botui/build/botui.min.js'></script>
 
 
 
-    <script  src="./js/bot.js"></script>
+        <script  src="./js/bot.js"></script>
 
 
-    <!-- competitions open  -->
-    <div class = "section2 light-bg">
-        <div class="section-title" id = "competitions">
-            <h3 >General Uses of AI</h3>
-        </div>
-        <div class="app" id="app">
-            <div class="accordions">
-                <section class="accordions__accordion">
-                    <div class="accordions__header">
-                        <div class="accordions__container container">
-                            <h3 class="accordions__title">Personal</h3>
-                            <button class="accordions__button" v-on:click="toggleAccordion('Experience')" v-bind:class="{ 'accordions__button--active': isOpen('Experience') }">
-                                <div class="accordions__icon">+</div>
-                            </button>
+        <!-- competitions open  -->
+        <div class = "section2 light-bg">
+            <div class="section-title" id = "competitions">
+                <h3 >General Uses of AI</h3>
+            </div>
+            <div class="app" id="app">
+                <div class="accordions">
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Personal</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Experience')" v-bind:class="{ 'accordions__button--active': isOpen('Experience') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="container .nobg">
-                        <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Experience') }"><p class = "text" >The NJ state conference is being held on April 14, 2018. It is held every spring at The College Of New Jersey. This year, students from New Jersey will compete in over 30 different events and the winners will proceed to the national TSA conference in Atlanta, Georgia. Despite being WWP High School North’s first year at competition, we plan to have each one of the events have a representative from our school that will try their best to win the competition. Even if a group’s project doesn't win the State competition, they will still be able to showcase their work in local competitions and fair such as the Innovation fair.</p></div>
-                    </div>
-                </section>
-                <section class="accordions__accordion">
-                    <div class="accordions__header">
-                        <div class="accordions__container container">
-                            <h3 class="accordions__title">Commercial</h3>
-                            <button class="accordions__button" v-on:click="toggleAccordion('Insights')" v-bind:class="{ 'accordions__button--active': isOpen('Insights') }">
-                                <div class="accordions__icon">+</div>
-                            </button>
+                        <div class="container .nobg">
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Experience') }"><p class = "text" >The NJ state conference is being held on April 14, 2018. It is held every spring at The College Of New Jersey. This year, students from New Jersey will compete in over 30 different events and the winners will proceed to the national TSA conference in Atlanta, Georgia. Despite being WWP High School North’s first year at competition, we plan to have each one of the events have a representative from our school that will try their best to win the competition. Even if a group’s project doesn't win the State competition, they will still be able to showcase their work in local competitions and fair such as the Innovation fair.</p></div>
                         </div>
+                    </section>
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Commercial</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Insights')" v-bind:class="{ 'accordions__button--active': isOpen('Insights') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
                         </div>
                         <div class="container">
                             <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Insights') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
-</p></div>
+                                </p></div>
 
                         </div>
                     </section>
 
-                   
-                <section class="accordions__accordion">
-                    <div class="accordions__header">
-                        <div class="accordions__container container">
-                            <h3 class="accordions__title">Educational</h3>
-                            <button class="accordions__button" v-on:click="toggleAccordion('Credentials')" v-bind:class="{ 'accordions__button--active': isOpen('Credentials') }">
-                                <div class="accordions__icon">+</div>
-                            </button>
+
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Educational</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Credentials')" v-bind:class="{ 'accordions__button--active': isOpen('Credentials') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="container">
-                        <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Credentials') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
-                            </p></div>
-                    </div>
-                </section>
-                        <section class="accordions__accordion">
-                                <div class="accordions__header">
-                                    <div class="accordions__container container">
-                                        <h3 class="accordions__title">Recreational</h3>
-                                        <button class="accordions__button" v-on:click="toggleAccordion('Residential')" v-bind:class="{ 'accordions__button--active': isOpen('Residential') }">
-                                            <div class="accordions__icon">+</div>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="container">
-                                    <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Residential') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
-        </p></div>
-                                </div>
+                        <div class="container">
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Credentials') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
+                                </p></div>
+                        </div>
                     </section>
-                    
-                    </div>
-                
+                    <section class="accordions__accordion">
+                        <div class="accordions__header">
+                            <div class="accordions__container container">
+                                <h3 class="accordions__title">Recreational</h3>
+                                <button class="accordions__button" v-on:click="toggleAccordion('Residential')" v-bind:class="{ 'accordions__button--active': isOpen('Residential') }">
+                                    <div class="accordions__icon">+</div>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Residential') }"><p class = "text" >The NJ TSA Leadership Conference was a meeting between all the officers of each participating school’s TSA club in New Jersey. The officers of our club went with curiosity, as a school new to TSA, yet came back with confidence in the club’s goals and members. The meeting helped each school learn more about TSA’s overall mission and gave information more specific to each competition and how to prepare the club for these exclusive events. Additionally, guest speakers and alumni with successful backgrounds gave their opinion and advice to the officers about how to manage the club, and why competing in these events are crucial to the community. Also, being able to see the officers of other more experienced schools gave insight to the officers of what the club may evolve into with time and success.
+                                </p></div>
+                        </div>
+                    </section>
+
+                </div>
+
             </div>
         </div>
         <!-- competitions close  -->
@@ -471,10 +469,7 @@
 
         </div>
 
-
-
-    
-     <div class="section light2-bg" id="pricing">
+        <div class="section light2-bg" id="pricing">
             <div class="container">
                 <div class="section-title">
                     <small>PRICING</small>
@@ -549,50 +544,140 @@
                 </div>
             </div>
 
-                
-     </div>
-     <div class="main-wrapper">
+
+        </div>
+        <div class="main-wrapper">
             <!-- Start Feature Area -->
 
-			<section class="featured-area">
-				<div class="container">
-                                <div class="section-title">
-                                        <small>TECHNOLOGIES</small>
-                                        <h3>Current Technology vs A.I.D.A </h3>
+            <section class="featured-area">
+                <div class="container">
+                    <div class="section-title">
+                        <small>TECHNOLOGIES</small>
+                        <h3>Current Technology vs A.I.D.A </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="single-feature text-center">
+                                <span class="lnr lnr-screen"></span>
+                                <h3>IBM Watson</h3>
+                                <p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
+                                <!-- Begin Modal -->
+                                <script>
+                                    $('#watsonmodal').on('shown.bs.modal', function () {
+                                        $('#watsonbutton').trigger('focus')
+                                    })
+                                </script>
+                                <!-- Button trigger modal -->
+                                <button type="button" id = "watsonbutton" class="btn btn-primary" data-toggle="modal" data-target="#watsonmodal">
+                                    Learn Details
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="watsonmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
                                     </div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="single-feature text-center">
-								<span class="lnr lnr-screen"></span>
-								<h3>IBM Watson</h3>
-								<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
-								<a href="./elements.html" class="text-uppercase">Learn Details</a>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="single-feature text-center">
-								<span class="lnr lnr-code"></span>
-								<h3>Siri</h3>
-								<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
-								<a href="./elements.html" class="text-uppercase">Learn Details</a>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="single-feature text-center">
-								<span class="lnr lnr-clock"></span>
-								<h3>A.I.D.A</h3>
-								<p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
-								<a href="./elements.html" class="text-uppercase">Learn Details</a>
+                                </div>
+                                <!-- End Modal -->
                             </div>
-                        
-						</div>
-					</div>
-				</div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="single-feature text-center">
+                                <span class="lnr lnr-code"></span>
+                                <h3>Siri</h3>
+                                <p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
+                                <!-- Begin Modal -->
+                                <script>
+                                    $('#sirimodal').on('shown.bs.modal', function () {
+                                        $('#siributton').trigger('focus')
+                                    })
+                                </script>
+                                <!-- Button trigger modal -->
+                                <button type="button" id = "siributton" class="btn btn-primary" data-toggle="modal" data-target="#sirimodal">
+                                    Learn Details
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="sirimodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ....
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="single-feature text-center">
+                                <span class="lnr lnr-clock"></span>
+                                <h3>A.I.D.A</h3>
+                                <p>Here, I focus on a range of items and features that we use in life without giving them a second thought such as Coca Cola.</p>
+                                <!-- Begin Modal -->
+                                <script>
+                                    $('#aidamodal').on('shown.bs.modal', function () {
+                                        $('#aidabutton').trigger('focus')
+                                    })
+                                </script>
+                                <!-- Button trigger modal -->
+                                <button type="button" id = "aidabutton" class="btn btn-primary" data-toggle="modal" data-target="#aidamodal">
+                                    Learn Details
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="aidamodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
 
 
-     <div class="section">
+        <div class="section">
 
             <div class="container">
                 <div class="section3-title">
@@ -603,21 +688,21 @@
                 <div class="row pt-4">
                     <div class="col-md-6">
                         <div class="section4-title" >
-                        <h4 class="mb-3">Is AIDA safe?</h4>
-                        
-                        <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-                        <h4 class="mb-3">Is AI technology dangerous?</h4>
-                        <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-                    </div>
+                            <h4 class="mb-3">Is AIDA safe?</h4>
+
+                            <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                            <h4 class="mb-3">Is AI technology dangerous?</h4>
+                            <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                        </div>
                     </div>
                     <div class="col-md-6">
-                            <div class="section4-title" >
+                        <div class="section4-title" >
 
-                        <h4 class="mb-3">Potential liabilities?</h4>
-                        <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-                        <h4 class="mb-3">Do you have a contract?</h4>
-                        <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
-    </div>
+                            <h4 class="mb-3">Potential liabilities?</h4>
+                            <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                            <h4 class="mb-3">Do you have a contract?</h4>
+                            <p class="light-font mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, urna eu pellentesque pretium, nisi nisi fermentum enim, et sagittis dolor nulla vel sapien. Vestibulum sit amet mattis ante. </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -642,6 +727,6 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
 
         <script type ="text/javascript" src="js/competitions.js"> </script>
-        
-        </body>
+
+    </body>
 </html>
