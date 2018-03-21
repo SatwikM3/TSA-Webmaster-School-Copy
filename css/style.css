@@ -593,6 +593,7 @@ header {
 
 .card.pricing {
     border: 1px solid #f1eef1;
+    margin : 0 auto;
 }
 
 .card.pricing.popular {
@@ -1671,4 +1672,8 @@ header {
   flex-direction: column;
   justify-content: center;
   overflow: auto;
+}
+.costscontainer {
+    padding : 5vh;
+    border-radius: 5px;
 }
