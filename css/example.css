@@ -101,9 +101,11 @@ html, body {
     opacity: 0.8;
     color: #fff;
     width: 80%;
-    top: 300px;
+    top: 60vh;
     padding: 10px;
     left: 10%;
+    margin : auto;
+    height : 1.8%;
 }
 
 .info2 {
