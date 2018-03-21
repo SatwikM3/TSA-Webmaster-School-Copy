@@ -1,19 +1,23 @@
+
+
 var botui = new BotUI('bot'); // give it the id of container
 
 botui.message.bot({ // show first message
-  delay: 500,
+  delay: 0,
   content: 'Hi, I\'m AIDA, your virtual tutor',
-  loading: true // fake typing
+  loading: false // fake typing
 
+}).then(function (res) {
+  window.scrollTo(0, 0);
 }).then(function () {
   return botui.message.bot({ // second one
-    delay: 200,
-    loading: true,
+    delay: 0,
+    loading: false,
     content: 'That stands for Artifical Intelligent Digital Assistant.'
   });
 }).then(function () {
   return botui.action.button({ // let user choose something
-    delay: 300,
+    delay: 0,
     action: [{
       text: 'Who created you?',
       value: 'good'
