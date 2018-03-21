@@ -1657,3 +1657,6 @@ header {
     bottom: 0;
     left: 0;
 }
+.logopadding {
+    margin-bottom: 7vh;
+}
