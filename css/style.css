@@ -505,9 +505,8 @@ header {
 ----------------------*/
 
 .owl-carousel .owl-item img.client-img {
-    width: 110px;
+    width: 50vh;
     margin: 30px auto;
-    border-radius: 50%;
     box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.07);
 }
 
