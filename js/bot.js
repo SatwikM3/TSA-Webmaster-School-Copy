@@ -1,4 +1,6 @@
-
+$(window).on('scroll',function() {
+  if (checkVisible($('#demo'))) {
+    $(window).off('scroll');
 
 var botui = new BotUI('bot'); // give it the id of container
 
@@ -57,3 +59,19 @@ botui.message.bot({ // show first message
     });
   });
 });
+  } else {
+      // do nothing
+  }
+});
+function checkVisible(elm, eval) {
+  eval = eval || "object visible";
+  var viewportHeight = $(window).height(), // Viewport Height
+    scrolltop = $(window).scrollTop(), // Scroll Top
+      y = $(elm).offset().top,
+      elementHeight = $(elm).height(); 
+
+      if (eval == "object visible") {
+          ok = (y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight))
+          return ok;
+      } if (eval == "above") return ((y < (viewportHeight + scrolltop)));
+}
