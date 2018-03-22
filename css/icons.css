@@ -1,14 +1,14 @@
 @font-face {
-    font-family: 'themify';
-    src: url('../fonts/themify.eot?-fvbane');
-    src: url('../fonts/themify.eot?#iefix-fvbane') format('embedded-opentype'), url('../fonts/themify.woff?-fvbane') format('woff'), url('../fonts/themify.ttf?-fvbane') format('truetype'), url('../fonts/themify.svg?-fvbane#themify') format('svg');
+    font-family: ' ';
+    src: url('../fonts/ .eot?-fvbane');
+    src: url('../fonts/ .eot?#iefix-fvbane') format('embedded-opentype'), url('../fonts/ .woff?-fvbane') format('woff'), url('../fonts/ .ttf?-fvbane') format('truetype'), url('../fonts/ .svg?-fvbane# ') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 [class^="ti-"],
 [class*=" ti-"] {
-    font-family: 'themify';
+    font-family: ' ';
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -856,15 +856,15 @@
     content: "\e6d0";
 }
 
-.ti-themify-logo:before {
+.ti- -logo:before {
     content: "\e6d1";
 }
 
-.ti-themify-favicon:before {
+.ti- -favicon:before {
     content: "\e6d2";
 }
 
-.ti-themify-favicon-alt:before {
+.ti- -favicon-alt:before {
     content: "\e6d3";
 }
 
