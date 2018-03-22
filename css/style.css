@@ -23,6 +23,8 @@
 body {
     font-family: 'Rubik', sans-serif;
     position: relative;
+    font-size: calc(.9em + 1.1vmin);
+
 }
 
 a {
