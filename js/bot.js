@@ -1,16 +1,19 @@
-
-
-var botui = new BotUI('bot'); // give it the id of container
+once = true;
+$(window).on('scroll',function() {
+  if (checkVisible($('#demo'))) {
+if (once) {
+  once=false;
+    var botui = new BotUI('bot'); // give it the id of container
 
 botui.message.bot({ // show first message
-  delay: 0,
+  delay: 100,
   content: 'Hi, I\'m AIDA, your virtual tutor',
-  loading: false // fake typing
+  loading: true // fake typing
 
 }).then(function () {
   return botui.message.bot({ // second one
-    delay: 0,
-    loading: false,
+    delay: 100,
+    loading: true,
     content: 'That stands for Artifical Intelligent Digital Assistant.'
   });
 }).then(function () {
@@ -57,3 +60,20 @@ botui.message.bot({ // show first message
     });
   });
 });
+  } else {
+      // do nothing
+  }
+}
+});
+function checkVisible(elm, eval) {
+  eval = eval || "object visible";
+  var viewportHeight = $(window).height(), // Viewport Height
+    scrolltop = $(window).scrollTop(), // Scroll Top
+      y = $(elm).offset().top,
+      elementHeight = $(elm).height(); 
+
+      if (eval == "object visible") {
+          ok = (y < (viewportHeight/2 + scrolltop)) && (y > (scrolltop - elementHeight))
+          return ok;
+      } if (eval == "above") return ((y < (viewportHeight + scrolltop)));
+}
