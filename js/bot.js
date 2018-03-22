@@ -3,62 +3,82 @@ $(window).on('scroll',function() {
   if (checkVisible($('#demo'))) {
 if (once) {
   once=false;
-    var botui = new BotUI('bot'); // give it the id of container
+    var botui = new BotUI('bot'); 
 
 botui.message.bot({ // show first message
   delay: 100,
-  content: 'Hi, I\'m AIDA, your virtual tutor',
-  loading: true // fake typing
+  content: 'Hello. I\'m A.I.D.A. I am your personal tutor!',
+  loading: true 
 
 }).then(function () {
   return botui.message.bot({ // second one
     delay: 100,
     loading: true,
-    content: 'That stands for Artifical Intelligent Digital Assistant.'
+    content: 'I can help you study topics and prepare for upcoming exams.'
+  });
+}).then(function () {
+  return botui.message.bot({ // third one
+    delay: 100,
+    loading: true,
+    content: 'Send me a picture of content you\'re learning to get started.'
   });
 }).then(function () {
   return botui.action.button({ // let user choose something
     delay: 0,
     action: [{
-      text: 'Who created you?',
-      value: 'good'
+      text: 'Send Math Sheet',
+      value: 'math'
     }, {
-      text: 'What can you do?',
-      value: 'really_good'
+      text: 'Send Science Sheet',
+      value: 'science'
     }, {
-      text: 'Why do you exist?',
-      value: 'awfully_good'
+      text: 'Send History Sheet',
+      value: 'history'
     }]
-  });
+  })
 }).then(function (res) {
   return botui.message.bot({
-    delay: 400,
-    loading: true, // pretend like we are doing something
-    content: 'You are feeling ' + res.text.toLowerCase() + '!'
+    delay: 500,
+    loading: true, 
+    content: 'Thanks! Please give me a moment to analyze your ' + res.value.toLowerCase() + ' document.',
   });
 }).then(function () {
   botui.message.bot({
     delay: 700,
     loading: true,
-    content: 'By the way, what\'s your name ?'
+    content: 'Ok! I have generated practice questions on this topic! I sent them to your email.'
   }).then(function () {
-    return botui.action.text({
-      delay: 400,
-      action: {
-        size: 18,
-        icon: 'user-circle-o',
-        sub_type: 'text',
-        placeholder: 'John ?'
-      }
-    });
+    return botui.action.button({ // let user choose something
+      delay: 0,
+      action: [{
+        text: 'I\'m done with the practice. What now?',
+        value: 'done'
+      }]
+    })
   }).then(function (res) {
-    name = res.value; // save new value
-    return botui.message.bot({
-      delay: 300,
+    botui.message.bot({
+      delay: 700,
       loading: true,
-      content: 'Nice to meet you ' + name + '! ![hello image](https://media.giphy.com/media/DwXOS8RqHocEM/giphy.gif)'
-    });
-  });
+      content: 'Based on your approaches and answers to these questions, I emailed you a personalized study plan.'
+    })}).then(function (res) {
+      botui.message.bot({
+        delay: 700,
+        loading: true,
+        content: 'Let me know if you have any questions!'
+      })}).then(function () {
+        return botui.action.button({ // let user choose something
+          delay: 0,
+          action: [{
+            text: 'Thank you!',
+            value: 'done'
+          }]
+        })
+      }).then(function (res) {
+        botui.message.bot({
+          delay: 700,
+          loading: true,
+          content: 'No problem! That\'s why I exist.',
+        })});
 });
   } else {
       // do nothing
