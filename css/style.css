@@ -1587,7 +1587,8 @@ header {
 
 
 .bot-wrapper {
-	margin: 0 25%;
+  margin: 0 15%;
+  height: auto;
 }
 
 
