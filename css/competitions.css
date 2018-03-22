@@ -43,7 +43,6 @@
     font-weight: 600;
     background-color: #f0f0f0;
     position: relative;
-    border-bottom: solid 1px #d3d3d3;
   }
   .accordions__container {
     display: flex;
@@ -73,7 +72,7 @@
     padding-right : 38px;
     line-height: 1;
   /*  transition: padding .3s ease-in-out;*/
-    background-color: #08ced2;
+    background-color: #48545F;
   }
   .accordions__button::before {
    
