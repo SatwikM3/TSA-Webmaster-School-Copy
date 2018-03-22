@@ -932,7 +932,6 @@ Primary style
   }
   .cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     font-size: 13px;
-    font-size: 0.8125rem;
   }
   .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
     display: inline-block;
@@ -978,6 +977,24 @@ Primary style
     .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
       font-size: 14px;
       font-size: 0.875rem;
+    }
+  }
+@media only screen and (max-width: 480px) {
+    .cd-timeline-content h2 {
+      font-size: 20px;
+      font-size: 1.25rem;
+    }
+    .cd-timeline-content p {
+      font-size: 16px;
+      font-size: 1rem;
+    }
+    .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+      font-size: 14px;
+      font-size: 0.875rem;
+    }
+    .cd-timeline-content {
+        margin-left : -5vh;
+        width : 150%;
     }
   }
   @media only screen and (min-width: 1170px) {
