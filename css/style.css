@@ -2,28 +2,10 @@
 
 
 
-/*------------------------
-[TABLE OF CONTENTS]
-    
-1. GLOBAL STYLES
-2. NAVBAR
-3. HERO
-4. TABS
-5. TESTIMONIALS
-6. IMAGE GALLERY
-7. PRICING
-8. CALL TO ACTION
-9. FOOTER
-------------------------*/
-
-
-/* GLOBAL
-----------------------*/
-
 body {
     font-family: 'Rubik', sans-serif;
     position: relative;
-    font-size: calc(.9em + 1.1vmin);
+    font-size: calc(.75em + 1.0vmin);
 
 }
 
