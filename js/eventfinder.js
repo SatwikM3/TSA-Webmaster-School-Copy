@@ -2,419 +2,183 @@ jQuery(document).ready(function() {
 
 	var survey = {
 		1:{
-			'question': 'Do you have a website?',
+			'question': 'Which of the following areas do you enjoy the most?',
+			'result':'hi',
 			'answer':{
 				1:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 4,
-					'item': 'yes'
+					'route': 2,
+					'item': 'Engineering & Design'
 				},
 				2:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 2,
-					'item': 'no'
-				}
+					'route': 5,
+					'item': 'Programming'
+				},
+			3:{
+					'type': 'radio',
+					'dynamic': true,
+					'route': 6,
+					'item': 'Public Speaking & Debate'
+				},
+			4: {
+				'type': 'radio',
+				'dynamic': true,
+				'route': 7,
+				'item': 'Research'
+			},
+			5: {
+				'type': 'radio',
+				'dynamic': true,
+				'route': 9,
+				'item': 'Writing'
+			},
+			6: {
+				'type': 'radio',
+				'dynamic': true,
+				'route': 8,
+				'item': 'Digital / Media Creation'
+			}
 			}
 		},
 		2:{
-			'question': 'Do you have a domain?',
+			'question': 'Which of the following descibes you?',
+			'result':'hi',
 			'answer':{
 				1:{
 					'type': 'radio',
 					'dynamic': true,
 					'route': 3,
-					'item': 'yes'
+					'item': 'I like building and working hands on!'
 				},
 				2:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 6,
-					'item': 'no'
+					'route': 4,
+					'item': 'I like using computer software to design and animate!'
 				}
 			}
 		},
 		3:{
-			'question': 'Where did you purchase your domain?',
+			'question': 'How many people do you want to work with?',
+			'result':'hi',
 			'answer':{
 				1:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 5,
-					'item': 'namecheap.com'
+					'route': 9,
+					'item': 'I want to build something individually!'
 				},
 				2:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 5,
-					'item': 'godaddy.com'
+					'route': 9,
+					'item': 'I want to build something with a team!'
 				},
-				3:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 5,
-					'item': 'bluehost.com'
-				},
-				4:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 5,
-					'item': '1and1.com'
-				},
-				5:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 5,
-					'item': 'other'
-				}
+			
 			}
 		},
 		4:{
-			'question': 'What is your domain name?',
+			'question': 'How many people do you want to work with?',
+			'result':'hi',
 			'answer':{
-				// 1:{
-				// 	'type': 'radio',
-				// 	'dynamic': true,
-				// 	'route': 3,
-				// 	'item': 'kavada.com'
-				// },
-				// 2:{
-				// 	'type': 'radio',
-				// 	'dynamic': true,
-				// 	'route': 3,
-				// 	'item': 'mathewmaione.com'
-				// },
-				// 3:{
-				// 	'type': 'radio',
-				// 	'dynamic': true,
-				// 	'route': 3,
-				// 	'item': 'educoded.com'
-				// },
-				// 4:{
-				// 	'type': 'radio',
-				// 	'dynamic': true,
-				// 	'route': 3,
-				// 	'item': 'webdevlopr.com'
-				// }
+			
 				1:{
-					'type': 'text',
+					'type': 'radio',
 					'dynamic': true,
-					'route': 3,
-					'placeholder': 'example.com',
-					'identity': 'mm-dynamic-domain'
-				}
+					'route': 9,
+					'item': 'I want to design something individually!'
+				},
+				2:{
+					'type': 'radio',
+					'dynamic': true,
+					'route': 9,
+					'item': 'I want to design something with a team!'
+				},
 			}
 		},
 		5:{
-			'question': 'Who is hosting your domain?',
+			'question': 'Do you want to work on a long term project or one that is on site?',
+			'result':'hi',
 			'answer':{
 				1:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 6,
-					'item': 'godaddy'
+					'route': 9,
+					'item': 'I want to program something long term!'
 				},
 				2:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 6,
-					'item': 'host gator'
+					'route': 9,
+					'item': 'I want to program on site!'
 				},
-				3:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 6,
-					'item': 'amazon'
-				},
-				4:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 6,
-					'item': 'not listed'
-				},
-				5:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 6,
-					'item': 'no one...'
-				}
+				
 			}
 		},
 		6:{
-			'question': 'How soon do you need a website?',
+			'question': 'Do you want to work individually or as team?',
+			'result':'hi',
 			'answer':{
 				1:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 7,
-					'item': 'hella fast!!!'
+					'route': 9,
+					'item': 'I want to work individually!'
 				},
 				2:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 7,
-					'item': '1 - 2 weeks'
+					'route': 9,
+					'item': 'I want to work as a team!'
 				},
-				3:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 7,
-					'item': 'in a month'
-				},
-				4:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 7,
-					'item': 'month+'
-				},
-				5:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 7,
-					'item': 'what\'s a website?'
-				}
+			
 			}
 		},
 		7:{
-			'question': 'How many pages (estimate) will your website consist of?',
+			'question': 'Which of the following best describes you?',
+			'result':'hi',
 			'answer':{
 				1:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 8,
-					'item': '1 - 5'
+					'route': 9,
+					'item': 'I like taking tests and solving problems!'
 				},
 				2:{
 					'type': 'radio',
 					'dynamic': true,
-					'route': 8,
-					'item': '5 - 10'
+					'route': 9,
+					'item': 'I like exploring topics and creating a tangible display of my research!'
 				},
-				3:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 8,
-					'item': '10 - 15'
-				},
-				4:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 8,
-					'item': '15+'
-				}
+			
 			}
 		},
 		8:{
-			'question': 'What will be the primary use of your website?',
+			'question': 'Which of the following best suits you?',
+			'result':'hi',
 			'answer':{
 				1:{
 					'type': 'radio',
 					'dynamic': true,
 					'route': 9,
-					'item': 'blog'
+					'item': 'I like singing, writing lyrics, and producing beats.'
 				},
 				2:{
 					'type': 'radio',
 					'dynamic': true,
 					'route': 9,
-					'item': 'ecommerce'
+					'item': 'I like using cameras and editing software.'
 				},
-				3:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 9,
-					'item': 'personal / portfolio'
-				},
-				4:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 9,
-					'item': 'business'
-				},
-				5:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 9,
-					'item': 'social network / forum'
-				},
-				6:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 9,
-					'item': 'custom website'
-				}
 			}
 		},
 		9:{
-			'question': 'Would you like to use a popular CMS to manage the content on your website?',
+			'question': 'Click the submit button to view your results!',
+			'result':'hi',
 			'answer':{
-				1:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 10,
-					'item': 'wordpress'
-				},
-				2:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 10,
-					'item': 'shopify'
-				},
-				3:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 10,
-					'item': 'magento'
-				},
-				4:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 11,
-					'item': 'no thanks'
-				}
-			}
-		},
-		10:{
-			'question': 'Will there be someone managing the website once it\'s done?',
-			'answer':{
-				1:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 11,
-					'item': 'yes'
-				},
-				2:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 11,
-					'item': 'no'
-				}
-			}
-		},
-		11:{
-			'question': 'Are there any websites that you like the design and functionality of?',
-			'answer':{
-				1:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 16,
-					'item': 'yes'
-				},
-				2:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 12,
-					'item': 'no'
-				}
-			}
-		},
-		12:{
-			'question': 'Does the website need to be responsive?',
-			'answer':{
-				1:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 13,
-					'item': 'yes'
-				},
-				2:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 13,
-					'item': 'no'
-				}
-			}
-		},
-		13:{
-			'question': 'Will content for the website be provided upon start?',
-			'answer':{
-				1:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 14,
-					'item': 'yes'
-				},
-				2:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 14,
-					'item': 'no'
-				}
-			}
-		},
-		14:{
-			'question': 'Would you like to schedule a meeting?',
-			'answer':{
-				1:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 15,
-					'item': 'yes'
-				},
-				2:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 17,
-					'item': 'no'
-				}
-			}
-		},
-		15:{
-			'question': 'When would you like to schedule a meeting to chat?',
-			'answer':{
-				1:{
-					'type': 'date',
-					'dynamic': true,
-					'route': 17,
-					'identity': 'mm-dynamic-date'
-				}
-			}
-		},
-		16:{
-			'question': 'What type of layout do you like?',
-			'answer':{
-				1:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 12,
-					'item': 'full width'
-				},
-				2:{
-					'type': 'radio',
-					'dynamic': true,
-					'route': 12,
-					'item': 'boxed'
-				}
-			}
-		},
-		17:{
-			'question': 'We\'re almost done... We just need some contact info.',
-			'answer':{
-				1:{
-					'type': 'form',
-					'dynamic': true,
-					'route': 18,
-					'placeholder': 'Barry',
-					'identity': 'mm-dynamic-fn',
-					'title': 'First Name'
-				},
-				2:{
-					'type': 'form',
-					'dynamic': true,
-					'route': 18,
-					'placeholder': 'Allen',
-					'identity': 'mm-dynamic-ln',
-					'title': 'Last Name'
-				},
-				3:{
-					'type': 'form',
-					'dynamic': true,
-					'route': 18,
-					'placeholder': 'barry@example.com',
-					'identity': 'mm-dynamic-em',
-					'title': 'Email'
-				}
+				
 			}
 		}
 		// 18:{
@@ -436,7 +200,7 @@ jQuery(document).ready(function() {
 		container.append(content);
 		
 		if(Object.keys(data.answer).length < 1) {
-			jQuery('.mm-survey-page-'+i+' .mm-survery-content').append('<p>End of the line</p>');
+			jQuery('.mm-survey-page-'+i+' .mm-survery-content').append('<p></p>');
 		}
 		else {
 			for (var ii = 1; ii <= Object.keys(data.answer).length; ii++) {
@@ -874,6 +638,8 @@ jQuery(document).ready(function() {
 	}
 
 	function collectData() {
+
+		
 		
 		var map = {};
 		var ax = ['0','red','mercedes','3.14','3'];
@@ -884,57 +650,100 @@ jQuery(document).ready(function() {
 		var c = 0;
 		var newCount = jQuery('.pass .mm-survey-item.bingo').length;
 
+
+
 		jQuery('.mm-survey-results-container .mm-survey-results-list').html('');
+
 
 		jQuery('.mm-survey-item.bingo input').each(function(index, val) {
 			var item, id, data, name, n;
+
+
 
 			item = jQuery(this);
 			id = item.data('group');
 			data = item.val();
 			name = item.data('item');
-			// console.log(survey[id].question + ' - ' + data);
-			jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+(index+1)+'</span><span class="mm-item-info">'+survey[id].question + ' - ' + data+'</span></li>');
-			// n = parseInt(data);
-			// total += n;
 
-			// map[name] = data;
+	
+			if (data == 'I want to build something individually!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Architectural Design ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Dragster Design ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Flight Endurance ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Transportation Modeling ' +'</span></li>');
+				//jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+(index+1)+'</span><span class="mm-item-info">'+survey[id].result + ' - ' + data+'</span></li>');
+			}
+			else if (data == 'I want to build something with a team!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Animatronics ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Engineering Design ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Fashion Design and Technology ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Structural Design and Engineering ' +'</span></li>');
+			}
+			else if (data == 'I want to design something individually!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Computer-Aided Design (CAD), Architecture ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Computer-Aided Design (CAD), Engineering ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Scientific Visualization (SciVis)  ' +'</span></li>');
+			}
+			else if (data == 'I want to design something with a team!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Scientific Visualization (SciVis)  ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Computer Integrated Manufacturing (CIM)' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' 3D Animation ' +'</span></li>');
+			}
+			else if (data == 'I want to program something long term!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Video Game Design ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Webmaster ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Software Development  ' +'</span></li>');
+			}
+			else if (data == 'I want to program on site!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Coding ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' System Control Technology ' +'</span></li>');
+			}
+			else if (data == 'I want to work individually!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Extemporaneous Speech ' +'</span></li>');
+			}
+			else if (data == 'I like taking tests and solving problems!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Chapter Team' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Technology Bowl' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Technology Problem Solving' +'</span></li>');
 
+			}
+			else if (data == 'I like exploring topics and creating a tangible display of my research!')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Biotechnology Design ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Future Technology Teacher ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' STEM Careers ' +'</span></li>');
+
+			}
+			else if (data == 'Writing')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Essays on Technology ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Childrens Stories ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' STEM Careers ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Biotechnology Design ' +'</span></li>');
+			}
+			else if (data == 'I like using cameras and editing software.')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Digital Video Production ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' On Demand Video ' +'</span></li>');
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Photographic Technology ' +'</span></li>');
+			}
+			else if (data == 'I like singing, writing lyrics, and producing beats.')
+			{
+				jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item correct"><span class="mm-item-number">'+'</span><span class="mm-item-info">'+ ' Music Production ' +'</span></li>');
+			}
+
+			
 		});
 
-		// for (i = 1; i <= count; i++) {
 
-		// 	var t = {};
-		// 	var m = {};
-		// 	answer += map[i] + '<br>';
-			
-		// 	if( map[i] === ax[i]) {
-		// 		g = map[i];
-		// 		p = 'correct';
-		// 		c = 1;
-		// 	}
-		// 	// else if(map[i] === undefined){
-		// 	// 	g = '';
-		// 	// 	p = 'incorrect';
-		// 	// 	c = 0;
-		// 	// }
-		// 	else {
-		// 		g = map[i];
-		// 		p = 'incorrect';
-		// 		c = 0;
-		// 	}
-
-		// 	jQuery('.mm-survey-results-list').append('<li class="mm-survey-results-item '+p+'"><span class="mm-item-number">'+i+'</span><span class="mm-item-info">'+g+' - '+p+'</span></li>');
-
-		// 	m[i] = c;
-		// 	ttl += m[i];
-
-		// }
-
-		// var results;
-		// results = ( ( ttl / count ) * 100 ).toFixed(0);
-
-		// jQuery('.mm-survey-results-score').html( results + '%' );
 
 	}
 

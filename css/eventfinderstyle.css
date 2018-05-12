@@ -1,5 +1,5 @@
 body{
-    background: #1488CC;
+    background: #4073e8;
 }
 
 .mm-survey {
@@ -70,7 +70,7 @@ body{
 }
 
 .mm-finish-btn button {
-	background: #3DD2AF !important;
+	background: #33adf4 !important;
     color: #fff;
 }
 
@@ -103,7 +103,7 @@ body{
 .mm-survey-progress-bar {
 	height: 30px;
     width: 0%;
-    background: linear-gradient(to left, #4CB8C4, #3CD3AD);
+    background: linear-gradient(to left, #33adf4, #33adf4);
 }
 
 .mm-survey-q {
@@ -191,7 +191,7 @@ input[type="radio"] + label span {
 }
 
 input[type="radio"]:checked + label span {
-	border: 2px solid #3DD2AF;
+	border: 2px solid #33adf4;
 	background: transparent;
 }
 
@@ -224,7 +224,7 @@ input[type="radio"]:checked + label span {
 }
 
 .mm-next-btn button.ready {
-	background: linear-gradient(to left, #4CB8C4, #3CD3AD);
+	background: linear-gradient(to left, #33adf4, #33adf4);
 	color: #fff;
 	opacity: 1;
 }
