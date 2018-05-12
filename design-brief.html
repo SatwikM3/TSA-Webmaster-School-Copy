@@ -846,9 +846,37 @@
         <script src='js/botui.min.js'></script>
          <script  src="js/bot.js"></script> 
 
+<<<<<<< HEAD
     
 
     
+=======
+        <script src="js/animsition.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            $(".animsition").animsition({
+                inClass: 'zoom-in',
+                outClass: 'zoom-out',
+                inDuration: 1500,
+                outDuration: 800,
+                linkElement: '.animsition-link',
+                loading: true,
+                loadingParentElement: 'body', 
+                loadingClass: 'animsition-loading',
+                loadingInner: '',
+                timeout: false,
+                timeoutCountdown: 5000,
+                onLoadEvent: true,
+                browser: [ 'animation-duration', '-webkit-animation-duration'],
+                overlay : false,
+                overlayClass : 'animsition-overlay-slide',
+                overlayParentElement : 'body',
+                transition: function(url){ window.location.href = url; }
+             });
+            });
+        </script>
+>>>>>>> 09b79ae4e6293c18dfbd31c458444421dce6b5b9
 
     </body>
   
