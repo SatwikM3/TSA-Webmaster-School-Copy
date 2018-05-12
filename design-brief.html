@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="css/example.css">
         <link rel="stylesheet" href="css/carousel.css">
         <link rel="stylesheet" href="css/competitions2.css">
-
+        <link rel="stylesheet" href="css/animsition.min.css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
        
@@ -57,6 +57,8 @@
 
         <link href='https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     </head>
+
+    <div class="animsition"> 
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
         <script>
             window.onload = function() {
@@ -81,9 +83,9 @@
                                     <li class="nav-item"> <a class="nav-link" href="#costs">COSTS</a> </li>
                                     <li class="nav-item"> <a class="nav-link" href="#technologies">TECHNOLOGIES</a> </li>
                                     <li class="nav-item"> <a class="nav-link" href="#safety">SAFETY</a> </li>
-                                    <li class="nav-item"><a href="./cte.html#home" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
-                                    <li class="nav-item"><a href="./index.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">Chapter</a></li>
-                                    <li class="nav-item"><a href="./about.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
+                                    <li class="nav-item"><a href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
+                                    <li class="nav-item"><a href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">Chapter</a></li>
+                                    <li class="nav-item"><a href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -739,10 +741,34 @@
 
         <script src='https://cdn.jsdelivr.net/vue/latest/vue.min.js'></script>
         <script src='js/botui.min.js'></script>
-         <script  src="js/bot.js"></script> 
+        <script  src="js/bot.js"></script> 
+        <script src="js/animsition.min.js"></script>
+    
+        <script>
+        $(document).ready(function() {
+            $(".animsition").animsition({
+                inClass: 'zoom-in',
+                outClass: 'zoom-out',
+                inDuration: 2500,
+                outDuration: 1000,
+                linkElement: '.animsition-link',
+                loading: true,
+                loadingParentElement: 'body', 
+                loadingClass: 'animsition-loading',
+                loadingInner: '', 
+                timeout: false,
+                timeoutCountdown: 5000,
+                onLoadEvent: true,
+                browser: [ 'animation-duration', '-webkit-animation-duration'],
+                overlay : false,
+                overlayClass : 'animsition-overlay-slide',
+                overlayParentElement : 'body',
+                transition: function(url){ window.location.href = url; }
+             });
+            });
+        </script>
 
-        
     </body>
-  
+    </div>
 </html>
 
