@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/example.css">
         <link rel="stylesheet" href="css/carousel.css">
         <link rel = "stylesheet" href = "css/competitions.css">
+        <link rel="stylesheet" href="css/animsition.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
         <style type="text/css">
@@ -36,6 +37,7 @@
         <link rel = "stylesheet" type = "text/css" href = "officers.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
+    <div class="animsition">
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
         <div class="nav-menu fixed-top">
             <div class="container">
@@ -43,20 +45,21 @@
                     <div class="col-md-12">
                         <nav class="navbar navbar-dark navbar-expand-lg">
                             <a class="navbar-brand" href="index.html#home"><img src="" class="img-fluid" alt=""><b>W.W.P HSN</b></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-                            <div class="collapse navbar-collapse" id="navbar">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#what_is_tsa">ABOUT</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#activities">ACTIVITIES</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#student_projects">PROJECTS</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#officers">OFFICERS</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#competitions">COMPETITIONS</a> </li>
-                                    <li class="nav-item"><a href="./cte.html#home" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
-                                    <li class="nav-item"><a href="./design-brief.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">DESIGN BRIEF</a></li>
-                                    <li class="nav-item"><a href="./about.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">ABOUT</a></li>
+                            
+                                <div class="collapse navbar-collapse" id="navbar">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#what_is_tsa">ABOUT</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#activities">ACTIVITIES</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#student_projects">PROJECTS</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#officers">OFFICERS</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#competitions">COMPETITIONS</a> </li>
+                                        <li class="nav-item"><a href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
+                                        <li class="nav-item"><a href="./design-brief.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">DESIGN BRIEF</a></li>
+                                        <li class="nav-item"><a href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">ABOUT</a></li>
 
-                                </ul>
-                            </div>
+                                    </ul>
+                                </div>
                         </nav>
                     </div>
                 </div>
@@ -245,7 +248,12 @@ What is TSA beginning
                         </h3>
                         <p>TSA (Technology Student Association) is a national organization dedicated to helping students create a better future in the Mathematics and Technology fields. The organization uses its yearly set of competitions to test the abilities of the students competing in the event. In addition to expanding their knowledge, the members are able to represent their school and community when competing. </p>
                         <p>The TSA motto “Learning to lead in a technical world” is precisely what the organization is working towards, as the club has opened branches in 48 of the 50 states. The overall mission of TSA is to have the members of the club learn and develop their skills in the STEM department and to eventually implement them on solutions towards the world’s concerning international problems.</p>
+                        <pageWithAnimation>
+                        <a href="eventfinder.html" class="btn btn-primary">TSA Event Finder</a>
+                    </pageWithAnimation>
+                    </div>           
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -648,5 +656,33 @@ Who We Are beginning
                     </small>
         </footer>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="js/animsition.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            $(".animsition").animsition({
+                inClass: 'zoom-in',
+                outClass: 'zoom-out',
+                inDuration: 1500,
+                outDuration: 800,
+                linkElement: '.animsition-link',
+                loading: true,
+                loadingParentElement: 'body', 
+                loadingClass: 'animsition-loading',
+                loadingInner: '', 
+                timeout: false,
+                timeoutCountdown: 5000,
+                onLoadEvent: true,
+                browser: [ 'animation-duration', '-webkit-animation-duration'],
+                overlay : false,
+                overlayClass : 'animsition-overlay-slide',
+                overlayParentElement : 'body',
+                transition: function(url){ window.location.href = url; }
+             });
+            });
+        </script>
+
     </body>
+    </div> 
 </html>
