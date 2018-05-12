@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="css/example.css">
         <link rel="stylesheet" href="css/carousel.css">
         <link rel = "stylesheet" href = "css/competitions.css">
+        <link rel="stylesheet" href="css/animsition.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
         <style type="text/css">
@@ -36,27 +37,27 @@
         <link rel = "stylesheet" type = "text/css" href = "officers.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
+    <div class="animsition">
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
         <div class="nav-menu fixed-top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <nav class="navbar navbar-dark navbar-expand-lg">
-                            <a class="navbar-brand" href="index.html#home"><img src="" class="img-fluid" alt=""><b>W.W.P HSN</b></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-                            <div class="collapse navbar-collapse" id="navbar">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#leap">LEAP</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#research">RESEARCH</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#media">MEDIA</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#frameworks">FRAMEWORKS</a> </li>
-                                    <li class="nav-item"> <a class="nav-link" href="#tools">TOOLS</a> </li>
-                                    <li class="nav-item"><a href="./cte.html#home" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
-                                    <li class="nav-item"><a href="./design-brief.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">DESIGN BRIEF</a></li>
-                                    <li class="nav-item"><a href="./index.html" class="btn btn-outline-light my-3 my-sm-0 ml-lg-3">CHAPTER</a></li>
-
-                                </ul>
-                            </div>
+                            <a class="navbar-brand" href="index.html#home"><img src="" class="img-fluid" alt=""><b>W.W.P HSN</b></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>                        
+                                <div class="collapse navbar-collapse" id="navbar">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"> <a class="nav-link active" href="#home">HOME <span class="sr-only">(current)</span></a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#leap">LEAP</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#research">RESEARCH</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#media">MEDIA</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#frameworks">FRAMEWORKS</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="#tools">TOOLS</a> </li>
+                                        <li class="nav-item"><a href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
+                                        <li class="nav-item"><a href="./design-brief.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">DESIGN BRIEF</a></li>
+                                        <li class="nav-item"><a href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CHAPTER</a></li>
+                                    </ul>
+                                </div>
                         </nav>
                     </div>
                 </div>
@@ -557,5 +558,33 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     </small>
         </footer>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="js/animsition.min.js"></script>
+
+        <script>
+        $(document).ready(function() {
+            $(".animsition").animsition({
+                inClass: 'zoom-in',
+                outClass: 'zoom-out',
+                inDuration: 1500,
+                outDuration: 800,
+                linkElement: '.animsition-link',
+                loading: true,
+                loadingParentElement: 'body', 
+                loadingClass: 'animsition-loading',
+                loadingInner: '',
+                timeout: false,
+                timeoutCountdown: 5000,
+                onLoadEvent: true,
+                browser: [ 'animation-duration', '-webkit-animation-duration'],
+                overlay : false,
+                overlayClass : 'animsition-overlay-slide',
+                overlayParentElement : 'body',
+                transition: function(url){ window.location.href = url; }
+             });
+            });
+        </script>
+
     </body>
+    </div> 
 </html>
