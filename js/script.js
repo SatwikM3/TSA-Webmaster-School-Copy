@@ -1,20 +1,9 @@
-/*
 
-Style   : MobApp Script JS
-Version : 1.0
-Author  : Surjith S M
-URI     : https://surjithctly.in/
-
-Copyright © All rights Reserved 
-
-*/
 
 $(function() {
     "use strict";
 
-    /*-----------------------------------
-     * FIXED  MENU - HEADER
-     *-----------------------------------*/
+   
     function menuscroll() {
         var $navmenu = $('.nav-menu');
         if ($(window).scrollTop() > 50) {
@@ -27,16 +16,12 @@ $(function() {
     $(window).on('scroll', function() {
         menuscroll();
     });
-    /*-----------------------------------
-     * NAVBAR CLOSE ON CLICK
-     *-----------------------------------*/
+    
 
     $('.navbar-nav > li:not(.dropdown) > a').on('click', function() {
         $('.navbar-collapse').collapse('hide');
     });
-    /* 
-     * NAVBAR TOGGLE BG
-     *-----------------*/
+  
     var siteNav = $('#navbar');
     siteNav.on('show.bs.collapse', function(e) {
         $(this).parents('.nav-menu').addClass('menu-is-open');
@@ -45,9 +30,7 @@ $(function() {
         $(this).parents('.nav-menu').removeClass('menu-is-open');
     })
 
-    /*-----------------------------------
-     * ONE PAGE SCROLLING
-     *-----------------------------------*/
+
     // Select all links with hashes
     $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').not('[data-toggle="tab"]').on('click', function(event) {
         // On-page links
@@ -76,9 +59,7 @@ $(function() {
             }
         }
     });
-    /*-----------------------------------
-     * OWL CAROUSEL
-     *-----------------------------------*/
+   
     var $testimonialsDiv = $('.testimonials');
     if ($testimonialsDiv.length && $.fn.owlCarousel) {
         $testimonialsDiv.owlCarousel({
@@ -109,4 +90,4 @@ $(function() {
         });
     }
 
-}); /* End Fn */
+}); 

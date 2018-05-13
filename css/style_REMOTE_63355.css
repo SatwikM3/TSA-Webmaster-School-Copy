@@ -2,23 +2,6 @@
 
 
 
-/*------------------------
-[TABLE OF CONTENTS]
-    
-1. GLOBAL STYLES
-2. NAVBAR
-3. HERO
-4. TABS
-5. TESTIMONIALS
-6. IMAGE GALLERY
-7. PRICING
-8. CALL TO ACTION
-9. FOOTER
-------------------------*/
-
-
-/* GLOBAL
-----------------------*/
 
 body {
     font-family: 'Rubik', sans-serif;
@@ -204,8 +187,7 @@ p.lead {
 }
 
 
-/* NAVBAR
-----------------------*/
+
 
 .nav-menu {
     padding: 1rem 0;
@@ -258,8 +240,7 @@ p.lead {
 }
 
 
-/* HERO
-----------------------*/
+
 
 header {
     padding: 100px 0 0;
@@ -304,8 +285,6 @@ header {
 }
 
 
-/* FEATURES
-----------------------*/
 
 .gradient-fill:before {
     color: #fc73b4;
@@ -447,8 +426,7 @@ header {
 }
 
 
-/*  TABS
-----------------------*/
+
 
 .tab-content {
     border-bottom-right-radius: 3px;
@@ -494,8 +472,6 @@ header {
 }
 
 
-/*  TESTIMONIALS
-----------------------*/
 
 .owl-carousel .owl-item img.client-img {
     width: 110px;
@@ -557,8 +533,7 @@ header {
 }
 
 
-/*  IMAGE GALLERY
-----------------------*/
+
 
 .img-gallery .owl-item {
     box-shadow: 0px 9px 32px 0px rgba(0, 0, 0, 0.07);
@@ -571,8 +546,6 @@ header {
 }
 
 
-/*  PRICING
-----------------------*/
 
 @media (max-width:992px) {
     .card-deck {
@@ -628,8 +601,7 @@ header {
 }
 
 
-/*  CALL TO ACTION
-----------------------*/
+
 
 .call-to-action {
     text-align: center;
@@ -663,8 +635,7 @@ header {
 }
 
 
-/*  FOOTER
-----------------------*/
+
 
 .social-icons {
     text-align: right;
@@ -696,9 +667,6 @@ header {
     }
 }
 
-/* -------------------------------- 
-Primary style
--------------------------------- */
 
 
 *, *:after, *:before {
@@ -724,11 +692,7 @@ Primary style
     font-weight: bold;
   }
   
-  /* -------------------------------- 
-  
-  Modules - reusable parts of our design
-  
-  -------------------------------- */
+
   .cd-container {
     /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
     width: 100%;
@@ -743,11 +707,7 @@ Primary style
     background-color: #faf6fb;
   }
   
-  /* -------------------------------- 
-  
-  Main components 
-  
-  -------------------------------- */
+
   
   
   
