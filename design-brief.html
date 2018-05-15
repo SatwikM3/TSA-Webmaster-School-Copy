@@ -59,7 +59,7 @@
         <link href='https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     </head>
 
-    <div class="animsition"> 
+    <div id="ani" class="animsition"> 
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
         <script>
             window.onload = function() {
@@ -84,9 +84,9 @@
                                     <li class="nav-item"> <a class="nav-link" href="#costs">COSTS</a> </li>
                                     <li class="nav-item"> <a class="nav-link" href="#technologies">TECHNOLOGIES</a> </li>
                                     <li class="nav-item"> <a class="nav-link" href="#safety">SAFETY</a> </li>
-                                    <li class="nav-item"><a href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
-                                    <li class="nav-item"><a href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">Chapter</a></li>
-                                    <li class="nav-item"><a href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
+                                    <li class="nav-item"><a id="cte" href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
+                                    <li class="nav-item"><a id="chapter" href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">Chapter</a></li>
+                                    <li class="nav-item"><a id="about" href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -722,9 +722,11 @@
 
         <footer class="my-5 text-center">
                 <small>
-                        <a href="" style="text-decoration:none" class="m-2">Webmaster Chapter T5248</a>
+                        <a href="" style="text-decoration:none" class="m-2">Webmaster Team 2201-1</a>
                         <br>
                         <a href="" style="text-decoration:none" class="m-2">COPYRIGHT © 2018. West Windsor Plainsboro High School North TSA</a>
+                        <br>
+                        <a href="" style="text-decoration:none" class="m-2">2201007,  2201008,  2201019, 2201020, 2201030 </a>
                     </small>
         </footer>
 
@@ -738,27 +740,50 @@
         <script src="js/animsition.min.js"></script>
     
         <script>
-        $(document).ready(function() {
-            $(".animsition").animsition({
-                inClass: 'zoom-in',
-                outClass: 'zoom-out',
-                inDuration: 2500,
-                outDuration: 1000,
-                linkElement: '.animsition-link',
-                loading: true,
-                loadingParentElement: 'body', 
-                loadingClass: 'animsition-loading',
-                loadingInner: '', 
-                timeout: false,
-                timeoutCountdown: 5000,
-                onLoadEvent: true,
-                browser: [ 'animation-duration', '-webkit-animation-duration'],
-                overlay : false,
-                overlayClass : 'animsition-overlay-slide',
-                overlayParentElement : 'body',
-                transition: function(url){ window.location.href = url; }
-             });
-            });
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+        if(isChrome)
+        {
+            $(document).ready(function() {
+                $(".animsition").animsition({
+                    inClass: 'zoom-in',
+                    outClass: 'zoom-out',
+                    inDuration: 2500,
+                    outDuration: 1000,
+                    linkElement: '.animsition-link',
+                    loading: true,
+                    loadingParentElement: 'body', 
+                    loadingClass: 'animsition-loading',
+                    loadingInner: '', 
+                    timeout: false,
+                    timeoutCountdown: 5000,
+                    onLoadEvent: true,
+                    browser: [ 'animation-duration', '-webkit-animation-duration'],
+                    overlay : false,
+                    overlayClass : 'animsition-overlay-slide',
+                    overlayParentElement : 'body',
+                    transition: function(url){ window.location.href = url; }
+                 });
+                });
+        }
+        else
+        {
+            var NAME = document.getElementById("ani");
+            var currentClass = NAME.className;
+            NAME.className = "";
+
+            var NAME = document.getElementById("cte");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+    
+            var NAME = document.getElementById("chapter");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+
+            var NAME = document.getElementById("about");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+        }
         </script>
 
     </body>
