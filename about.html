@@ -34,7 +34,7 @@
         <link rel = "stylesheet" type = "text/css" href = "css/officers.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <div class="animsition">
+    <div id="ani" class="animsition">
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
         <div class="nav-menu fixed-top">
             <div class="container">
@@ -50,9 +50,9 @@
                                         <li class="nav-item"> <a class="nav-link" href="#media">MEDIA</a> </li>
                                         <li class="nav-item"> <a class="nav-link" href="#frameworks">FRAMEWORKS</a> </li>
                                         <li class="nav-item"> <a class="nav-link" href="#tools">TOOLS</a> </li>
-                                        <li class="nav-item"><a href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
-                                        <li class="nav-item"><a href="./design-brief.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">DESIGN BRIEF</a></li>
-                                        <li class="nav-item"><a href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CHAPTER</a></li>
+                                        <li class="nav-item"><a id="cte" href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
+                                        <li class="nav-item"><a id=design" href="./design-brief.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">DESIGN BRIEF</a></li>
+                                        <li class="nav-item"><a id="chapter" href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CHAPTER</a></li>
                                     </ul>
                                 </div>
                         </nav>
@@ -596,41 +596,61 @@ OTHER DEALINGS IN THE SOFTWARE.
         <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
         <script  src="js/competitions.js"></script>
         <footer class="my-5 text-center">
-                <small>
-                        <a href="" style="text-decoration:none" class="m-2">Webmaster Team 2201-1</a>
-                        <br> 
-                        <a href="" style="text-decoration:none" class="m-2">COPYRIGHT © 2018. West Windsor Plainsboro High School North TSA</a>
-                        <br>
-                        <a href="" style="text-decoration:none" class="m-2">2201007,  2201008,  2201019, 2201020, 2201030 </a>
-
-                    </small>
+            <small>
+                <a href="" style="text-decoration:none" class="m-2">Webmaster Team T5248 </a>
+                <br>
+                <a href="" style="text-decoration:none" class="m-2">COPYRIGHT © 2018. West Windsor Plainsboro High School North TSA</a>
+            </small>
         </footer>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="js/animsition.min.js"></script>
 
         <script>
-        $(document).ready(function() {
-            $(".animsition").animsition({
-                inClass: 'zoom-in',
-                outClass: 'zoom-out',
-                inDuration: 1500,
-                outDuration: 800,
-                linkElement: '.animsition-link',
-                loading: true,
-                loadingParentElement: 'body', 
-                loadingClass: 'animsition-loading',
-                loadingInner: '',
-                timeout: false,
-                timeoutCountdown: 5000,
-                onLoadEvent: true,
-                browser: [ 'animation-duration', '-webkit-animation-duration'],
-                overlay : false,
-                overlayClass : 'animsition-overlay-slide',
-                overlayParentElement : 'body',
-                transition: function(url){ window.location.href = url; }
-             });
-            });
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)
+
+        if(isChrome)
+        {
+            $(document).ready(function() {
+                $(".animsition").animsition({
+                    inClass: 'zoom-in',
+                    outClass: 'zoom-out',
+                    inDuration: 1500,
+                    outDuration: 800,
+                    linkElement: '.animsition-link',
+                    loading: true,
+                    loadingParentElement: 'body', 
+                    loadingClass: 'animsition-loading',
+                    loadingInner: '',
+                    timeout: false,
+                    timeoutCountdown: 5000,
+                    onLoadEvent: true,
+                    browser: [ 'animation-duration', '-webkit-animation-duration'],
+                    overlay : false,
+                    overlayClass : 'animsition-overlay-slide',
+                    overlayParentElement : 'body',
+                    transition: function(url){ window.location.href = url; }
+                 });
+                });
+        }
+        else
+        {
+            var NAME = document.getElementById("ani");
+            var currentClass = NAME.className;
+            NAME.className = "";
+
+            var NAME = document.getElementById("cte");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+    
+            var NAME = document.getElementById("design");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+
+            var NAME = document.getElementById("chapter");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+        }
         </script>
 
     </body>

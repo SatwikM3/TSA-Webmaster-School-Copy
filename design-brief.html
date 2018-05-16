@@ -59,7 +59,7 @@
         <link href='https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     </head>
 
-    <div class="animsition"> 
+    <div id="ani" class="animsition"> 
     <body data-spy="scroll" data-target="#navbar" data-offset="30">
         <script>
             window.onload = function() {
@@ -84,9 +84,9 @@
                                     <li class="nav-item"> <a class="nav-link" href="#costs">COSTS</a> </li>
                                     <li class="nav-item"> <a class="nav-link" href="#technologies">TECHNOLOGIES</a> </li>
                                     <li class="nav-item"> <a class="nav-link" href="#safety">SAFETY</a> </li>
-                                    <li class="nav-item"><a href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
-                                    <li class="nav-item"><a href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">Chapter</a></li>
-                                    <li class="nav-item"><a href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
+                                    <li class="nav-item"><a id="cte" href="./cte.html#home" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">CTE</a></li>
+                                    <li class="nav-item"><a id="chapter" href="./index.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">Chapter</a></li>
+                                    <li class="nav-item"><a id="about" href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">About</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -305,7 +305,7 @@
                                 <div class="circle-icon mr-4">2</div>
                                 <div class="media-body">
                                     <h5>Generate Practice Exercises & Quizzes.</h5>
-                                    <p>A.I.D.A will analyze the content of the given documents and will multiple choice, fill in the blank, and matching questions in the form of practice problems or complete practice tests.</p>
+                                    <p>A.I.D.A will analyze the content of the given documents and will create multiple choice, fill in the blank, and matching questions in the form of practice problems or complete practice tests.</p>
                                 </div>
                             </li>
                             <li class="media">
@@ -376,7 +376,7 @@
                             </div>
                         </div>
                         <div class="container .nobg">
-                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Experience') }"><p class = "text" >AI can be used to make YOUR life easier, like in Smart Home systems and personal assistants. <b>But AI’s personal uses go beyond the scope of convenience. </b>AI can be used for personalized learning : it can learn from your mistakes and craft a curriculum based on your learning style. It can be used for personal finance : for example, an app called Digit analyzes user habits to optimize spending and saving. AI can also be used to manage your portfolio—providing financial advice with minimal human intervention. Another up and coming use of AI is in self driving cars. These cars not only save time but also significantly reduce the chances of accidents. Self driving cars have an accident rate lower than the national average by 25%, and tend to have less severe accidents in general. They also follow the best driving practices that the average human driver does not and communicate with other cars to craft the most efficient routes to your destination.
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Experience') }"><p class = "text" >AI can be used to make your life easier. Every day technologies like smart home systems and personal assistants are examples of artificial intelligence. <b>However,  AI’s personal uses go beyond the scope of convenience. </b>AI can be used for personalized learning; it can learn from your mistakes and craft a curriculum based on your learning style. It can be used for personal finance; for example, an app called Digit analyzes user habits to optimize spending and saving. AI can also be used to manage your portfolio, providing financial advice with minimal human intervention. Another up and coming use of AI is in self driving cars. These cars not only save time but also significantly reduce the chances of accidents. Self driving cars have an accident rate lower than the national average by 25% and tend to have less severe accidents in general. They also follow the best driving practices that the average human driver does not and communicate with other cars to craft the most efficient routes to your destination.
 </p></div>
                         </div>
                     </section>
@@ -390,7 +390,7 @@
                             </div>
                         </div>
                         <div class="container">
-                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Insights') }"><p class = "text" >AI can be used by businesses to analyze their sales and predict which items will sell best. Nowadays, most tech companies thrive not because of the massive amounts of data they collect but because of how they analyze it. Companies such as Google use this data to suggest the best advertisements to their customers : they drive their profits and customers are shown the product that most suits them. One example of this is with Youtube. Google’s recommendation algorithm for Youtube videos analyzes the videos that people watch and uses this data to improve its own suggestions on which videos the user would be most likely to click on. In turn, Youtube increases the time a user spends on the site, the number of advertisements they click on and their profits.
+                            <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Insights') }"><p class = "text" >AI can be used by businesses to analyze their sales and predict which items will sell best. Nowadays, most tech companies thrive not because of the massive amounts of data they collect but because of how they analyze it. Companies such as Google use this data to suggest the best advertisements to their customers; they drive their profits, and customers are shown the product that most suits them. One example of this is with YouTube. Google’s recommendation algorithm for YouTube videos analyzes the videos that people watch and uses this data to improve its own suggestions on which videos the user would be most likely to click on. In turn, YouTube increases the time a user spends on the site, the number of advertisements they click on, and consequently their profits.
                                 </p></div>
 
                         </div>
@@ -421,7 +421,7 @@
                                 </div>
                             </div>
                             <div class="container">
-                                <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Recreational') }"><p class = "text" >AI has applications that can save lives, increase business revenue and completely transform our education system. But it also has many uses that make life more enjoyable and convenient. One AI service created by Salesforce summarizes long articles for people to read. People no longer need to sift through large amounts of information to learn the part that they need. This service brings information to people who don’t necessarily have the time to go through lengthy articles. AI can also be used in games. 18 years ago, IBM’s Deep Blue beat world champion Garry Kasparov at chess. Now, AI technologies such as Google’s AlphaZero can master any games that humans would take months to excel at in just a few hours. The applications of learning these games include providing challenging opponents to human players and to provide tips to humans on their gameplay. Even chess grandmasters such as Magnus Carlsen can improve their gameplay through AI.
+                                <div class="accordions__content rich-text" v-bind:class="{ 'accordions__content--expanded': isOpen('Recreational') }"><p class = "text" >AI has applications that can save lives, increase business revenue, and completely transform our education system. However, it also has many uses that make life more enjoyable and convenient. One AI service created by Salesforce summarizes long articles for people to read. People no longer need to sift through large amounts of information to learn the part that they need. This service brings information to people who don’t necessarily have the time to go through lengthy articles. AI can also be used in games. 18 years ago, IBM’s Deep Blue beat world champion Garry Kasparov at chess. Now, AI technologies such as Google’s AlphaZero can master any games that humans would take months to excel at in just a few hours. The applications of learning these games include providing challenging opponents to human players and to provide tips to humans on their gameplay. Even chess grandmasters such as Magnus Carlsen can improve their gameplay through AI.
                                     </p></div>
                             </div>
                         </section>
@@ -682,7 +682,7 @@
                     <h3>Safety & Liabilities</h3>
                 </div>
                 <p class = "text-center text-white">
-                A science fiction writer, Isaac Asimov, created three laws of robotics that must be followed to create harmless AI technologies. A.I.D.A was carefully designed to follow all three of these laws because here at A.I.D.A. technologies, safety is our utmost priority.
+                A science fiction writer, Isaac Asimov, created three laws of robotics that must be followed to create harmless AI technologies. A.I.D.A was carefully designed to follow all three of these laws because here at A.I.D.A. Technologies, safety is our utmost priority.
                 </p>
                 <br>
                 <p class = "text-white" style = "text-align : justify;">✔ A robot may not injure a human being or, through inaction, allow a human being to come to harm.</p>
@@ -693,11 +693,11 @@
                         <div class="section4-title" >
                             <h4 class="mb-3">First Law</h4>
 
-                            <p class="light-font mb-5">A.I.D.A. was not designed with an intention to harm, and our self-learning algorithms strictly pertain to educating students (creating test questions, evaluating learning styles).
+                            <p class="light-font mb-5">A.I.D.A. was not designed with an intention to harm, and our self-learning algorithms strictly pertain to educating students (creating test questions, evaluating learning styles, etc.).
 
 </p>
                             <h4 class="mb-3">Second Law</h4>
-                            <p class="light-font mb-5">A.I.D.A creates curriculums and questions based on <b>what the user wants</b> and his/her learning style and so, our users have maximum control over the software.</p>
+                            <p class="light-font mb-5">A.I.D.A creates curriculums and questions based on <b>what the user wants</b> and his/her learning style, so our users have maximum control over the software.</p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -707,7 +707,7 @@
                             <p class="light-font mb-5">A.I.D.A. does not have any self-destructive capabilities and simply serves as an interactive learning module.
 </p>
                             <h4 class="mb-3">Potential Liabilities</h4>
-                            <p class="light-font mb-5">A.I.D.A. collects large amounts of data from the documents that users scan and how they react to certain learning methods. This may raise privacy concerns and so, the data collected by A.I.D.A is tracked anonymously i.e. without a name associated with it.</p>
+                            <p class="light-font mb-5">A.I.D.A. collects large amounts of data from the documents that users scan and how they react to certain learning methods. This may raise privacy concerns, so the data collected by A.I.D.A is tracked anonymously i.e. without a name associated with it.</p>
                         </div>
                     </div>
                 </div>
@@ -721,15 +721,12 @@
 
 
         <footer class="my-5 text-center">
-                <small>
-                        <a href="" style="text-decoration:none" class="m-2">Webmaster Team 2201-1</a>
-                        <br>
-                        <a href="" style="text-decoration:none" class="m-2">COPYRIGHT © 2018. West Windsor Plainsboro High School North TSA</a>
-                        <br>
-                        <a href="" style="text-decoration:none" class="m-2">2201007,  2201008,  2201019, 2201020, 2201030 </a>
-                    </small>
+            <small>
+                <a href="" style="text-decoration:none" class="m-2">Webmaster Team T5248 </a>
+                <br>
+                <a href="" style="text-decoration:none" class="m-2">COPYRIGHT © 2018. West Windsor Plainsboro High School North TSA</a>
+            </small>
         </footer>
-
         <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js'></script>
 
         <script type ="text/javascript" src="js/competitions.js"> </script>
@@ -740,27 +737,50 @@
         <script src="js/animsition.min.js"></script>
     
         <script>
-        $(document).ready(function() {
-            $(".animsition").animsition({
-                inClass: 'zoom-in',
-                outClass: 'zoom-out',
-                inDuration: 2500,
-                outDuration: 1000,
-                linkElement: '.animsition-link',
-                loading: true,
-                loadingParentElement: 'body', 
-                loadingClass: 'animsition-loading',
-                loadingInner: '', 
-                timeout: false,
-                timeoutCountdown: 5000,
-                onLoadEvent: true,
-                browser: [ 'animation-duration', '-webkit-animation-duration'],
-                overlay : false,
-                overlayClass : 'animsition-overlay-slide',
-                overlayParentElement : 'body',
-                transition: function(url){ window.location.href = url; }
-             });
-            });
+        var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
+        if(isChrome)
+        {
+            $(document).ready(function() {
+                $(".animsition").animsition({
+                    inClass: 'zoom-in',
+                    outClass: 'zoom-out',
+                    inDuration: 2500,
+                    outDuration: 1000,
+                    linkElement: '.animsition-link',
+                    loading: true,
+                    loadingParentElement: 'body', 
+                    loadingClass: 'animsition-loading',
+                    loadingInner: '', 
+                    timeout: false,
+                    timeoutCountdown: 5000,
+                    onLoadEvent: true,
+                    browser: [ 'animation-duration', '-webkit-animation-duration'],
+                    overlay : false,
+                    overlayClass : 'animsition-overlay-slide',
+                    overlayParentElement : 'body',
+                    transition: function(url){ window.location.href = url; }
+                 });
+                });
+        }
+        else
+        {
+            var NAME = document.getElementById("ani");
+            var currentClass = NAME.className;
+            NAME.className = "";
+
+            var NAME = document.getElementById("cte");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+    
+            var NAME = document.getElementById("chapter");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+
+            var NAME = document.getElementById("about");
+            var currentClass = NAME.className;
+            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+        }
         </script>
 
     </body>
