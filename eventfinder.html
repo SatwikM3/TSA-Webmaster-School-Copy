@@ -994,8 +994,8 @@
 
             resourcesToRender.forEach((resource, index) => {
                 const card = document.createElement('div');
-                card.className = 'resource-card';
-                card.style.animationDelay = `${index * 0.08}s`;
+                card.className = 'resource-card fade-in-up';
+                card.style.animationDelay = `${index * 0.15}s`;
 
                 card.innerHTML = `
                     <i class="fas ${resource.icon} card-icon"></i>
