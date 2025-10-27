@@ -140,26 +140,28 @@
 
         /* Search Section */
         .search-section {
-            background: white;
-            padding: 45px 40px;
-            border-radius: 25px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-            margin: -60px auto 50px auto;
-            max-width: 950px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 50px 45px;
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0,0,0,0.15);
+            margin: -70px auto 60px auto;
+            max-width: 1000px;
             position: relative;
             z-index: 100;
-            animation: fadeInUp 1s ease 0.2s both;
+            border: 1px solid rgba(20, 136, 204, 0.1);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .search-section.fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .search-section.fade-in-up.animated {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .search-bar {
