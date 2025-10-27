@@ -222,65 +222,13 @@
             display: none;
         }
 
-        /* Resources Grid Section */
-        .resources-section {
-            padding: 60px 0 80px 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Blob Animations */
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.15;
-            animation: blob-move 12s ease-in-out infinite alternate;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .blob-1 {
-            width: 400px;
-            height: 400px;
-            background: #1488CC;
-            top: 5%;
-            left: -5%;
-            animation-delay: 0s;
-        }
-
-        .blob-2 {
-            width: 350px;
-            height: 350px;
-            background: #2B32B2;
-            top: 45%;
-            right: -8%;
-            animation-delay: 3s;
-        }
-
-        .blob-3 {
-            width: 300px;
-            height: 300px;
-            background: #7B68EE;
-            bottom: 15%;
-            left: 10%;
-            animation-delay: 6s;
-        }
-
-        @keyframes blob-move {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(50px, -50px) scale(1.15); }
-            100% { transform: translate(-30px, 30px) scale(0.9); }
-        }
-
         /* Resource Cards */
         .resources-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
-            position: relative;
-            z-index: 2;
-            margin-top: 40px;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .resource-card {
