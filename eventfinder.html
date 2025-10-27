@@ -329,24 +329,8 @@
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-        }
-
-        .resource-card.fade-in-up {
-            opacity: 0;
-            transform: translateY(50px) scale(0.95);
-        }
-
-        .resource-card.fade-in-up.animated {
-            animation: cardFadeInUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes cardFadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
         .resource-card::before {
