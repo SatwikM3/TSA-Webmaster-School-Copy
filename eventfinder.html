@@ -1101,13 +1101,6 @@
             }
 
             renderResources(filtered);
-
-            // Re-observe cards after filtering
-            setTimeout(function() {
-                if (typeof window.observeCards === 'function') {
-                    window.observeCards();
-                }
-            }, 50);
         }
 
         // Category button click
