@@ -456,6 +456,50 @@
             transform: translateX(5px);
         }
 
+        /* Expanded card content */
+        .card-expanded-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+        }
+
+        .card-expanded-content.active {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .expanded-details {
+            background: rgba(20, 136, 204, 0.05);
+            border-left: 4px solid #1488CC;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #555;
+            font-size: 0.95rem;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
+        .detail-item i {
+            color: #1488CC;
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2B32B2;
+            min-width: 80px;
+        }
+
         /* No Results */
         .no-results {
             text-align: center;
