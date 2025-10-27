@@ -1133,6 +1133,41 @@
         document.addEventListener('DOMContentLoaded', function() {
             renderResources(resources);
 
+            // Apply ripple to CTA button
+            const ctaBtn = document.querySelector('.cta-btn');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', function(e) {
+                    createRipple(e, this, false);
+                });
+            }
+
+            // Intersection Observer for scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px'
+            };
+
+            const cardObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry, index) {
+                    if (entry.isIntersecting) {
+                        setTimeout(function() {
+                            entry.target.classList.add('fade-in');
+                        }, index * 100); // Staggered delay
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all resource cards
+            window.observeCards = function() {
+                document.querySelectorAll('.resource-card').forEach(function(card) {
+                    cardObserver.observe(card);
+                });
+            };
+
+            // Call after initial render
+            observeCards();
+
             // Animsition for Chrome
             var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             if(isChrome) {
