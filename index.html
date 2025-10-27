@@ -477,19 +477,53 @@ Who We Are / About Section
             var currentClass = NAME.className;
             NAME.className = "";
 
-            var NAME = document.getElementById("cte");
-            var currentClass = NAME.className;
-            NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
-            
-            var NAME = document.getElementById("design");
+            var NAME = document.getElementById("resources");
             var currentClass = NAME.className;
             NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
 
-            var NAME = document.getElementById("about");
+            var NAME = document.getElementById("submit");
             var currentClass = NAME.className;
             NAME.className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
         }
+
+        // Stat Counter Animation
+        function animateCount(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(function() {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start) + '+';
+                }
+            }, 16);
+        }
+
+        // IntersectionObserver for stat counters
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCount(entry.target, target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all stat numbers on page load
+        $(document).ready(function() {
+            document.querySelectorAll('.stat-number').forEach(function(stat) {
+                statsObserver.observe(stat);
+            });
+        });
     </script>
     </body>
-</div> 
+</div>
 </html>
