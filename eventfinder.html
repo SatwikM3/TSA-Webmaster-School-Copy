@@ -1018,6 +1018,42 @@
 
                 grid.appendChild(card);
 
+                // Add click handler for card expansion
+                const link = card.querySelector('.card-link');
+                const expandedContent = card.querySelector('.card-expanded-content');
+                const linkText = card.querySelector('.link-text');
+                const linkIcon = card.querySelector('.card-link i');
+
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Close other expanded cards
+                    document.querySelectorAll('.card-expanded-content.active').forEach(content => {
+                        if (content !== expandedContent) {
+                            content.classList.remove('active');
+                            const otherCard = content.closest('.resource-card');
+                            const otherLink = otherCard.querySelector('.link-text');
+                            const otherIcon = otherCard.querySelector('.card-link i');
+                            otherLink.textContent = 'Learn More';
+                            otherIcon.className = 'fas fa-arrow-right';
+                        }
+                    });
+
+                    // Toggle current card
+                    expandedContent.classList.toggle('active');
+
+                    if (expandedContent.classList.contains('active')) {
+                        linkText.textContent = 'Show Less';
+                        linkIcon.className = 'fas fa-arrow-up';
+                    } else {
+                        linkText.textContent = 'Learn More';
+                        linkIcon.className = 'fas fa-arrow-right';
+                    }
+
+                    // Add ripple effect
+                    createRipple(e, link, true);
+                });
+
                 // Trigger animation
                 setTimeout(() => card.classList.add('fade-in'), 100);
             });
