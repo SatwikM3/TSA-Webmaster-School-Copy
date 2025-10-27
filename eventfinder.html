@@ -1108,11 +1108,14 @@
 
         // Category button click
         document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function(e) {
                 document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 currentCategory = this.dataset.category;
                 applyFilters();
+
+                // Add ripple effect
+                createRipple(e, this, false);
             });
         });
 
