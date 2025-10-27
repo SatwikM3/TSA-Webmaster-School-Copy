@@ -1169,8 +1169,8 @@
                 });
             };
 
-            // Call after initial render
-            observeCards();
+            // Call after initial render with small delay to ensure DOM is ready
+            setTimeout(observeCards, 100);
 
             // Animsition for Chrome
             var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
