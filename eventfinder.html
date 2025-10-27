@@ -1172,6 +1172,13 @@
             // Call after initial render with small delay to ensure DOM is ready
             setTimeout(observeCards, 100);
 
+            // Fallback: ensure cards show even if IntersectionObserver doesn't trigger
+            setTimeout(function() {
+                document.querySelectorAll('.resource-card:not(.fade-in)').forEach(function(card) {
+                    card.classList.add('fade-in');
+                });
+            }, 1000);
+
             // Animsition for Chrome
             var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             if(isChrome) {
