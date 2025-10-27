@@ -1145,40 +1145,6 @@
                 });
             }
 
-            // Intersection Observer for scroll-triggered animations
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px'
-            };
-
-            const cardObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry, index) {
-                    if (entry.isIntersecting) {
-                        setTimeout(function() {
-                            entry.target.classList.add('fade-in');
-                        }, index * 100); // Staggered delay
-                        cardObserver.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all resource cards
-            window.observeCards = function() {
-                document.querySelectorAll('.resource-card').forEach(function(card) {
-                    cardObserver.observe(card);
-                });
-            };
-
-            // Call after initial render with small delay to ensure DOM is ready
-            setTimeout(observeCards, 100);
-
-            // Fallback: ensure cards show even if IntersectionObserver doesn't trigger
-            setTimeout(function() {
-                document.querySelectorAll('.resource-card:not(.fade-in)').forEach(function(card) {
-                    card.classList.add('fade-in');
-                });
-            }, 1000);
-
             // Animsition for Chrome
             var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             if(isChrome) {
