@@ -1,90 +1,720 @@
-<!DOCTYPE html>
-<html lang="en" >
-
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>WWP HSN TSA Event Finder</title>
-  
-  <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Connect - Resource Hub</title>
+    <link rel="icon" href="img/icon.png">
 
-  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900|Open+Sans:400,300,600,700,800|Raleway:400,100,200,300,500,600,700,800,900'>
-<link rel='stylesheet prefetch' href='https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css'>
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-	  <link rel="stylesheet" href="css/eventfinderstyle.css">
-	  <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <!-- Bootstrap & Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animsition.min.css">
 
+    <style>
+        body {
+            font-family: 'Poppins', 'Rubik', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-  
+        /* Hero Section */
+        .resource-hero {
+            background: linear-gradient(to right, #1488CC, #2B32B2);
+            padding: 120px 0 80px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .resource-hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: -50px auto 40px auto;
+            max-width: 900px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 18px 60px 18px 25px;
+            font-size: 1.1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #1488CC;
+            box-shadow: 0 0 0 4px rgba(20, 136, 204, 0.1);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1488CC;
+            font-size: 1.3rem;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 12px 28px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+        }
+
+        .category-btn:hover {
+            border-color: #1488CC;
+            color: #1488CC;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(20, 136, 204, 0.2);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            border-color: #1488CC;
+            color: white;
+            box-shadow: 0 4px 15px rgba(20, 136, 204, 0.3);
+        }
+
+        /* Resources Grid Section */
+        .resources-section {
+            padding: 60px 0 80px 0;
+            position: relative;
+        }
+
+        /* Blob Animations */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: blob-move 8s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: #1488CC;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 250px;
+            height: 250px;
+            background: #2B32B2;
+            top: 50%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            width: 200px;
+            height: 200px;
+            background: #7B68EE;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        @keyframes blob-move {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+            100% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Resource Cards */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 35px 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .resource-card.fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1488CC, #2B32B2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: #1488CC;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .resource-card:hover .card-icon {
+            transform: scale(1.1) rotate(5deg);
+            color: #2B32B2;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2B32B2;
+            margin-bottom: 12px;
+        }
+
+        .card-category {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(20, 136, 204, 0.15);
+            color: #1488CC;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #1488CC;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .card-link:hover {
+            gap: 12px;
+            color: #2B32B2;
+        }
+
+        .card-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            display: none;
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .no-results h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .no-results p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px auto 60px auto;
+            max-width: 900px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2B32B2;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(20, 136, 204, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(20, 136, 204, 0.4);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .resource-hero h1 {
+                font-size: 2rem;
+            }
+
+            .resource-hero p {
+                font-size: 1rem;
+            }
+
+            .search-section {
+                padding: 25px;
+                margin: -30px 20px 30px 20px;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .category-filters {
+                gap: 8px;
+            }
+
+            .category-btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div id="ani" class="animsition">
+        <!-- Navbar -->
+        <div class="nav-menu fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-dark navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html"><img src="" class="img-fluid" alt=""><b>Community Connect</b></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbar">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item"><a class="nav-link" href="./index.html">HOME</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./cte.html">HOW IT WORKS</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="./eventfinder.html">RESOURCES <span class="sr-only">(current)</span></a></li>
+                                    <li class="nav-item"><a id="submit" href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">SUBMIT</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-		<div class="section bg-white" id="leap">
-					<div class="row">
-						<div class="col-xl-12 col-lg-12 mx-auto">
-							<h3 class="section3-title2" style="text-align:center">
-							   TSA Event Finder 
-							</h3>
-							<br>
-							<a href="index.html" style="display:block;margin:auto;margin-right:10%;margin-left:10%" class="btn btn-primary" >Back to Chapter Page</a>
-		
-	
-						</div>
-					</div>
+        <!-- Hero Section -->
+        <div class="resource-hero">
+            <div class="container">
+                <h1>Community Resource Hub</h1>
+                <p>Discover tools, programs, and support to strengthen your community</p>
+            </div>
+        </div>
 
+        <!-- Search & Filter Section -->
+        <div class="container">
+            <div class="search-section">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search resources..." autocomplete="off">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="Education">Education</button>
+                    <button class="category-btn" data-category="Health">Health</button>
+                    <button class="category-btn" data-category="Housing">Housing</button>
+                    <button class="category-btn" data-category="Employment">Employment</button>
+                    <button class="category-btn" data-category="Food & Nutrition">Food & Nutrition</button>
+                    <button class="category-btn" data-category="Youth Programs">Youth Programs</button>
+                    <button class="category-btn" data-category="Senior Services">Senior Services</button>
+                </div>
+            </div>
+        </div>
 
-  <div class="container">
-		<div class="col-sm-12">
-			<div class="mm-survey">
+        <!-- Resources Section -->
+        <div class="resources-section">
+            <!-- Blob Animations -->
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
 
-				<div class="mm-survey-progress">
-					<div class="mm-survey-progress-bar mm-progress"></div>
-				</div>
+            <div class="container">
+                <div class="resources-grid" id="resourcesGrid">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
 
-				<div class="mm-survey-results">
-					<div class="mm-survey-results-container">
-						<p class="mm-survey-results-score">Here are your best event choices based on the preferences you selected! You can find more information on these events  <a href="http://tsaweb.org/sites/default/files/High%20School%20Competitive%20Events%20Overview.pdf"> <b>here.</b> </a></p>
-						<ul class="mm-survey-results-list"></ul>
-					</div>
-					<div class="mm-survey-results-controller">
-						
-					</div>
-				</div>
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults">
+                    <i class="fas fa-search"></i>
+                    <h3>No resources found</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                </div>
+            </div>
+        </div>
 
-				<div class="mm-survey-bottom">
-					<div class="mm-survey-container"></div>
-					<div class="mm-survey-controller">
-						<div class="mm-prev-btn">
-							<button>Back</button>
-						</div>
-						<div class="mm-next-btn">
-							<button disabled="true">Next</button>
-						</div>
-						<div class="mm-finish-btn">
-							<button>Submit</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <!-- CTA Section -->
+        <div class="container">
+            <div class="cta-section">
+                <h3>Have a Resource to Share?</h3>
+                <p>Help strengthen our community by submitting resources that have helped you or your organization.</p>
+                <a href="about.html" class="cta-btn">Submit a Resource</a>
+            </div>
+        </div>
 
-	
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js'></script>
+        <!-- Footer -->
+        <footer>
+            <p style="margin-bottom: 10px;">Community Connect © 2025. Building stronger communities together.</p>
+            <small>
+                <a href="#" class="m-2">Contact Us</a> |
+                <a href="#" class="m-2">Privacy Policy</a> |
+                <a href="#" class="m-2">Terms of Service</a>
+            </small>
+        </footer>
+    </div>
 
-  
+    <!-- Scripts -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/animsition.min.js"></script>
 
-    <script  src="js/eventfinder.js"></script>
+    <script>
+        // Resources Data
+        const resources = [
+            {
+                title: "Educational Tutoring Program",
+                category: "Education",
+                icon: "fa-graduation-cap",
+                description: "Free tutoring services for K-12 students in math, science, and reading. Volunteer tutors available weekdays 3-6 PM at the Community Center."
+            },
+            {
+                title: "Community Food Bank",
+                category: "Food & Nutrition",
+                icon: "fa-shopping-basket",
+                description: "No-cost food assistance for families in need. Open Tuesdays and Thursdays 10 AM - 2 PM. No appointment necessary."
+            },
+            {
+                title: "Job Skills Workshops",
+                category: "Employment",
+                icon: "fa-briefcase",
+                description: "Resume building, interview skills, and career counseling. Free monthly workshops held at the library. Registration required."
+            },
+            {
+                title: "Senior Companion Program",
+                category: "Senior Services",
+                icon: "fa-user-friends",
+                description: "Connect seniors with friendly visitors for companionship and light assistance. Both volunteers and participants welcome."
+            },
+            {
+                title: "Youth Mentorship Network",
+                category: "Youth Programs",
+                icon: "fa-child",
+                description: "Matching young people with caring adult mentors for guidance, support, and friendship. Ages 12-18."
+            },
+            {
+                title: "Housing Assistance Resources",
+                category: "Housing",
+                icon: "fa-home",
+                description: "Information and support for affordable housing, rental assistance, and homelessness prevention services."
+            },
+            {
+                title: "Community Health Clinic",
+                category: "Health",
+                icon: "fa-medkit",
+                description: "Low-cost medical and dental services. Walk-in hours available. Sliding scale fees based on income."
+            },
+            {
+                title: "Adult Literacy Classes",
+                category: "Education",
+                icon: "fa-book-open",
+                description: "ESL and adult basic education classes. Improve reading, writing, and English skills in supportive environment."
+            },
+            {
+                title: "Community Garden Project",
+                category: "Food & Nutrition",
+                icon: "fa-seedling",
+                description: "Grow your own vegetables! Plot rentals and workshops on sustainable gardening. All skill levels welcome."
+            },
+            {
+                title: "Mental Health Support Line",
+                category: "Health",
+                icon: "fa-phone",
+                description: "24/7 crisis support and counseling services. Confidential and free. Connect with trained professionals anytime."
+            },
+            {
+                title: "After-School Programs",
+                category: "Youth Programs",
+                icon: "fa-futbol",
+                description: "Safe, supervised activities for students grades K-8. Homework help, sports, arts, and enrichment programs daily."
+            },
+            {
+                title: "Financial Literacy Workshop",
+                category: "Employment",
+                icon: "fa-dollar-sign",
+                description: "Learn budgeting, saving, and financial planning. Free workshops every month covering essential money management skills."
+            }
+        ];
 
+        // Render resources
+        function renderResources(resourcesToRender) {
+            const grid = document.getElementById('resourcesGrid');
+            const noResults = document.getElementById('noResults');
 
+            grid.innerHTML = '';
 
+            if (resourcesToRender.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
 
+            noResults.style.display = 'none';
+
+            resourcesToRender.forEach((resource, index) => {
+                const card = document.createElement('div');
+                card.className = 'resource-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+
+                card.innerHTML = `
+                    <i class="fas ${resource.icon} card-icon"></i>
+                    <h3 class="card-title">${resource.title}</h3>
+                    <span class="card-category">${resource.category}</span>
+                    <p class="card-description">${resource.description}</p>
+                    <a href="#" class="card-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                `;
+
+                grid.appendChild(card);
+
+                // Trigger animation
+                setTimeout(() => card.classList.add('fade-in'), 50);
+            });
+        }
+
+        // Filter by category
+        function filterByCategory(category) {
+            if (category === 'all') {
+                return resources;
+            }
+            return resources.filter(r => r.category === category);
+        }
+
+        // Search functionality
+        function searchResources(query) {
+            const lowerQuery = query.toLowerCase();
+            return resources.filter(r =>
+                r.title.toLowerCase().includes(lowerQuery) ||
+                r.description.toLowerCase().includes(lowerQuery) ||
+                r.category.toLowerCase().includes(lowerQuery)
+            );
+        }
+
+        // Current filters
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        // Apply filters
+        function applyFilters() {
+            let filtered = resources;
+
+            // Apply category filter
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(r => r.category === currentCategory);
+            }
+
+            // Apply search filter
+            if (currentSearch) {
+                const lowerSearch = currentSearch.toLowerCase();
+                filtered = filtered.filter(r =>
+                    r.title.toLowerCase().includes(lowerSearch) ||
+                    r.description.toLowerCase().includes(lowerSearch) ||
+                    r.category.toLowerCase().includes(lowerSearch)
+                );
+            }
+
+            renderResources(filtered);
+        }
+
+        // Category button click
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                applyFilters();
+            });
+        });
+
+        // Search input
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            currentSearch = e.target.value;
+            applyFilters();
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderResources(resources);
+
+            // Animsition for Chrome
+            var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+            if(isChrome) {
+                $(".animsition").animsition({
+                    inClass: 'zoom-in',
+                    outClass: 'zoom-out',
+                    inDuration: 1500,
+                    outDuration: 800,
+                    linkElement: '.animsition-link',
+                    loading: true,
+                    loadingParentElement: 'body',
+                    loadingClass: 'animsition-loading',
+                    loadingInner: '',
+                    timeout: false,
+                    timeoutCountdown: 5000,
+                    onLoadEvent: true,
+                    browser: ['animation-duration', '-webkit-animation-duration'],
+                    overlay: false,
+                    overlayClass: 'animsition-overlay-slide',
+                    overlayParentElement: 'body',
+                    transition: function(url){ window.location.href = url; }
+                });
+            }
+        });
+    </script>
 </body>
-
 </html>
