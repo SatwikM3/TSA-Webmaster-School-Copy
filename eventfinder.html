@@ -92,20 +92,24 @@
         /* Header Styles - EXACT COPY FROM HOME PAGE */
         .bg-gradient2 {
             background: linear-gradient(to right, #1488CC , #2B32B2);
+            position: relative;
         }
 
         .backgrounddiv2 {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #container {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            position: relative;
+            z-index: 0;
         }
 
         .info {
