@@ -89,74 +89,7 @@
             z-index: 1;
         }
 
-        /* Header Styles - EXACT COPY FROM HOME PAGE */
-        .bg-gradient2 {
-            background: linear-gradient(to right, #1488CC , #2B32B2);
-            position: relative;
-        }
-
-        .backgrounddiv2 {
-            position: relative;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .info {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 120px 20px 80px 20px;
-        }
-
-        .about {
-            margin: 0;
-        }
-
-        /* Simple Title - Match Home Page */
-        .typewriter h1 {
-            overflow: hidden;
-            border-right: .15em solid white;
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: .15em;
-            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-            display: inline-block;
-            font-size: 3rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: white; }
-        }
-
-        .about h2 {
-            color: white;
-            font-size: 24px;
-            font-weight: 300;
-            margin-top: 20px;
-        }
-
-        .text-white {
-            color: white;
-        }
+        /* Header Styles - Use external CSS from example.css, no overrides needed */
 
         /* Search Section */
         .search-section {
