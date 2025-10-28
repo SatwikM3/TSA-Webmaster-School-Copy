@@ -1103,6 +1103,29 @@
                 });
             }
 
+            // Hide navbar on scroll down
+            let lastScroll = 0;
+            const navbar = document.querySelector('.nav-menu');
+
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll <= 0) {
+                    navbar.style.transform = 'translateY(0)';
+                    return;
+                }
+
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    // Scrolling down
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    navbar.style.transform = 'translateY(0)';
+                }
+
+                lastScroll = currentScroll;
+            });
+
             // Animsition for Chrome
             var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
             if(isChrome) {
