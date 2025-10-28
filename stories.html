@@ -1,0 +1,774 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Connect - Community Stories</title>
+    <link rel="icon" href="img/icon.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/example.css">
+    <link rel="stylesheet" href="css/animsition.min.css">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        html, body {
+            background: linear-gradient(to right, #1488CC, #2B32B2);
+            overflow-x: hidden;
+        }
+
+        /* Story Cards Section */
+        .stories-section {
+            background: white;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(50px);
+            border: 1px solid rgba(20, 136, 204, 0.1);
+        }
+
+        .story-card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(20, 136, 204, 0.2);
+            border-color: rgba(20, 136, 204, 0.3);
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            border: 4px solid #1488CC;
+            box-shadow: 0 8px 25px rgba(20, 136, 204, 0.3);
+            object-fit: cover;
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .story-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2B32B2;
+            margin-bottom: 8px;
+        }
+
+        .story-role {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1488CC;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .story-quote {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 25px;
+            min-height: 100px;
+        }
+
+        .read-more-btn {
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .read-more-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(20, 136, 204, 0.4);
+        }
+
+        /* Share Your Story Section */
+        .share-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .share-section h2 {
+            font-size: 36px;
+            font-weight: 600;
+            color: #2B32B2;
+            margin-bottom: 20px;
+        }
+
+        .share-section p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 35px;
+        }
+
+        .share-btn {
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(20, 136, 204, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 50px;
+            position: relative;
+            transform: scale(0.7);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: 300;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #2B32B2;
+        }
+
+        .modal-profile {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 5px solid #1488CC;
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .modal-name {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2B32B2;
+            margin-bottom: 10px;
+        }
+
+        .modal-role {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1488CC;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .modal-story {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #555;
+            text-align: left;
+        }
+
+        .modal-story p {
+            margin-bottom: 20px;
+        }
+
+        /* Form Modal Styles */
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #2B32B2;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Rubik', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1488CC;
+            box-shadow: 0 0 0 3px rgba(20, 136, 204, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-story-btn {
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-story-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(20, 136, 204, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .stories-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stories-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .modal-content {
+                padding: 35px 25px;
+            }
+
+            .intro-text {
+                font-size: 18px;
+                margin-bottom: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ani" class="animsition">
+        <!-- Navbar -->
+        <div class="nav-menu fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-dark navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html"><b>Community Connect</b></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbar">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item"><a class="nav-link" href="./index.html">HOME</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./cte.html">HOW IT WORKS</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="./stories.html">STORIES <span class="sr-only">(current)</span></a></li>
+                                    <li class="nav-item"><a id="resources" href="./eventfinder.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">RESOURCES</a></li>
+                                    <li class="nav-item"><a id="submit" href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">SUBMIT</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section with Particles -->
+        <header class="bg-gradient2" id="home">
+            <div class="backgrounddiv2">
+                <div id="container">
+                    <header class="info">
+                        <hgroup class="about">
+                            <div class="typewriter">
+                                <h1>Community Stories</h1>
+                            </div>
+                            <h2 class="text-white" style="font-size: 24px; font-weight: 300; margin-top: 20px;">Real people. Real impact.</h2>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stories Section -->
+        <div class="stories-section">
+            <div class="container">
+                <p class="intro-text">
+                    Every connection tells a story. Behind every volunteer hour, every mentor session, and every community project are real people making a difference. These are their stories—tales of transformation, kindness, and the power of coming together.
+                </p>
+
+                <div class="stories-grid">
+                    <!-- Story Card 1 -->
+                    <div class="story-card" data-story="1">
+                        <div class="profile-image">MJ</div>
+                        <h3 class="story-name">Maria Johnson</h3>
+                        <p class="story-role">Volunteer Mentor</p>
+                        <p class="story-quote">"Mentoring students through Community Connect has been the most rewarding experience. Seeing them grow and achieve their dreams reminds me why community matters."</p>
+                        <button class="read-more-btn" onclick="openStory(1)">Read Full Story</button>
+                    </div>
+
+                    <!-- Story Card 2 -->
+                    <div class="story-card" data-story="2">
+                        <div class="profile-image">DC</div>
+                        <h3 class="story-name">David Chen</h3>
+                        <p class="story-role">Student Learner</p>
+                        <p class="story-quote">"Finding a mentor changed everything for me. I went from struggling in school to getting accepted into my dream college. Community Connect gave me hope."</p>
+                        <button class="read-more-btn" onclick="openStory(2)">Read Full Story</button>
+                    </div>
+
+                    <!-- Story Card 3 -->
+                    <div class="story-card" data-story="3">
+                        <div class="profile-image">SR</div>
+                        <h3 class="story-name">Sarah Rodriguez</h3>
+                        <p class="story-role">Community Organizer</p>
+                        <p class="story-quote">"This platform helped me connect volunteers with families in need during tough times. Together, we've served over 500 families. That's the power of community."</p>
+                        <button class="read-more-btn" onclick="openStory(3)">Read Full Story</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Share Your Story Section -->
+        <div class="share-section">
+            <div class="container">
+                <h2>Have a Story to Share?</h2>
+                <p>Your experience could inspire someone else. Tell us how Community Connect has impacted your life.</p>
+                <button class="share-btn" onclick="openShareModal()">Share Your Story</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="my-5 text-center">
+            <small>
+                <a href="" style="text-decoration:none" class="m-2 text-white">Community Connect © 2025. Building stronger communities together.</a>
+            </small>
+        </footer>
+
+        <!-- Story Modal -->
+        <div id="storyModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeStoryModal()">&times;</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+
+        <!-- Share Story Form Modal -->
+        <div id="shareModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeShareModal()">&times;</span>
+                <h2 style="text-align: center; color: #2B32B2; margin-bottom: 30px;">Share Your Story</h2>
+                <form id="shareStoryForm" onsubmit="submitStory(event)">
+                    <div class="form-group">
+                        <label for="userName">Your Name</label>
+                        <input type="text" id="userName" name="userName" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">Your Role</label>
+                        <input type="text" id="userRole" name="userRole" required placeholder="e.g., Volunteer, Student, Organizer">
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" name="userEmail" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="userStory">Your Story</label>
+                        <textarea id="userStory" name="userStory" required placeholder="Tell us about your experience with Community Connect..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-story-btn">Submit Story</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/sketch.js"></script>
+    <script src="js/animsition.min.js"></script>
+
+    <!-- Particle Animation Script -->
+    <script>
+        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+            function Particle(x, y, radius) {
+                this.init(x, y, radius);
+            }
+
+            Particle.prototype = {
+                init: function(x, y, radius) {
+                    this.alive = true;
+                    this.radius = radius || 10;
+                    this.wander = 0.15;
+                    this.theta = random(TWO_PI);
+                    this.drag = 0.92;
+                    this.color = '#fff';
+                    this.x = x || 0.0;
+                    this.y = y || 0.0;
+                    this.vx = 0.0;
+                    this.vy = 0.0;
+                },
+
+                move: function() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.vx *= this.drag;
+                    this.vy *= this.drag;
+                    this.theta += random(-0.5, 0.5) * this.wander;
+                    this.vx += sin(this.theta) * 0.1;
+                    this.vy += cos(this.theta) * 0.1;
+                    this.radius *= 0.96;
+                    this.alive = this.radius > 0.5;
+                },
+
+                draw: function(ctx) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, TWO_PI);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            };
+
+            var MAX_PARTICLES = 280;
+            var COLOURS = ['#ecf0f1', '#2980b9', '#273c75'];
+            var particles = [];
+            var pool = [];
+
+            var demo = Sketch.create({
+                container: document.getElementById('container'),
+                retina: 'auto'
+            });
+
+            demo.setup = function() {
+                var i, x, y;
+                for (i = 0; i < 50; i++) {
+                    x = (demo.width * 0.5) + random(-100, 100);
+                    y = (demo.height * 0.5) + random(-100, 100);
+                    demo.spawn(x, y);
+                }
+            };
+
+            demo.spawn = function(x, y) {
+                var particle, theta, force;
+                if (particles.length >= MAX_PARTICLES)
+                    pool.push(particles.shift());
+                particle = pool.length ? pool.pop() : new Particle();
+                particle.init(x, y, random(5, 40));
+                particle.wander = random(0.5, 2.0);
+                particle.color = random(COLOURS);
+                particle.drag = random(0.9, 0.99);
+                theta = random(TWO_PI);
+                force = random(2, 8);
+                particle.vx = sin(theta) * force;
+                particle.vy = cos(theta) * force;
+                particles.push(particle);
+            };
+
+            demo.update = function() {
+                var i, particle;
+                for (i = particles.length - 1; i >= 0; i--) {
+                    particle = particles[i];
+                    if (particle.alive) particle.move();
+                    else pool.push(particles.splice(i, 1)[0]);
+                }
+            };
+
+            demo.draw = function() {
+                demo.globalCompositeOperation = 'lighter';
+                for (var i = particles.length - 1; i >= 0; i--) {
+                    particles[i].draw(demo);
+                }
+            };
+
+            demo.mousemove = function() {
+                var particle, theta, force, touch, max, i, j, n;
+                for (i = 0, n = demo.touches.length; i < n; i++) {
+                    touch = demo.touches[i], max = random(1, 4);
+                    for (j = 0; j < max; j++) {
+                        demo.spawn(touch.x, touch.y);
+                    }
+                }
+            };
+        }
+    </script>
+
+    <!-- Story Content and Modal Scripts -->
+    <script>
+        // Full story content
+        const stories = {
+            1: {
+                name: "Maria Johnson",
+                role: "Volunteer Mentor",
+                initials: "MJ",
+                story: `
+                    <p>Three years ago, I was looking for a way to give back to my community. I had spent my career in education and wanted to share my experience with the next generation. That's when I discovered Community Connect.</p>
+
+                    <p>Through the platform, I was matched with Sarah, a high school junior struggling with college applications and feeling lost about her future. Our weekly sessions became the highlight of my week. We worked on her essays, discussed career paths, and most importantly, I got to be there as she discovered her passion for environmental science.</p>
+
+                    <p>Last month, Sarah got accepted into her top choice university with a full scholarship. Watching her transformation from a hesitant teenager to a confident young woman with clear goals has been incredible. But what she doesn't know is that she helped me just as much—she reminded me why I became an educator in the first place.</p>
+
+                    <p>Community Connect didn't just help me find a student to mentor; it helped me find purpose in my retirement. Now I'm mentoring three students, and I can't imagine my life without this incredible community.</p>
+                `
+            },
+            2: {
+                name: "David Chen",
+                role: "Student Learner",
+                initials: "DC",
+                story: `
+                    <p>I'm a first-generation college student, and honestly, I had no idea what I was doing. My parents immigrated here and worked two jobs each—they wanted me to succeed but couldn't help with college prep or applications. I was lost and about to give up.</p>
+
+                    <p>A teacher told me about Community Connect, and I was skeptical at first. Why would successful professionals want to help me for free? But I signed up anyway, and that decision changed everything.</p>
+
+                    <p>I was paired with Mr. Thompson, a retired engineer who spent hours helping me understand complex math concepts, review scholarship applications, and even practice for interviews. He believed in me when I didn't believe in myself. He told me stories about his own struggles and showed me that success isn't about where you start—it's about the effort you put in and the people who support you along the way.</p>
+
+                    <p>This fall, I'll be starting at MIT on a full ride. I know I earned it through my hard work, but I also know I couldn't have done it without Community Connect and Mr. Thompson. Now I'm already planning to come back as a mentor myself to help other students like me.</p>
+                `
+            },
+            3: {
+                name: "Sarah Rodriguez",
+                role: "Community Organizer",
+                initials: "SR",
+                story: `
+                    <p>When the pandemic hit, I saw families in my neighborhood struggling. Parents lost jobs, kids missed meals they relied on from school, and everyone felt isolated and scared. I wanted to help but didn't know how to organize something big enough to make a real difference.</p>
+
+                    <p>That's when I found Community Connect. Within days, I had created a neighborhood support network. The platform made it easy to post needs and connect with volunteers willing to help. We started with food deliveries, then expanded to tutoring sessions, mental health support groups, and even virtual game nights for isolated seniors.</p>
+
+                    <p>What started as a crisis response has become a permanent community support system. We've served over 500 families, organized monthly food drives, and created lasting friendships across age and cultural barriers. The teenage volunteers have learned leadership skills, retirees have found new purpose, and families know they're not alone.</p>
+
+                    <p>Community Connect gave me the tools to turn compassion into action. It showed me that when we make it easy for people to help each other, incredible things happen. Our neighborhood is stronger now than it was before the pandemic, and that's because this platform helped us discover the power we had all along—the power of community.</p>
+                `
+            }
+        };
+
+        // Open story modal
+        function openStory(storyId) {
+            const story = stories[storyId];
+            const modal = document.getElementById('storyModal');
+            const content = document.getElementById('modalContent');
+
+            content.innerHTML = `
+                <div class="modal-profile">
+                    <div class="modal-profile-image">${story.initials}</div>
+                    <h2 class="modal-name">${story.name}</h2>
+                    <p class="modal-role">${story.role}</p>
+                </div>
+                <div class="modal-story">
+                    ${story.story}
+                </div>
+            `;
+
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close story modal
+        function closeStoryModal() {
+            const modal = document.getElementById('storyModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Open share modal
+        function openShareModal() {
+            const modal = document.getElementById('shareModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close share modal
+        function closeShareModal() {
+            const modal = document.getElementById('shareModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Submit story form
+        function submitStory(event) {
+            event.preventDefault();
+            const form = document.getElementById('shareStoryForm');
+            const formData = {
+                name: form.userName.value,
+                role: form.userRole.value,
+                email: form.userEmail.value,
+                story: form.userStory.value
+            };
+
+            // Here you would typically send this to a backend
+            console.log('Story submitted:', formData);
+
+            // Show success message
+            alert('Thank you for sharing your story! We\'ll review it and be in touch soon.');
+
+            // Close modal and reset form
+            closeShareModal();
+            form.reset();
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const storyModal = document.getElementById('storyModal');
+            const shareModal = document.getElementById('shareModal');
+            if (event.target === storyModal) {
+                closeStoryModal();
+            }
+            if (event.target === shareModal) {
+                closeShareModal();
+            }
+        };
+
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry, index) {
+                    if (entry.isIntersecting) {
+                        setTimeout(function() {
+                            entry.target.classList.add('fade-in');
+                        }, index * 150);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.story-card').forEach(function(card) {
+                observer.observe(card);
+            });
+
+            // Animsition
+            var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+            if (isChrome) {
+                $(".animsition").animsition({
+                    inClass: 'zoom-in',
+                    outClass: 'zoom-out',
+                    inDuration: 1500,
+                    outDuration: 800,
+                    linkElement: '.animsition-link',
+                    loading: true,
+                    loadingParentElement: 'body',
+                    loadingClass: 'animsition-loading',
+                    loadingInner: '',
+                    timeout: false,
+                    timeoutCountdown: 5000,
+                    onLoadEvent: true,
+                    browser: ['animation-duration', '-webkit-animation-duration'],
+                    overlay: false,
+                    overlayClass: 'animsition-overlay-slide',
+                    overlayParentElement: 'body',
+                    transition: function(url) { window.location.href = url; }
+                });
+            } else {
+                document.getElementById("ani").className = "";
+                if (document.getElementById("resources")) {
+                    document.getElementById("resources").className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+                }
+                if (document.getElementById("submit")) {
+                    document.getElementById("submit").className = "btn btn-outline-light my-3 my-sm-0 ml-lg-3";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
