@@ -1,0 +1,109 @@
+.timeline-section {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.ambient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform, opacity;
+}
+
+/* Simple larger pastel grayish-blue circles (no glow) */
+.ambient-circle {
+    position: absolute;
+    border-radius: 50%;
+    /* Lighter pastel light-violet (no glow). Use a pale RGB and control visibility via keyframes */
+    background: rgb(235, 225, 255);
+    animation: float var(--duration) ease-in-out infinite;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.ambient-circle:nth-child(1) {
+    width: 260px;
+    height: 260px;
+    left: 6%;
+    bottom: 22%;
+    --duration: 12s;
+    animation-delay: 0s;
+}
+
+/* Additional circles (5 & 6) to add depth without overlapping */
+.ambient-circle:nth-child(5) {
+    width: 240px;
+    height: 240px;
+    left: 50%;
+    top: 6%;
+    --duration: 14s;
+    animation-delay: -2s;
+}
+
+.ambient-circle:nth-child(6) {
+    width: 200px;
+    height: 200px;
+    left: 68%;
+    bottom: 26%;
+    --duration: 12s;
+    animation-delay: -5s;
+}
+
+.ambient-circle:nth-child(2) {
+    width: 320px;
+    height: 320px;
+    right: 6%;
+    top: 24%;
+    --duration: 13s;
+    animation-delay: -3s;
+}
+
+.ambient-circle:nth-child(3) {
+    width: 300px;
+    height: 300px;
+    left: 28%;
+    bottom: 18%;
+    --duration: 12s;
+    animation-delay: -6s;
+}
+
+.ambient-circle:nth-child(4) {
+    width: 220px;
+    height: 220px;
+    right: 22%;
+    bottom: 22%;
+    --duration: 11s;
+    animation-delay: -4s;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.12;
+    }
+    25% {
+        transform: translate(-28px, 18px);
+        opacity: 0.22;
+    }
+    50% {
+        transform: translate(30px, -18px);
+        opacity: 0.16;
+    }
+    75% {
+        transform: translate(-18px, -24px);
+        opacity: 0.22;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.12;
+    }
+}
