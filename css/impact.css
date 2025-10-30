@@ -1,0 +1,214 @@
+/* Stats Section */
+.stats-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Stat Cards */
+.stats-row {
+    margin-bottom: 60px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.stat-icon {
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.stat-icon i {
+    background: linear-gradient(45deg, #007bff, #00b4d8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-number {
+    font-size: 2.8em;
+    font-weight: bold;
+    color: #2d3436;
+    margin: 10px 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+.stat-label {
+    color: #636e72;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+
+.stat-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #00b4d8);
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Chart Cards */
+.charts-row {
+    margin-bottom: 60px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chart-card.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.chart-card h3 {
+    color: #2d3436;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+/* Success Stories */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2d3436;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.story-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.story-card.animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.story-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.story-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+}
+
+.story-content {
+    padding: 20px;
+}
+
+.story-content h3 {
+    color: #2d3436;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.story-content p {
+    color: #636e72;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Animations */
+@keyframes numberCount {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes iconPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.stat-icon i {
+    display: inline-block;
+    animation: iconPulse 2s infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stat-card {
+        margin-bottom: 30px;
+    }
+    
+    .chart-card {
+        margin-bottom: 30px;
+    }
+}
+
+/* Card Hover Effects */
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 123, 255, 0.1);
+}
+
+.stat-card:hover .stat-icon i {
+    animation: iconPulse 1s infinite;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 123, 255, 0.1);
+}
+
+.story-card:hover .story-image {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}

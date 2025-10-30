@@ -1,90 +1,1074 @@
-<!DOCTYPE html>
-<html lang="en" >
-
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>WWP HSN TSA Event Finder</title>
-  
-  <link rel="icon" href="img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Connect - Resource Hub</title>
+    <link rel="icon" href="img/icon.png">
 
-  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900|Open+Sans:400,300,600,700,800|Raleway:400,100,200,300,500,600,700,800,900'>
-<link rel='stylesheet prefetch' href='https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/css/bootstrap-datetimepicker.min.css'>
+    <!-- Fonts - Match Home Page -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
-	  <link rel="stylesheet" href="css/eventfinderstyle.css">
-	  <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Bootstrap & Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/example.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animsition.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rubik', 'Open Sans', sans-serif;
+            background: linear-gradient(to right, #1488CC , #2B32B2);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Navbar - Hide on scroll down */
+        .nav-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Animated Background Shapes */
+        .bg-shape {
+            position: fixed;
+            border-radius: 50%;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #1488CC, #2B32B2);
+            top: -100px;
+            left: -100px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #2B32B2, #633991);
+            top: 40%;
+            right: -80px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #1488CC, #5DADE2);
+            bottom: -80px;
+            left: 20%;
+            animation: float 18s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 40px) rotate(240deg); }
+        }
+
+        /* White Section for Content - Clear Separation */
+        .form-section {
+            background: white;
+            padding: 80px 0;
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header Styles - Use external CSS from example.css, no overrides needed */
+
+        /* Search Section */
+        .search-section {
+            max-width: 900px;
+            margin: 0 auto 50px auto;
+            padding: 30px;
+        }
 
 
+        .search-bar {
+            position: relative;
+        }
 
-  
+        .search-bar input {
+            width: 100%;
+            padding: 20px 60px 20px 25px;
+            font-size: 1.15rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            background: #fafafa;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #1488CC;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(20, 136, 204, 0.1);
+            transform: scale(1.02);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1488CC;
+            font-size: 1.4rem;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 12px 30px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #555;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(20, 136, 204, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .category-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .category-btn:hover {
+            border-color: #1488CC;
+            color: #1488CC;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(20, 136, 204, 0.2);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 6px 25px rgba(20, 136, 204, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active::before {
+            display: none;
+        }
+
+        /* Resource Cards */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 26px;
+            border: 1px solid rgba(20, 136, 204, 0.12);
+            padding: 42px 32px;
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            overflow: hidden;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1488CC, #2B32B2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .resource-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .resource-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 136, 204, 0.03), rgba(43, 50, 178, 0.03));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 24px;
+        }
+
+        .resource-card:hover::after {
+            opacity: 1;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-18px) scale(1.03);
+            box-shadow: 0 25px 75px rgba(20, 136, 204, 0.28), 0 0 40px rgba(20, 136, 204, 0.15);
+            border-color: rgba(20, 136, 204, 0.35);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: #1488CC;
+            margin-bottom: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-block;
+        }
+
+        .resource-card:hover .card-icon {
+            transform: scale(1.15) rotate(5deg);
+            color: #2B32B2;
+            filter: drop-shadow(0 4px 8px rgba(20, 136, 204, 0.3));
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2B32B2;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .card-category {
+            display: inline-block;
+            padding: 7px 18px;
+            background: rgba(20, 136, 204, 0.12);
+            color: #1488CC;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-description {
+            font-size: 0.98rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #1488CC;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .card-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #1488CC, #2B32B2);
+            transition: width 0.3s ease;
+        }
+
+        .card-link:hover::after {
+            width: calc(100% - 30px);
+        }
+
+        .card-link:hover {
+            gap: 15px;
+            color: #2B32B2;
+        }
+
+        .card-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .card-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Expanded card content */
+        .card-expanded-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+        }
+
+        .card-expanded-content.active {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .expanded-details {
+            background: rgba(20, 136, 204, 0.05);
+            border-left: 4px solid #1488CC;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #555;
+            font-size: 0.95rem;
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
+        .detail-item i {
+            color: #1488CC;
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2B32B2;
+            min-width: 80px;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 80px 20px;
+            color: #2B32B2;
+            display: none;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 24px;
+            margin: 40px 0;
+        }
+
+        .no-results i {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            opacity: 0.3;
+        }
+
+        .no-results h3 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .no-results p {
+            font-size: 1.15rem;
+            opacity: 0.7;
+        }
+
+
+        /* Ripple effect animation */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .ripple-light {
+            background: rgba(20, 136, 204, 0.3);
+        }
+
+        /* Footer - Match Submit Page */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .resource-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .resource-hero p {
+                font-size: 1.05rem;
+            }
+
+            .search-section {
+                padding: 30px 25px;
+                margin: -40px 20px 40px 20px;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .category-filters {
+                gap: 8px;
+            }
+
+            .category-btn {
+                padding: 10px 22px;
+                font-size: 0.88rem;
+            }
+
+            .resource-card {
+                padding: 30px 25px;
+            }
+
+            .cta-section {
+                padding: 50px 30px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Background Shapes -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
 
-		<div class="section bg-white" id="leap">
-					<div class="row">
-						<div class="col-xl-12 col-lg-12 mx-auto">
-							<h3 class="section3-title2" style="text-align:center">
-							   TSA Event Finder 
-							</h3>
-							<br>
-							<a href="index.html" style="display:block;margin:auto;margin-right:10%;margin-left:10%" class="btn btn-primary" >Back to Chapter Page</a>
-		
-	
-						</div>
-					</div>
+    <div id="ani" class="animsition">
+        <!-- Navbar -->
+        <div class="nav-menu fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-dark navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html"><img src="" class="img-fluid" alt=""><b>Community Connect</b></a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbar">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item"><a class="nav-link" href="./index.html">HOME</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./cte.html">HOW IT WORKS</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="upcoming-events.html">UPCOMING EVENTS</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="./eventfinder.html">RESOURCES <span class="sr-only">(current)</span></a></li>
+                                    <li class="nav-item"><a id="submit" href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">SUBMIT</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Hero Section with Particles - EXACT MATCH TO HOME PAGE -->
+        <header class="bg-gradient2" id="home">
+            <div class="backgrounddiv2">
+                <div id="container">
+                    <header class="info">
+                        <hgroup class="about">
+                            <div class="typewriter">
+                                <h1>Explore Resources</h1>
+                            </div>
+                            <h2 class="text-white" style="font-size: 24px; font-weight: 300; margin-top: 20px;">Discover community programs and services</h2>
+                        </hgroup>
+                    </header>
+                </div>
+            </div>
+        </header>
 
-  <div class="container">
-		<div class="col-sm-12">
-			<div class="mm-survey">
+        <!-- Resources Section - EXACT LAYOUT FROM SUBMIT PAGE -->
+        <div class="form-section">
+            <div class="container">
+                <!-- Search & Filter -->
+                <div class="search-section">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search resources by name, category, or description..." autocomplete="off">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="category-filters">
+                        <button class="category-btn active" data-category="all">All Resources</button>
+                        <button class="category-btn" data-category="Education">Education</button>
+                        <button class="category-btn" data-category="Career">Career</button>
+                        <button class="category-btn" data-category="Health">Health</button>
+                        <button class="category-btn" data-category="Volunteering">Volunteering</button>
+                        <button class="category-btn" data-category="Community Projects">Community Projects</button>
+                        <button class="category-btn" data-category="Events">Events</button>
+                    </div>
+                </div>
 
-				<div class="mm-survey-progress">
-					<div class="mm-survey-progress-bar mm-progress"></div>
-				</div>
+                <!-- Resources Grid -->
+                <div class="resources-grid" id="resourcesGrid">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
 
-				<div class="mm-survey-results">
-					<div class="mm-survey-results-container">
-						<p class="mm-survey-results-score">Here are your best event choices based on the preferences you selected! You can find more information on these events  <a href="http://tsaweb.org/sites/default/files/High%20School%20Competitive%20Events%20Overview.pdf"> <b>here.</b> </a></p>
-						<ul class="mm-survey-results-list"></ul>
-					</div>
-					<div class="mm-survey-results-controller">
-						
-					</div>
-				</div>
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults">
+                    <i class="fas fa-search"></i>
+                    <h3>No resources found</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                </div>
+            </div>
+        </div>
 
-				<div class="mm-survey-bottom">
-					<div class="mm-survey-container"></div>
-					<div class="mm-survey-controller">
-						<div class="mm-prev-btn">
-							<button>Back</button>
-						</div>
-						<div class="mm-next-btn">
-							<button disabled="true">Next</button>
-						</div>
-						<div class="mm-finish-btn">
-							<button>Submit</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <!-- Footer -->
+        <footer class="my-5 text-center">
+            <small>
+                <a href="" style="text-decoration:none" class="m-2 text-white">Community Connect © 2025. Building stronger communities together.</a>
+            </small>
+        </footer>
+    </div>
 
-	
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js'></script>
+    <!-- Scripts -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/animsition.min.js"></script>
+    <script src="js/sketch.js"></script>
 
-  
+    <!-- Particle Animation Script -->
+    <script>
+        if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+            function Particle(x, y, radius) {
+                this.init(x, y, radius);
+            }
 
-    <script  src="js/eventfinder.js"></script>
+            Particle.prototype = {
+                init: function(x, y, radius) {
+                    this.alive = true;
+                    this.radius = radius || 10;
+                    this.wander = 0.15;
+                    this.theta = random(TWO_PI);
+                    this.drag = 0.92;
+                    this.color = '#fff';
+                    this.x = x || 0.0;
+                    this.y = y || 0.0;
+                    this.vx = 0.0;
+                    this.vy = 0.0;
+                },
 
+                move: function() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.vx *= this.drag;
+                    this.vy *= this.drag;
+                    this.theta += random(-0.5, 0.5) * this.wander;
+                    this.vx += sin(this.theta) * 0.1;
+                    this.vy += cos(this.theta) * 0.1;
+                    this.radius *= 0.96;
+                    this.alive = this.radius > 0.5;
+                },
 
+                draw: function(ctx) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, TWO_PI);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            };
 
+            var MAX_PARTICLES = 280;
+            var COLOURS = [ '#ecf0f1', '#2980b9', '#273c75', ];
+            var particles = [];
+            var pool = [];
 
+            var demo = Sketch.create({
+                container: document.getElementById('container'),
+                retina: 'auto'
+            });
+
+            demo.setup = function() {
+                var i, x, y;
+                for (i = 0; i < 50; i++) {
+                    x = (demo.width * 0.5) + random(-100, 100);
+                    y = (demo.height * 0.5) + random(-100, 100);
+                    demo.spawn(x, y);
+                }
+            };
+
+            demo.spawn = function(x, y) {
+                var particle, theta, force;
+                if (particles.length >= MAX_PARTICLES)
+                    pool.push(particles.shift());
+                particle = pool.length ? pool.pop() : new Particle();
+                particle.init(x, y, random(5, 40));
+                particle.wander = random(0.5, 2.0);
+                particle.color = random(COLOURS);
+                particle.drag = random(0.9, 0.99);
+                theta = random(TWO_PI);
+                force = random(2, 8);
+                particle.vx = sin(theta) * force;
+                particle.vy = cos(theta) * force;
+                particles.push(particle);
+            };
+
+            demo.update = function() {
+                var i, particle;
+                for (i = particles.length - 1; i >= 0; i--) {
+                    particle = particles[i];
+                    if (particle.alive) particle.move();
+                    else pool.push(particles.splice(i, 1)[0]);
+                }
+            };
+
+            demo.draw = function() {
+                demo.globalCompositeOperation = 'lighter';
+                for (var i = particles.length - 1; i >= 0; i--) {
+                    particles[i].draw(demo);
+                }
+            };
+
+            demo.mousemove = function() {
+                var particle, theta, force, touch, max, i, j, n;
+                for (i = 0, n = demo.touches.length; i < n; i++) {
+                    touch = demo.touches[i], max = random(1, 4);
+                    for (j = 0; j < max; j++) {
+                        demo.spawn(touch.x, touch.y);
+                    }
+                }
+            };
+        }
+    </script>
+
+    <script>
+        // Resources Data - Enhanced with realistic community-oriented content
+        const resources = [
+            {
+                title: "Scholarship Discovery Program",
+                category: "Education",
+                icon: "fa-graduation-cap",
+                description: "Find and apply for local and national scholarships. Free guidance on application essays, financial aid forms, and deadline tracking for college-bound students.",
+                phone: "(555) 234-5678",
+                email: "scholarships@communityconnect.org",
+                hours: "Mon-Fri 9AM-6PM, Sat 10AM-2PM",
+                location: "Community Center, 123 Main St"
+            },
+            {
+                title: "After-School Tutoring Network",
+                category: "Education",
+                icon: "fa-book-reader",
+                description: "Free K-12 tutoring in math, science, reading, and writing. Volunteer tutors available weekdays 3-6 PM at multiple community centers across the district.",
+                phone: "(555) 234-5679",
+                email: "tutoring@communityconnect.org",
+                hours: "Mon-Fri 3PM-6PM",
+                location: "Various locations - call for nearest site"
+            },
+            {
+                title: "Youth Career Internship Portal",
+                category: "Career",
+                icon: "fa-briefcase",
+                description: "Connect high school and college students with paid internships at local businesses. Gain real-world experience while earning college credit and building your resume.",
+                phone: "(555) 345-6789",
+                email: "internships@communityconnect.org",
+                hours: "Mon-Fri 9AM-5PM",
+                location: "Workforce Development Center, 456 Business Pkwy"
+            },
+            {
+                title: "Job Search Workshop Series",
+                category: "Career",
+                icon: "fa-search-dollar",
+                description: "Monthly workshops covering resume building, interview techniques, LinkedIn optimization, and networking strategies. Free and open to all community members.",
+                phone: "(555) 345-6790",
+                email: "workshops@communityconnect.org",
+                hours: "2nd & 4th Tuesday 6PM-8PM",
+                location: "Public Library Meeting Room, 789 Oak Ave"
+            },
+            {
+                title: "Community Health Clinic",
+                category: "Health",
+                icon: "fa-medkit",
+                description: "Affordable medical and dental services with sliding scale fees. Walk-in hours Monday-Friday 9 AM-5 PM. No insurance required, multilingual staff available.",
+                phone: "(555) 456-7890",
+                email: "clinic@healthcenter.org",
+                hours: "Mon-Fri 9AM-5PM, Walk-ins welcome",
+                location: "Community Health Center, 321 Wellness Dr"
+            },
+            {
+                title: "Mental Wellness Support Line",
+                category: "Health",
+                icon: "fa-phone-volume",
+                description: "24/7 confidential crisis support and counseling services. Connect with trained professionals anytime for mental health support, stress management, and emotional guidance.",
+                phone: "(555) 911-HELP",
+                email: "support@mentalhealthline.org",
+                hours: "24/7 - Call anytime",
+                location: "Confidential phone and online support"
+            },
+            {
+                title: "Neighborhood Cleanup Initiative",
+                category: "Volunteering",
+                icon: "fa-hands-helping",
+                description: "Join monthly community cleanups in local parks and neighborhoods. Tools and supplies provided. Volunteers of all ages welcome to help beautify our community.",
+                phone: "(555) 567-8901",
+                email: "cleanup@greenneighborhood.org",
+                hours: "1st Saturday monthly 9AM-12PM",
+                location: "Meetup at Riverside Park entrance"
+            },
+            {
+                title: "Senior Companion Program",
+                category: "Volunteering",
+                icon: "fa-user-friends",
+                description: "Match with local seniors for weekly visits, companionship, and light assistance. Training provided. Make a meaningful impact in an elder's life through friendship.",
+                phone: "(555) 567-8902",
+                email: "companions@seniorcare.org",
+                hours: "Flexible - match with your schedule",
+                location: "Training at Senior Center, 234 Elder St"
+            },
+            {
+                title: "Community Garden Collective",
+                category: "Community Projects",
+                icon: "fa-seedling",
+                description: "Rent a plot and grow your own vegetables! Workshops on sustainable gardening, composting, and organic growing. Tools shared, water included. All skill levels welcome.",
+                phone: "(555) 678-9012",
+                email: "garden@greengrow.org",
+                hours: "Open daily dawn to dusk",
+                location: "Community Garden, Corner of 5th & Maple"
+            },
+            {
+                title: "Little Free Library Network",
+                category: "Community Projects",
+                icon: "fa-book",
+                description: "Build and maintain Little Free Libraries in neighborhoods. Free books for all ages, workshops on woodworking and library setup. Promote literacy and community connection.",
+                phone: "(555) 678-9013",
+                email: "books@littlefreelibrary.org",
+                hours: "Workshop 2nd Sat 10AM-2PM",
+                location: "Makerspace, 567 Creative Way"
+            },
+            {
+                title: "Monthly Town Hall Meetings",
+                category: "Events",
+                icon: "fa-comments",
+                description: "Attend monthly forums to discuss community issues, meet local leaders, and voice your concerns. First Thursday of every month, 7 PM at City Hall. Open to all residents.",
+                phone: "(555) 789-0123",
+                email: "townhall@citygovernment.gov",
+                hours: "1st Thursday monthly 7PM-9PM",
+                location: "City Hall Council Chambers, 100 Civic Plaza"
+            },
+            {
+                title: "Community Resource Fair",
+                category: "Events",
+                icon: "fa-calendar-alt",
+                description: "Annual event connecting residents with local services, nonprofits, health providers, and educational resources. Free health screenings, food, activities for kids. Third Saturday in September.",
+                phone: "(555) 789-0124",
+                email: "fair@communityconnect.org",
+                hours: "Annual - 3rd Sat in Sept 10AM-4PM",
+                location: "Central Park Main Field"
+            },
+            {
+                title: "Financial Literacy Workshops",
+                category: "Career",
+                icon: "fa-dollar-sign",
+                description: "Learn budgeting, saving, investing, and credit management. Free evening workshops covering essential money skills for individuals and families. Materials provided in English and Spanish.",
+                phone: "(555) 890-1234",
+                email: "finance@moneywise.org",
+                hours: "Wednesdays 6PM-8PM",
+                location: "Credit Union Community Room, 890 Bank St"
+            },
+            {
+                title: "Youth Mentorship Network",
+                category: "Education",
+                icon: "fa-child",
+                description: "Pair young people ages 12-18 with caring adult mentors for guidance, academic support, and personal development. Background checks required for mentors. Applications open year-round.",
+                phone: "(555) 901-2345",
+                email: "mentors@youthprogram.org",
+                hours: "Match meetings flexible",
+                location: "Youth Services Office, 345 Hope Blvd"
+            },
+            {
+                title: "Fitness in the Park",
+                category: "Health",
+                icon: "fa-heartbeat",
+                description: "Free outdoor fitness classes every weekend! Yoga, Zumba, bootcamp, and tai chi for all fitness levels. Bring a mat and water bottle. Rain or shine under pavilion.",
+                phone: "(555) 012-3456",
+                email: "fitness@parksprogram.org",
+                hours: "Sat-Sun 8AM, 10AM, 4PM classes",
+                location: "Riverside Park Pavilion"
+            }
+        ];
+
+        // Render resources
+        function renderResources(resourcesToRender) {
+            const grid = document.getElementById('resourcesGrid');
+            const noResults = document.getElementById('noResults');
+
+            grid.innerHTML = '';
+
+            if (resourcesToRender.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+
+            resourcesToRender.forEach((resource, index) => {
+                const card = document.createElement('div');
+                card.className = 'resource-card';
+
+                card.innerHTML = `
+                    <i class="fas ${resource.icon} card-icon"></i>
+                    <h3 class="card-title">${resource.title}</h3>
+                    <span class="card-category">${resource.category}</span>
+                    <p class="card-description">${resource.description}</p>
+
+                    <div class="card-expanded-content">
+                        <div class="expanded-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span class="detail-label">Location:</span>
+                                <span>${resource.location}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span class="detail-label">Phone:</span>
+                                <span>${resource.phone}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span class="detail-label">Hours:</span>
+                                <span>${resource.hours}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-envelope"></i>
+                                <span class="detail-label">Email:</span>
+                                <span>${resource.email}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="card-link" data-action="toggle">
+                        <span class="link-text">Learn More</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                `;
+
+                grid.appendChild(card);
+
+                // Add click handler for card expansion
+                const link = card.querySelector('.card-link');
+                const expandedContent = card.querySelector('.card-expanded-content');
+                const linkText = card.querySelector('.link-text');
+                const linkIcon = card.querySelector('.card-link i');
+
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Close other expanded cards
+                    document.querySelectorAll('.card-expanded-content.active').forEach(content => {
+                        if (content !== expandedContent) {
+                            content.classList.remove('active');
+                            const otherCard = content.closest('.resource-card');
+                            const otherLink = otherCard.querySelector('.link-text');
+                            const otherIcon = otherCard.querySelector('.card-link i');
+                            otherLink.textContent = 'Learn More';
+                            otherIcon.className = 'fas fa-arrow-right';
+                        }
+                    });
+
+                    // Toggle current card
+                    expandedContent.classList.toggle('active');
+
+                    if (expandedContent.classList.contains('active')) {
+                        linkText.textContent = 'Show Less';
+                        linkIcon.className = 'fas fa-arrow-up';
+                    } else {
+                        linkText.textContent = 'Learn More';
+                        linkIcon.className = 'fas fa-arrow-right';
+                    }
+
+                    // Add ripple effect
+                    createRipple(e, link, true);
+                });
+            });
+        }
+
+        // Current filters
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        // Create ripple effect on button/link clicks
+        function createRipple(event, element, isLight = false) {
+            const ripple = document.createElement('span');
+            ripple.className = isLight ? 'ripple ripple-light' : 'ripple';
+
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+
+            element.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        // Apply filters
+        function applyFilters() {
+            let filtered = resources;
+
+            // Apply category filter
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(r => r.category === currentCategory);
+            }
+
+            // Apply search filter
+            if (currentSearch) {
+                const lowerSearch = currentSearch.toLowerCase();
+                filtered = filtered.filter(r =>
+                    r.title.toLowerCase().includes(lowerSearch) ||
+                    r.description.toLowerCase().includes(lowerSearch) ||
+                    r.category.toLowerCase().includes(lowerSearch)
+                );
+            }
+
+            renderResources(filtered);
+        }
+
+        // Category button click
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                applyFilters();
+
+                // Add ripple effect
+                createRipple(e, this, false);
+            });
+        });
+
+        // Search input with debounce
+        let searchTimeout;
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                currentSearch = e.target.value;
+                applyFilters();
+            }, 300);
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderResources(resources);
+
+            // Apply ripple to CTA button
+            const ctaBtn = document.querySelector('.cta-btn');
+            if (ctaBtn) {
+                ctaBtn.addEventListener('click', function(e) {
+                    createRipple(e, this, false);
+                });
+            }
+
+            // Hide navbar on scroll down
+            let lastScroll = 0;
+            const navbar = document.querySelector('.nav-menu');
+
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll <= 0) {
+                    navbar.style.transform = 'translateY(0)';
+                    return;
+                }
+
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    // Scrolling down
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    navbar.style.transform = 'translateY(0)';
+                }
+
+                lastScroll = currentScroll;
+            });
+
+            // Animsition for Chrome
+            var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+            if(isChrome) {
+                $(".animsition").animsition({
+                    inClass: 'zoom-in',
+                    outClass: 'zoom-out',
+                    inDuration: 1500,
+                    outDuration: 800,
+                    linkElement: '.animsition-link',
+                    loading: true,
+                    loadingParentElement: 'body',
+                    loadingClass: 'animsition-loading',
+                    loadingInner: '',
+                    timeout: false,
+                    timeoutCountdown: 5000,
+                    onLoadEvent: true,
+                    browser: ['animation-duration', '-webkit-animation-duration'],
+                    overlay: false,
+                    overlayClass: 'animsition-overlay-slide',
+                    overlayParentElement: 'body',
+                    transition: function(url){ window.location.href = url; }
+                });
+            }
+        });
+    </script>
 </body>
-
 </html>
