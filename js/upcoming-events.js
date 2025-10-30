@@ -19,6 +19,8 @@ $(function(){
         $this.addClass('active');
     });
 
+    var $timeline_item = $('.timeline-item');
+
     // Function to check if an element is in viewport
     function isElementInViewport(el) {
         var rect = el.getBoundingClientRect();
@@ -45,6 +47,7 @@ $(function(){
 
     // Initial check on page load
     setTimeout(callbackFunc, 500);
+    callbackFunc();
 
     // Listen for scroll event
     $(window).on('scroll', function() {
