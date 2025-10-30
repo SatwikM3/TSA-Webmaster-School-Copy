@@ -1,0 +1,57 @@
+/* Event modal styles - simple, accessible, lightweight */
+.event-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.event-modal-backdrop[aria-hidden="false"] {
+  display: flex;
+}
+.event-modal {
+  background: #fff;
+  color: #222;
+  width: 92%;
+  max-width: 720px;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.event-modal header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.event-modal h3 { margin: 0 0 6px 0; font-size: 1.25rem; }
+.event-modal .meta { color: #666; font-size: 0.95rem; margin-bottom: 8px; }
+.event-modal .description { margin: 12px 0 18px; line-height: 1.45; }
+.event-modal .actions { display:flex; gap:12px; flex-wrap:wrap; }
+.btn-ghost { background: transparent; border: 1px solid #ccc; padding: 8px 12px; border-radius:6px; cursor:pointer; }
+.btn-primary { background: #5b46ff; color: white; border: none; padding: 9px 14px; border-radius:6px; cursor:pointer; }
+.event-modal .small { font-size:0.9rem; color:#444; }
+.event-modal .close-btn { background: transparent; border: none; font-size: 1.2rem; cursor: pointer; color:#444; }
+/* Responsive */
+@media (max-width:480px){
+  .event-modal{ padding:16px; }
+  .event-modal h3{ font-size: 1.05rem; }
+}
+
+/* micro animation when modal appears */
+.event-modal-backdrop[aria-hidden="false"] .event-modal {
+  animation: modalIn 260ms cubic-bezier(.22,.9,.28,1);
+}
+
+@keyframes modalIn {
+  0% { transform: translateY(10px) scale(.995); opacity: 0; }
+  60% { transform: translateY(-4px) scale(1.003); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* slightly bolder structure for meta */
+.event-modal .grid { display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+.event-modal .label { color:#666; font-size:0.85rem; }
+.event-modal .value { font-weight:600; }

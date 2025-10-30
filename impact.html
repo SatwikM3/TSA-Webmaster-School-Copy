@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Community Impact</title>
+        <link rel="stylesheet" href="css/example.css">
+        <link rel="stylesheet" href="css/carousel.css">
+        <link rel="stylesheet" href="css/animsition.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link rel="icon" href="img/icon.png">
+        <link rel="stylesheet" href="css/impact.css">
+        <link rel="stylesheet" href="css/ambient-animation.css">
+        <link rel="dns-prefetch" href="//fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+
+    <div id="ani" class="animsition">
+        <body data-spy="scroll" data-target="#navbar" data-offset="30">
+            <!-- Navigation -->
+            <div class="nav-menu fixed-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="navbar navbar-dark navbar-expand-lg">
+                                <a class="navbar-brand" href="index.html#home"><img src="" class="img-fluid" alt=""><b>Community Connect</b></a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbar">
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item"> <a class="nav-link" href="index.html#home">HOME</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="cte.html">HOW IT WORKS</a> </li>
+                                        <li class="nav-item"> <a class="nav-link" href="upcoming-events.html">UPCOMING EVENTS</a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="impact.html">OUR IMPACT</a> </li>
+                                        <li class="nav-item"><a id="resources" href="./eventfinder.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">RESOURCES</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Section with Particles -->
+            <header class="bg-gradient2" id="home">
+                <div class="backgrounddiv2">
+                    <div id="container">
+                        <header class="info">
+                            <hgroup class="about">
+                                <div class="typewriter">
+                                    <h1>Community Impact</h1>
+                                </div>
+                                <p class="text-white" style="font-size: 18px; margin-top: 15px;">Making a difference, one step at a time.</p>
+                            </hgroup>
+                        </header>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="ambient-background">
+                    <div class="ambient-circle"></div>
+                    <div class="ambient-circle"></div>
+                    <div class="ambient-circle"></div>
+                </div>
+                
+                <div class="container">
+                    <!-- Key Statistics -->
+                    <div class="row stats-row">
+                        <div class="col-md-3">
+                            <div class="stat-card" data-value="15000">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-number">0</div>
+                                <div class="stat-label">Volunteer Hours</div>
+                                <div class="stat-progress"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card" data-value="2500">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-number">0</div>
+                                <div class="stat-label">Active Members</div>
+                                <div class="stat-progress"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card" data-value="48">
+                                <div class="stat-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="stat-number">0</div>
+                                <div class="stat-label">Events Completed</div>
+                                <div class="stat-progress"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-card" data-value="12000">
+                                <div class="stat-icon">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                </div>
+                                <div class="stat-number">0</div>
+                                <div class="stat-label">Lives Impacted</div>
+                                <div class="stat-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Charts -->
+                    <div class="row charts-row">
+                        <div class="col-md-6">
+                            <div class="chart-card">
+                                <h3>Community Engagement Growth</h3>
+                                <canvas id="growthChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="chart-card">
+                                <h3>Event Distribution</h3>
+                                <canvas id="distributionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Stories -->
+                    <div class="row stories-row">
+                        <div class="col-12">
+                            <h2 class="section-title">Success Stories</h2>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="story-card">
+                                <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3')"></div>
+                                <div class="story-content">
+                                    <h3>Local Park Cleanup</h3>
+                                    <p>Over 200 volunteers came together to transform our community park, collecting over 1,000 pounds of waste and planting 50 new trees.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="story-card">
+                                <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3')"></div>
+                                <div class="story-content">
+                                    <h3>Youth Mentorship Program</h3>
+                                    <p>Connected 150 students with professional mentors, leading to improved academic performance and career opportunities.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="story-card">
+                                <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3')"></div>
+                                <div class="story-content">
+                                    <h3>Food Drive Success</h3>
+                                    <p>Collected over 5,000 food items during our holiday drive, providing meals to 500 local families in need.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="my-5 text-center">
+                <small>
+                    <a href="" class="text-white" style="text-decoration:none">Community Connect © 2025. Building stronger communities together.</a>
+                </small>
+            </footer>
+
+            <!-- Scripts -->
+            <script src="./js/sketch.js"></script>
+            <script src="js/jquery-3.2.1.min.js"></script>
+            <script src="./js/bootstrap.bundle.min.js"></script>
+            <script src="./js/owl.carousel.min.js"></script>
+            <script src="./js/script.js"></script>
+            <script src="js/impact.js"></script>
+            <script src="js/animsition.min.js"></script>
+        </body>
+    </div>
+</html>

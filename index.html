@@ -15,7 +15,23 @@
         <style type="text/css">
             html, body {
                 background: linear-gradient(to right, #1488CC , #2B32B2);
+                scroll-behavior: smooth; /* sleek native smooth scrolling */
             }
+
+            /* Scroll-animated intro text */
+            .scroll-animate {
+                opacity: 0;
+                transform: translateY(18px);
+                transition: opacity 0.7s cubic-bezier(0.2,0.8,0.2,1), transform 0.7s cubic-bezier(0.2,0.8,0.2,1);
+            }
+
+            .scroll-animate.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Small helper to make intro text warm and readable */
+            #intro .lead { font-size: 1.05rem; color: #333; max-width: 900px; margin: 0 auto 16px; }
         </style>
 
         <!-- Font -->
@@ -235,78 +251,19 @@
                 };
 
             </script>
-            <!--
-Our Impact Section
--->
-            <div class="section bg-white" id="impact">
+            <!-- Intro / Welcome copy (replaces homepage Our Impact duplicate) -->
+            <section id="intro" class="section bg-white">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-10 col-lg-12 mx-auto text-center">
-                            <h3 class="section-heading mb-5">
-                                Our Impact
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Stat Card 1: Volunteer Hours -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-                            <div class="stat-card">
-                                <i class="fas fa-clock" style="font-size: 48px; color: #4A90E2; margin-bottom: 20px;"></i>
-                                <h2 class="stat-number" data-target="500" style="font-size: 48px; font-weight: 700; color: #2B32B2; margin-bottom: 10px;">0+</h2>
-                                <p class="stat-label" style="font-size: 16px; color: #666; font-weight: 500;">Volunteer Hours Logged</p>
-                            </div>
-                        </div>
-                        <!-- Stat Card 2: Community Members -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-                            <div class="stat-card">
-                                <i class="fas fa-users" style="font-size: 48px; color: #7B68EE; margin-bottom: 20px;"></i>
-                                <h2 class="stat-number" data-target="150" style="font-size: 48px; font-weight: 700; color: #2B32B2; margin-bottom: 10px;">0+</h2>
-                                <p class="stat-label" style="font-size: 16px; color: #666; font-weight: 500;">Community Members Helped</p>
-                            </div>
-                        </div>
-                        <!-- Stat Card 3: Students Tutored -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-                            <div class="stat-card">
-                                <i class="fas fa-graduation-cap" style="font-size: 48px; color: #5DADE2; margin-bottom: 20px;"></i>
-                                <h2 class="stat-number" data-target="75" style="font-size: 48px; font-weight: 700; color: #2B32B2; margin-bottom: 10px;">0+</h2>
-                                <p class="stat-label" style="font-size: 16px; color: #666; font-weight: 500;">Students Tutored</p>
-                            </div>
-                        </div>
-                        <!-- Stat Card 4: Community Projects -->
-                        <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-                            <div class="stat-card">
-                                <i class="fas fa-hands-helping" style="font-size: 48px; color: #8E7CC3; margin-bottom: 20px;"></i>
-                                <h2 class="stat-number" data-target="25" style="font-size: 48px; font-weight: 700; color: #2B32B2; margin-bottom: 10px;">0+</h2>
-                                <p class="stat-label" style="font-size: 16px; color: #666; font-weight: 500;">Community Projects</p>
-                            </div>
+                            <h3 class="section-heading mb-4">Welcome to Community Connect</h3>
+                            <p class="lead scroll-animate">We bring neighbors, volunteers, and local organizations together to solve problems, share resources, and celebrate community wins. Whether you want to give a few hours, share a skill, or find help, this hub connects people and ideas to make lasting, meaningful change.</p>
+                            <p class="scroll-animate">Our mission is simple: make it easy to find ways to help, make it rewarding to participate, and make the results visible so everyone can see the difference we make together. Join a cleanup, mentor a student, donate to a food drive, or start a local project — every action creates a ripple.</p>
+                            <div style="margin-top:20px;"><a href="upcoming-events.html" class="btn btn-primary animsition-link">Find Events</a> <a href="impact.html" class="btn btn-outline-primary animsition-link" style="margin-left:10px;">See Impact Dashboard</a></div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <style>
-                .stat-card {
-                    background: rgba(255, 255, 255, 0.1);
-                    backdrop-filter: blur(10px);
-                    -webkit-backdrop-filter: blur(10px);
-                    border-radius: 15px;
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                    padding: 40px 20px;
-                    text-align: center;
-                    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    height: 100%;
-                }
-
-                .stat-card:hover {
-                    transform: translateY(-10px);
-                    box-shadow: 0 12px 48px rgba(31, 38, 135, 0.25);
-                }
-            </style>
-    </div>
-    <!--
-Our Impact Section closing
--->
+            </section>
     <!--
 Who We Are / About Section
 -->
@@ -523,6 +480,26 @@ Who We Are / About Section
             document.querySelectorAll('.stat-number').forEach(function(stat) {
                 statsObserver.observe(stat);
             });
+        });
+    </script>
+    <script>
+        // Scroll-triggered intro text animations
+        document.addEventListener('DOMContentLoaded', function () {
+            const items = document.querySelectorAll('.scroll-animate');
+            if (!items || items.length === 0) return;
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // small stagger for multiple items
+                        setTimeout(() => entry.target.classList.add('is-visible'), 80 * (Array.from(items).indexOf(entry.target) % 6));
+                        // unobserve once visible
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.18 });
+
+            items.forEach(item => io.observe(item));
         });
     </script>
     </body>

@@ -24,6 +24,12 @@
 
 /* Timeline Item */
 .timeline-item {
+    padding: 40px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin: 30px 0;
+    min-height: 200px;
     padding: 10px 40px;
     position: relative;
     background-color: inherit;
@@ -51,6 +57,7 @@
     top: 15px;
     border-radius: 50%;
     z-index: 1;
+     transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
@@ -60,12 +67,16 @@
 
 /* Timeline Content Card */
 .timeline-content {
+    padding: 20px 25px;
     padding: 20px 30px;
     background-color: white;
     position: relative;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
+    min-height: 120px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .timeline-content:hover {
@@ -74,10 +85,96 @@
     border: 1px solid #007bff;
 }
 
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #007bff, #00b4d8);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    transform-origin: top;
+}
+
+.timeline-content.is-visible::before {
+    transform: scaleY(1);
+}
+
+/* External Info */
+.timeline-header {
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.timeline-date {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 5px;
+    position: absolute;
+    top: -45px;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.timeline-location {
+    font-size: 14px;
+    color: #666;
+    position: absolute;
+    top: -45px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Internal Content */
 .timeline-content h2 {
     font-size: 22px;
     font-weight: 600;
     color: #1a2533;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes slideUpFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes glowText {
+    0%, 100% {
+        text-shadow: 0 0 0 rgba(0,123,255,0);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(0,123,255,0.3);
+    }
+}
+
+.timeline-content-inner {
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 10px;
+}
+
+.timeline-content.is-visible .timeline-content-inner {
+    opacity: 1;
+    transform: translateY(0);
     margin-bottom: 10px;
 }
 
@@ -92,6 +189,54 @@
     font-size: 15px;
     line-height: 1.6;
     color: #666;
+    margin: 8px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-content.is-visible p {
+    animation: slideUpFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.timeline-content.is-visible p strong {
+    animation: glowText 2s ease-in-out;
+    color: #007bff;
+}
+
+.timeline-content.is-visible p:nth-child(1) { animation-delay: 0.1s; }
+.timeline-content.is-visible p:nth-child(2) { animation-delay: 0.2s; }
+.timeline-content.is-visible p:nth-child(3) { animation-delay: 0.3s; }
+
+/* Animations */
+@keyframes wave-text {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-15px);
+        opacity: 0.4;
+    }
+    40% {
+        transform: translateY(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.timeline-content h2 {
+    animation: wave-text 1.2s ease-out;
+}
+
+.timeline-content h2:nth-child(1) { animation-delay: 0.1s; }
+.timeline-content h2:nth-child(2) { animation-delay: 0.2s; }
+.timeline-content h2:nth-child(3) { animation-delay: 0.3s; }
+.timeline-content h2:nth-child(4) { animation-delay: 0.4s; }
+
     margin-bottom: 10px;
 }
 
