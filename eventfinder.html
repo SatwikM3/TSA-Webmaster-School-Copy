@@ -192,13 +192,72 @@
             display: none;
         }
 
-        /* Resource Cards */
+        /* Resource Cards Layout */
+        .resources-section {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .resources-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+        }
+
+        /* Collapsible Map Section */
+        .map-section {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 40px auto 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(20, 136, 204, 0.12);
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+        }
+
+        .map-toggle {
+            width: 100%;
+            background: linear-gradient(135deg, #1488CC 0%, #2B32B2 100%);
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .map-toggle:hover {
+            background: linear-gradient(135deg, #2B32B2 0%, #1488CC 100%);
+        }
+
+        .map-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .map-toggle.collapsed i {
+            transform: rotate(180deg);
+        }
+
+        .map-container {
+            height: 500px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .map-container.collapsed {
+            height: 0;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
         }
 
         .resource-card {
@@ -450,6 +509,10 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
+
+            .map-container {
+                height: 400px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -487,6 +550,15 @@
             .cta-section {
                 padding: 50px 30px;
             }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .map-toggle {
+                padding: 15px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -513,6 +585,7 @@
                                     <li class="nav-item"><a class="nav-link" href="./index.html">HOME</a></li>
                                     <li class="nav-item"><a class="nav-link" href="./cte.html">HOW IT WORKS</a></li>
                                     <li class="nav-item"><a class="nav-link" href="upcoming-events.html">UPCOMING EVENTS</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="./impact.html">IMPACT</a></li>
                                     <li class="nav-item"><a class="nav-link active" href="./eventfinder.html">RESOURCES <span class="sr-only">(current)</span></a></li>
                                     <li class="nav-item"><a id="submit" href="./about.html" class="animsition-link btn btn-outline-light my-3 my-sm-0 ml-lg-3">SUBMIT</a></li>
                                 </ul>
@@ -559,9 +632,23 @@
                     </div>
                 </div>
 
-                <!-- Resources Grid -->
-                <div class="resources-grid" id="resourcesGrid">
-                    <!-- Cards will be dynamically inserted here -->
+                <!-- Resources Section -->
+                <div class="resources-section">
+                    <div class="resources-grid" id="resourcesGrid">
+                        <!-- Cards will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Collapsible Map Section -->
+                <div class="map-section">
+                    <button class="map-toggle" id="mapToggle">
+                        <i class="fas fa-chevron-up"></i>
+                        <span>View Resources on Map</span>
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                    <div class="map-container" id="mapContainer">
+                        <div id="map"></div>
+                    </div>
                 </div>
 
                 <!-- No Results Message -->
@@ -586,6 +673,9 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/animsition.min.js"></script>
     <script src="js/sketch.js"></script>
+
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMap"></script>
 
     <!-- Particle Animation Script -->
     <script>
@@ -846,6 +936,128 @@
             }
         ];
 
+        // Map Manager
+        class MapManager {
+            constructor() {
+                this.map = null;
+                this.markers = [];
+                this.infoWindows = [];
+                this.geocodeCache = JSON.parse(localStorage.getItem('geocodeCache') || '{}');
+            }
+
+            init() {
+                this.map = new google.maps.Map(document.getElementById('map'), {
+                    center: { lat: 40.7128, lng: -74.0060 }, // Default to NYC
+                    zoom: 10,
+                    styles: [
+                        {
+                            featureType: 'poi',
+                            stylers: [{ visibility: 'off' }]
+                        }
+                    ]
+                });
+            }
+
+            async geocodeAddress(address) {
+                if (this.geocodeCache[address]) {
+                    return this.geocodeCache[address];
+                }
+
+                const geocoder = new google.maps.Geocoder();
+                return new Promise((resolve, reject) => {
+                    geocoder.geocode({ address: address }, (results, status) => {
+                        if (status === 'OK') {
+                            const location = results[0].geometry.location;
+                            const coords = { lat: location.lat(), lng: location.lng() };
+                            this.geocodeCache[address] = coords;
+                            localStorage.setItem('geocodeCache', JSON.stringify(this.geocodeCache));
+                            resolve(coords);
+                        } else {
+                            reject(new Error('Geocode failed: ' + status));
+                        }
+                    });
+                });
+            }
+
+            async addResourceMarker(resource) {
+                try {
+                    const position = await this.geocodeAddress(resource.location);
+
+                    const marker = new google.maps.Marker({
+                        position: position,
+                        map: this.map,
+                        title: resource.title,
+                        icon: {
+                            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+                                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="20" cy="20" r="18" fill="#1488CC" stroke="white" stroke-width="3"/>
+                                    <text x="20" y="25" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">${resource.category.charAt(0)}</text>
+                                </svg>
+                            `),
+                            scaledSize: new google.maps.Size(40, 40)
+                        }
+                    });
+
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: `
+                            <div style="max-width: 250px; font-family: 'Rubik', sans-serif;">
+                                <h4 style="margin: 0 0 8px 0; color: #2B32B2; font-size: 16px;">${resource.title}</h4>
+                                <p style="margin: 0 0 8px 0; color: #666; font-size: 14px;">${resource.description}</p>
+                                <div style="margin-bottom: 8px;">
+                                    <i class="fas fa-map-marker-alt" style="color: #1488CC; margin-right: 5px;"></i>
+                                    <span style="font-size: 13px;">${resource.location}</span>
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <i class="fas fa-phone" style="color: #1488CC; margin-right: 5px;"></i>
+                                    <span style="font-size: 13px;">${resource.phone}</span>
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <i class="fas fa-clock" style="color: #1488CC; margin-right: 5px;"></i>
+                                    <span style="font-size: 13px;">${resource.hours}</span>
+                                </div>
+                                <button onclick="window.open('mailto:${resource.email}')" style="background: #1488CC; color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; margin-top: 8px;">Contact</button>
+                            </div>
+                        `
+                    });
+
+                    marker.addListener('click', () => {
+                        this.infoWindows.forEach(iw => iw.close());
+                        infoWindow.open(this.map, marker);
+                    });
+
+                    this.markers.push(marker);
+                    this.infoWindows.push(infoWindow);
+
+                } catch (error) {
+                    console.warn('Failed to geocode address:', resource.location, error);
+                }
+            }
+
+            focusOnResourceByTitle(title) {
+                const marker = this.markers.find(m => m.getTitle() === title);
+                if (marker) {
+                    this.map.setCenter(marker.getPosition());
+                    this.map.setZoom(15);
+                    google.maps.event.trigger(marker, 'click');
+                }
+            }
+
+            clearMarkers() {
+                this.markers.forEach(marker => marker.setMap(null));
+                this.markers = [];
+                this.infoWindows = [];
+            }
+        }
+
+        const mapManager = new MapManager();
+
+        // Global init function for Google Maps
+        window.initMap = function() {
+            mapManager.init();
+            // Add all resources to map
+            resources.forEach(resource => mapManager.addResourceMarker(resource));
+        };
+
         // Render resources
         function renderResources(resourcesToRender) {
             const grid = document.getElementById('resourcesGrid');
@@ -902,7 +1114,7 @@
 
                 grid.appendChild(card);
 
-                // Add click handler for card expansion
+                // Add click handler for card expansion and map focus
                 const link = card.querySelector('.card-link');
                 const expandedContent = card.querySelector('.card-expanded-content');
                 const linkText = card.querySelector('.link-text');
@@ -933,6 +1145,9 @@
                         linkText.textContent = 'Learn More';
                         linkIcon.className = 'fas fa-arrow-right';
                     }
+
+                    // Focus map on this resource
+                    mapManager.focusOnResourceByTitle(resource.title);
 
                     // Add ripple effect
                     createRipple(e, link, true);
@@ -985,6 +1200,10 @@
             }
 
             renderResources(filtered);
+
+            // Update map markers
+            mapManager.clearMarkers();
+            filtered.forEach(resource => mapManager.addResourceMarker(resource));
         }
 
         // Category button click
@@ -1013,6 +1232,24 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             renderResources(resources);
+
+            // Map toggle functionality
+            const mapToggle = document.getElementById('mapToggle');
+            const mapContainer = document.getElementById('mapContainer');
+            let mapCollapsed = false;
+
+            mapToggle.addEventListener('click', function() {
+                mapCollapsed = !mapCollapsed;
+                mapContainer.classList.toggle('collapsed');
+                mapToggle.classList.toggle('collapsed');
+
+                const span = mapToggle.querySelector('span');
+                if (mapCollapsed) {
+                    span.textContent = 'Show Resources on Map';
+                } else {
+                    span.textContent = 'Hide Resources on Map';
+                }
+            });
 
             // Apply ripple to CTA button
             const ctaBtn = document.querySelector('.cta-btn');
